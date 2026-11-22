@@ -298,11 +298,11 @@ dialog{padding:35px 24px}dialog h2{font-size:1.75rem}dialog p{font-size:.875rem}
 .authority-section h2{font-size:clamp(2rem,3.4vw,3rem);line-height:1.2}
 .authority-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .authority-card{display:flex;flex-direction:column;text-decoration:none;border:1px solid #e5cbd7;border-top:3px solid var(--accent);border-radius:9px;padding:24px;background:#fffafd;transition:background .18s,border-color .18s}
-.authority-card:hover{background:#fceef4;border-color:#c78aa5}
+
 .authority-area{font-size:.6875rem;font-weight:700;letter-spacing:.06em;color:var(--accent);line-height:1.6}
 .authority-card h3{font-size:1.5rem;color:var(--wine);margin-top:12px}
 .authority-card p{font-size:1rem;line-height:1.8;color:var(--muted);margin-top:14px}
-.authority-source{display:block;margin-top:auto;padding-top:20px;font-size:.75rem;text-decoration:underline;text-underline-offset:4px;color:var(--accent);line-height:1.6}
+.authority-source{display:block;margin-top:auto;padding-top:20px;font-size:.75rem;text-decoration:none;color:var(--accent);line-height:1.6}
 .person-heading{display:flex;align-items:center;gap:14px;margin-bottom:23px}
 .person-avatar{flex-shrink:0;position:relative;width:72px;height:72px;border-radius:50%;overflow:hidden;background:#efd7e2;border:2px solid #ecd2de}
 .person-avatar>span{position:absolute;inset:0;display:grid;place-items:center;color:var(--wine);font-size:1.125rem;font-weight:700}
