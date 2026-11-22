@@ -132,7 +132,6 @@ strong{font-weight:700}
 .experiences{background:#fff7fa}
 .quote-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:start}
 .quote-grid figure{display:flex;flex-direction:column;background:white;border:1px solid var(--line);border-radius:11px;padding:26px}
-.quote-mark{font:3.5rem/.9 var(--serif);color:var(--accent);height:35px}
 .quote-grid blockquote{font-size:1.0625rem;line-height:1.75;font-weight:600;letter-spacing:-.01em;margin:15px 0 25px}
 .quote-grid figcaption{margin-top:0}
 .quote-grid figcaption strong{display:block;font-size:.9375rem;color:var(--wine)}
@@ -310,7 +309,6 @@ dialog{padding:35px 24px}dialog h2{font-size:1.75rem}dialog p{font-size:.875rem}
 .person-meta>span{font-size:.75rem;line-height:1.6;color:var(--muted);display:block;margin-top:4px}
 .person-meta .portrait-credit{display:block;font-size:.6875rem;color:var(--muted);line-height:1.6;margin-top:4px;text-decoration:none}
 .person-meta a.portrait-credit:hover{text-decoration:underline;text-underline-offset:3px}
-.person-heading+.quote-mark{height:25px;font-size:2.75rem}
 .quote-grid figcaption span{min-height:0}
 .quote-grid figure{padding-top:25px}
 @media(max-width:760px){
@@ -404,19 +402,18 @@ dialog{padding:35px 24px}dialog h2{font-size:1.75rem}dialog p{font-size:.875rem}
 }
 
 /* Estrutura enxuta para leitura no celular. */
-.section{padding-block:56px}
-.research.authority-section{padding-block:40px}
+.section{padding-block:48px}
+.research.authority-section{padding-block:32px}
 .authority-section .section-heading{margin-bottom:25px}
 .authority-section .section-heading h2{font-size:clamp(1.75rem,3vw,2.5rem)}
 .authority-card{padding:20px}
 .authority-head{margin:0}
 .authority-head h3{margin-top:0}
 .authority-topic{display:block;font-size:.875rem;color:var(--muted);line-height:1.5;margin-top:14px}
-.experiences .section-heading{margin-bottom:27px}
+.experiences .section-heading{margin-bottom:20px}
 .experiences .section-heading h2{font-size:clamp(1.75rem,3vw,2.5rem)}
-.experiences .section-heading>p:last-child{margin-top:14px}
-.person-heading{margin-bottom:15px}
-.quote-grid blockquote{margin-block:8px 10px}
+.person-heading{margin-bottom:12px}
+.quote-grid blockquote{margin-block:0}
 .quote-grid figure{padding:23px}
 .compact-product .inside{gap:55px}
 .compact-product .book-scene{min-height:360px}
@@ -437,10 +434,10 @@ dialog{padding:35px 24px}dialog h2{font-size:1.75rem}dialog p{font-size:.875rem}
 .offer-list li{align-items:center;margin-bottom:17px}
 .offer-list strong{font-size:1rem;line-height:1.6}
 .offer-card .format-note{margin-bottom:20px}
-.faq.section{padding-block:50px}
+.faq.section{padding-block:42px}
 @media(max-width:760px){
-.section{padding-block:38px}
-.research.authority-section{padding-block:34px}
+.section{padding-block:30px}
+.research.authority-section{padding-block:28px}
 .authority-section .eyebrow{font-size:.625rem;margin-bottom:12px}
 .authority-section .section-heading{margin-bottom:22px}
 .authority-section .section-heading h2{font-size:1.7rem}
@@ -451,14 +448,13 @@ dialog{padding:35px 24px}dialog h2{font-size:1.75rem}dialog p{font-size:.875rem}
 .authority-head h3{font-size:.875rem;line-height:1.5;letter-spacing:-.035em}
 .authority-avatar{width:56px;height:56px}
 .authority-topic{font-size:.75rem;line-height:1.6;margin-top:8px}
-.experiences .section-heading{margin-bottom:22px}
+.experiences .section-heading{margin-bottom:18px}
 .experiences .section-heading h2{font-size:1.75rem}
-.experiences .section-heading>p:last-child{font-size:.875rem;margin-top:13px}
 .quote-grid{grid-template-columns:1fr;gap:14px}
 .quote-grid figure{min-width:0;padding:22px}
-.quote-grid blockquote{font-size:1rem;line-height:1.75;margin:8px 0 10px}
+.quote-grid blockquote{font-size:1rem;line-height:1.75;margin:0}
 .quote-grid figcaption span{font-size:.8125rem}
-.person-heading{margin-bottom:14px}
+.person-heading{margin-bottom:12px}
 .person-avatar{width:58px;height:58px}
 .authority-avatar{width:56px;height:56px}
 .person-meta strong{font-size:.9375rem}
@@ -486,7 +482,7 @@ dialog{padding:35px 24px}dialog h2{font-size:1.75rem}dialog p{font-size:.875rem}
 .offer-list{padding:21px 0 12px}
 .offer-list li{margin-bottom:16px}
 .offer-list strong{font-size:.9375rem}
-.faq.section{padding-block:38px}
+.faq.section{padding-block:30px}
 .faq{gap:18px}
 .faq .eyebrow{margin-bottom:12px}
 .faq h2{font-size:1.75rem}
@@ -518,10 +514,4 @@ dialog{padding:35px 24px}dialog h2{font-size:1.75rem}dialog p{font-size:.875rem}
   margin-top: 8px;
   font-size: 1rem;
   line-height: 1.6;
-}
-.research-highlight small {
-  display: block;
-  margin-top: 12px;
-  color: #eadbe3;
-  font-size: .875rem;
 }
