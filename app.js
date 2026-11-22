@@ -10,6 +10,14 @@
     // Evento local: integrar o destino de tracking somente com consentimento e política atualizada.
     window.dispatchEvent(new CustomEvent("reconquiste:event", { detail: { name, ...detail } }));
   };
+  // Se um retrato externo estiver indisponível, preserva a identificação por iniciais.
+  document.querySelectorAll(".person-avatar img").forEach((image) => {
+    const show = () => image.classList.add("is-loaded");
+    const fallback = () => { image.hidden = true; };
+    image.addEventListener("load", show, { once: true });
+    image.addEventListener("error", fallback, { once: true });
+    if (image.complete) image.naturalWidth > 0 ? show() : fallback();
+  });
   $("#year").textContent = new Date().getFullYear();
   if (typeof config.price === "number" && Number.isFinite(config.price) && config.price > 0) {
     $("#price-label").textContent = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(config.price);

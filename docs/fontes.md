@@ -29,3 +29,14 @@ Não usar fotos genéricas dessas pessoas, estrelas de compradores, selos de apr
   https://cxl.com/blog/which-color-converts-the-best/
 
 Hipótese de design: vinho e rosa remetem à identidade da capa já aprovada; o verde fica reservado às ações principais, criando contraste com os fundos escuros e rosados. A segunda versão usa Hero central de vendas, VSL 16:9 e benefícios mais concretos. Uma conclusão sobre conversão depende de tráfego e experimento próprios, mantendo oferta e conteúdo constantes.
+
+
+## Retratos e avatares dos relatos
+
+- **Logan Ury:** retrato identificado na página oficial da autora na editora Simon & Schuster. A imagem é carregada do CDN da editora; o cartão inclui crédito e link para a página original.
+  https://www.simonandschuster.com/authors/Logan-Ury/156464550
+- **Kristen Meinzer:** retrato publicado na página oficial de headshots da autora, creditado a Lauren Eliot Photography. O cartão inclui crédito e link para a página original.
+  https://www.kristenmeinzer.com/headshots
+- **Yainak:** a fonte do relato não identifica uma fotografia. O cartão utiliza um avatar feminino ilustrado gerado para o layout, com a legenda visível “Avatar ilustrativo” e texto alternativo que informa que não é uma fotografia de Yainak. Não é uma reconstrução da aparência da participante.
+
+Os retratos públicos identificam as autoras dos relatos externos; não representam endosso do guia. Se um retrato externo falhar, o cartão preserva as iniciais e o nome. As imagens reais mantêm sua origem externa, com política de referenciador que não envia a URL da LP.
