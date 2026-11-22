@@ -332,3 +332,65 @@ dialog{padding:35px 24px}dialog h2{font-size:1.75rem}dialog p{font-size:.875rem}
 
 .person-avatar img{opacity:0}
 .person-avatar img.is-loaded{opacity:1}
+
+/* VSL vertical em todos os estados do player. */
+.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);grid-template-rows:auto auto;column-gap:64px;row-gap:24px;align-items:center;text-align:left;padding-block:34px 54px}
+.hero-copy{grid-column:1;grid-row:1;align-self:end;max-width:none;margin:0}
+.hero h1{font-size:clamp(2.4rem,3.55vw,3.2rem);line-height:1.15}
+.hero-description{margin:22px 0 0;max-width:none}
+.hero-media{display:contents}
+.video-shell{grid-column:2;grid-row:1/3;aspect-ratio:9/16;width:min(100%,340px,calc(66svh * 9 / 16));max-height:66svh;margin-inline:auto;justify-self:center}
+.video-poster{flex-direction:column;justify-content:center;gap:24px;text-align:center;padding:30px 24px}
+.poster-copy{flex:none;width:100%}
+.poster-overline{font-size:.625rem;margin-bottom:17px}
+.video-poster p{font-size:1.65rem;line-height:1.25}
+.poster-subtitle{font-size:.8125rem;margin-top:13px}
+.video-placeholder{justify-content:center;font-size:.8125rem;margin-top:19px}
+.video-play{font-size:.8125rem;margin-top:18px}
+.poster-book{width:115px;margin:0}
+.poster-seal{width:58px;height:58px;right:-16px;bottom:-10px;font-size:.5625rem}
+.poster-seal strong{font-size:1.4rem}
+.hero-action{grid-column:1;grid-row:2;align-self:start;text-align:left;margin:0}
+.hero-action .button{min-width:0;max-width:100%;padding-inline:25px}
+.hero-facts{justify-content:flex-start;gap:8px 16px;font-size:.75rem}
+.announcement .countdown-pill{padding:5px 12px;border:1px solid #ffffff65;background:#52142f45;border-radius:6px;line-height:1.3}
+.countdown-pill time{font-size:1.125rem;font-weight:800;letter-spacing:.04em;font-variant-numeric:tabular-nums}
+@media(max-width:1000px) and (min-width:761px){
+.hero{column-gap:35px}
+.hero h1{font-size:2.55rem}
+.hero-description{font-size:1rem}
+.hero-facts{font-size:.6875rem;gap:8px 10px}
+}
+@media(max-width:760px){
+.hero{display:flex;flex-direction:column;gap:0;padding-block:22px 36px;text-align:center}
+.hero-copy{text-align:center;margin:0;width:100%;align-self:auto}
+.hero h1{font-size:clamp(2rem,7.6vw,2.9rem)}
+.hero-description{font-size:1rem;margin:19px auto 24px;max-width:500px}
+.video-shell{width:min(100%,320px,calc(64svh * 9 / 16));max-height:64svh;aspect-ratio:9/16;margin:0 auto;flex:none}
+.video-poster{padding:24px 20px;gap:19px}
+.poster-copy p{font-size:1.35rem}
+.poster-subtitle{font-size:.75rem;display:block}
+.poster-book{width:105px}
+.poster-overline{display:none}
+.video-placeholder{font-size:.75rem;gap:8px;margin-top:16px}
+.video-placeholder small{font-size:.75rem}
+.video-symbol{width:30px;height:30px}
+.video-play{font-size:.75rem;min-height:40px}
+.hero-action{text-align:center;width:100%;max-width:440px;margin-top:24px;align-self:center}
+.hero-action .button{width:100%;font-size:1rem;padding-inline:17px}
+.hero-facts{justify-content:center;font-size:.8125rem;gap:8px 16px}
+.announcement:has(.countdown-pill:not([hidden])){flex-wrap:wrap;gap:7px 12px;padding-block:9px}
+.announcement .countdown-pill{padding:5px 8px;flex-shrink:0}
+.countdown-pill time{font-size:1rem}
+}
+@media(max-width:360px){
+.hero h1{font-size:1.9rem}
+.hero-action .button{font-size:.9375rem}
+.hero-facts{font-size:.75rem}
+.video-poster{gap:13px;padding:18px 15px}
+.poster-copy p{font-size:1.125rem}
+.poster-book{width:85px}
+.poster-subtitle{font-size:.6875rem}
+.video-placeholder{font-size:.6875rem;margin-top:13px}
+.video-placeholder small{font-size:.6875rem}
+}

@@ -44,15 +44,15 @@ Produção informada pelo proprietário: https://desafioreconquiste21dias.vercel
 
 ## Conteúdo e decisões
 
-- Hero central com promessa em destaque, VSL em 16:9, mockup da capa real e CTA principal logo abaixo.
+- VSL vertical em 9:16, no pôster e nos players MP4/WebM e iframe. Desktop com chamada e CTA ao lado; celular com vídeo centralizado e altura limitada à tela.
 - Sequência de venda: Hero, autoridades de pesquisa, relatos com retratos e fonte, identificação com a rotina, benefícios do plano, amostra concreta, três etapas, oferta com lista completa e fechamento.
 - CTAs distribuídos ao longo da página para a mesma oferta; checkout centralizado em `config.js`.
 - Conteúdo comercial limitado ao guia real: 50 páginas, 21 desafios, exemplos, adaptações e acompanhamento.
-- Não há desconto fictício, contador, escassez, avaliações inventadas, estatísticas de clientes ou garantia de reconquista.
+- Não há desconto fictício, escassez, avaliações inventadas, estatísticas de clientes ou garantia de reconquista. O componente de contagem está desativado até existir uma condição real com prazo no checkout.
 - Os relatos externos identificam a prática e o material utilizados em cada experiência. Não são avaliações do nosso produto.
 - Vinho escuro `#280f20`, rosa `#ffbed5`, fundos claros e CTAs em verde `#49dd91`, com texto escuro. Contraste e hierarquia orientam a escolha; não há alegação de cor comprovadamente superior para mulheres.
 - Tipografia nativa, capa e retrato ilustrativo em WebP local, sem bibliotecas, fontes ou rastreadores externos. Dois retratos oficiais são carregados de seus CDNs, sob demanda, sem enviar a URL da LP como referenciador.
-- Botão fixo no celular aparece após a Hero e desaparece quando a oferta entra na tela. FAQ nativa, diálogos acessíveis, foco de teclado e respeito à preferência de movimento reduzido.
+- Botão fixo no celular aparece após o texto inicial da Hero e desaparece quando a oferta entra na tela. FAQ nativa, diálogos acessíveis, foco de teclado e respeito à preferência de movimento reduzido.
 
 Veja a documentação de pesquisa em `docs/fontes.md`.
 
@@ -66,3 +66,15 @@ Veja a documentação de pesquisa em `docs/fontes.md`.
 - Estados sem preço, VSL e checkout conferidos; nenhum erro JavaScript observado.
 
 A Vercel foi publicada pelo proprietário. Preço, checkout e VSL continuam pendentes em `config.js`; as simulações de configuração não são compras reais. Não há resultado de conversão medido nesta etapa.
+
+## Prazo de oferta e contagem
+
+O componente do topo fica pronto em `offerCountdown`, mas está desativado. O preço e a condição que termina ainda não foram definidos.
+
+Para ativar: fornecer `expiresAt` como data ISO absoluta e ativar `checkoutEnforcesDeadline` somente quando a plataforma realmente encerrar a condição nesse prazo. Para dez minutos individuais por visitante, o backend deve criar e manter esse prazo por sessão; o navegador não inicia nem reinicia uma oferta fictícia ao entrar ou recarregar.
+
+Ao terminar uma condição real, o contador desaparece, o preço promocional é ocultado e o CTA passa a consultar a condição atual no checkout. O código não cria aumento de preço nem bloqueia uma venda por conta própria. A promoção precisa ser aplicada e validada pela plataforma de pagamento.
+
+## VSL vertical
+
+O player mantém 9:16 antes e depois de reproduzir, sem cortar o vídeo. No desktop, fica ao lado da promessa e do CTA; no celular, fica centralizado. A altura se adapta à tela. A VSL ainda precisa ser fornecida.

@@ -7,5 +7,8 @@ window.RECONQUISTE_CONFIG = Object.freeze({
   videoUrl: "",
   // "video" para MP4/WebM; "embed" para YouTube/Vimeo (somente URL de incorporação).
   videoType: "video",
-  supportEmail: ""
+  supportEmail: "",
+  // Só ativar com uma condição que expire de fato na plataforma de pagamento.
+  // expiresAt é o prazo absoluto fornecido pelo checkout/backend, inclusive por sessão.
+  offerCountdown: { enabled: false, expiresAt: "", checkoutEnforcesDeadline: false }
 });

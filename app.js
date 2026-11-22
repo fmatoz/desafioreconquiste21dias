@@ -10,6 +10,34 @@
     // Evento local: integrar o destino de tracking somente com consentimento e política atualizada.
     window.dispatchEvent(new CustomEvent("reconquiste:event", { detail: { name, ...detail } }));
   };
+
+  // O prazo vem do checkout/backend; nunca é inventado ou reiniciado pelo navegador.
+  const offer = config.offerCountdown;
+  const offerDeadline = Date.parse(offer?.expiresAt || "");
+  if (offer?.enabled === true && offer.checkoutEnforcesDeadline === true && Number.isFinite(offerDeadline)) {
+    const clock = $("#offer-countdown");
+    const wrapper = $("#offer-countdown-wrap");
+    let timer;
+    const tick = () => {
+      const remaining = Math.max(0, Math.ceil((offerDeadline - Date.now()) / 1000));
+      const minutes = String(Math.floor(remaining / 60)).padStart(2, "0");
+      const seconds = String(remaining % 60).padStart(2, "0");
+      clock.textContent = minutes + ":" + seconds;
+      wrapper.hidden = remaining === 0;
+      $("#offer-banner-title").textContent = remaining ? "CONDIÇÃO ESPECIAL" : "ESTA CONDIÇÃO ENCERROU";
+      $("#offer-banner-description").textContent = remaining ? "Encerra em" : "Consulte o valor atual no checkout.";
+      if (!remaining) {
+        clearInterval(timer);
+        $("#price-block").hidden = true;
+        $("#purchase-button").textContent = "Consultar condição atual";
+      }
+    };
+    tick();
+    if (offerDeadline > Date.now()) timer = setInterval(tick, 1000);
+    document.addEventListener("visibilitychange", () => { if (!document.hidden) tick(); });
+    window.addEventListener("pageshow", tick);
+  }
+
   // Se um retrato externo estiver indisponível, preserva a identificação por iniciais.
   document.querySelectorAll(".person-avatar img").forEach((image) => {
     const show = () => image.classList.add("is-loaded");
@@ -91,11 +119,11 @@
     const updateSticky = () => { $("#mobile-cta").hidden = heroVisible || offerVisible; };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.target.id === "inicio") heroVisible = entry.isIntersecting;
+        if (entry.target.id === "hero-copy") heroVisible = entry.isIntersecting;
         if (entry.target.id === "plano") offerVisible = entry.isIntersecting;
       });
       updateSticky();
     }, { threshold: 0 });
-    observer.observe($("#inicio")); observer.observe($("#plano"));
+    observer.observe($("#hero-copy")); observer.observe($("#plano"));
   }
 })();
