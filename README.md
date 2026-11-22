@@ -45,13 +45,13 @@ Produção informada pelo proprietário: https://desafioreconquiste21dias.vercel
 ## Conteúdo e decisões
 
 - Hero central com promessa em destaque, VSL em 16:9, mockup da capa real e CTA principal logo abaixo.
-- Sequência de venda: Hero, autoridades de pesquisa, relatos com foto/avatar e fonte, identificação com a rotina, benefícios do plano, amostra concreta, três etapas, oferta com lista completa e fechamento.
+- Sequência de venda: Hero, autoridades de pesquisa, relatos com retratos e fonte, identificação com a rotina, benefícios do plano, amostra concreta, três etapas, oferta com lista completa e fechamento.
 - CTAs distribuídos ao longo da página para a mesma oferta; checkout centralizado em `config.js`.
 - Conteúdo comercial limitado ao guia real: 50 páginas, 21 desafios, exemplos, adaptações e acompanhamento.
 - Não há desconto fictício, contador, escassez, avaliações inventadas, estatísticas de clientes ou garantia de reconquista.
 - Os relatos externos identificam a prática e o material utilizados em cada experiência. Não são avaliações do nosso produto.
 - Vinho escuro `#280f20`, rosa `#ffbed5`, fundos claros e CTAs em verde `#49dd91`, com texto escuro. Contraste e hierarquia orientam a escolha; não há alegação de cor comprovadamente superior para mulheres.
-- Tipografia nativa, capa e avatar ilustrativo em WebP local, sem bibliotecas, fontes ou rastreadores externos. Dois retratos oficiais são carregados de seus CDNs, sob demanda, sem enviar a URL da LP como referenciador.
+- Tipografia nativa, capa e retrato ilustrativo em WebP local, sem bibliotecas, fontes ou rastreadores externos. Dois retratos oficiais são carregados de seus CDNs, sob demanda, sem enviar a URL da LP como referenciador.
 - Botão fixo no celular aparece após a Hero e desaparece quando a oferta entra na tela. FAQ nativa, diálogos acessíveis, foco de teclado e respeito à preferência de movimento reduzido.
 
 Veja a documentação de pesquisa em `docs/fontes.md`.

@@ -37,6 +37,8 @@ Hipótese de design: vinho e rosa remetem à identidade da capa já aprovada; o 
   https://www.simonandschuster.com/authors/Logan-Ury/156464550
 - **Kristen Meinzer:** retrato publicado na página oficial de headshots da autora, creditado a Lauren Eliot Photography. O cartão inclui crédito e link para a página original.
   https://www.kristenmeinzer.com/headshots
-- **Yainak:** a fonte do relato não identifica uma fotografia. O cartão utiliza um avatar feminino ilustrado gerado para o layout, com a legenda visível “Avatar ilustrativo” e texto alternativo que informa que não é uma fotografia de Yainak. Não é uma reconstrução da aparência da participante.
+- **Yainak:** a fonte do relato não identifica uma fotografia. O cartão utiliza um retrato fotográfico realista de uma personagem fictícia gerado por IA para o layout, com a legenda visível “Imagem ilustrativa” e texto alternativo que informa que a imagem não retrata Yainak. Não é uma reconstrução da aparência da participante.
 
 Os retratos públicos identificam as autoras dos relatos externos; não representam endosso do guia. Se um retrato externo falhar, o cartão preserva as iniciais e o nome. As imagens reais mantêm sua origem externa, com política de referenciador que não envia a URL da LP.
+
+A fonte de Yainak não informa sua nacionalidade. A aparência da personagem ilustrativa não deve ser usada para apresentar o relato como brasileiro.
