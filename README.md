@@ -2,6 +2,8 @@
 
 Landing page responsiva do guia **Reconquiste seu Marido — Plano de 21 Dias de Atitudes que Aproximam**. HTML, CSS e JavaScript, sem dependências de produção, sem serviços externos necessários à renderização e sem coleta de dados nesta versão.
 
+![Prévia da Hero](docs/preview-desktop.webp)
+
 ## Executar
 
 Requer Node.js 20.11 ou superior.
@@ -51,3 +53,14 @@ O PDF completo **não está no repositório público**. A imagem `assets/capa.we
 - Botão fixo no celular aparece após a Hero e desaparece quando a oferta entra na tela. FAQ nativa, diálogos acessíveis, foco de teclado e respeito à preferência de movimento reduzido.
 
 Veja a documentação de pesquisa em `docs/fontes.md`.
+
+## Verificação realizada
+
+- Build e conferência de arquivos/âncoras aprovados; saída completa de aproximadamente 65 KB.
+- Navegador Edge sem interface: capturas e conferência visual em desktop e celular.
+- Sem rolagem horizontal em 320, 375, 390, 768, 1024 e 1440 px.
+- FAQ, diálogos, fechamento por Escape, retorno de foco e CTA móvel contextual conferidos.
+- Configuração simulada: preço, passagem de UTMs sem sobrescrever valores do checkout e carregamento da VSL somente após clique.
+- Estados sem preço, VSL e checkout conferidos; nenhum erro JavaScript observado.
+
+A publicação e uma compra real ainda precisam de hospedagem e configuração comercial. Não há resultado de conversão medido nesta etapa.
