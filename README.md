@@ -40,15 +40,17 @@ O PDF completo **não está no repositório público**. A imagem `assets/capa.we
 - **Netlify:** importar este repositório; configuração em `netlify.toml`.
 - **Hospedagem estática:** subir o conteúdo de `dist/`.
 
-`.openai/hosting.json` mantém a identidade da prévia reservada no Sites. A primeira tentativa de sincronizar sua origem falhou por indisponibilidade de rede do terminal; não representa uma publicação concluída.
+Produção informada pelo proprietário: https://desafioreconquiste21dias.vercel.app/. A publicação é gerenciada por ele na Vercel, usando este repositório. `.openai/hosting.json` mantém apenas a identidade da prévia inicialmente reservada.
 
 ## Conteúdo e decisões
 
-- Hero direta, CTA que leva à oferta, espaço de VSL e amostra prática do material.
+- Hero central com promessa em destaque, VSL em 16:9, mockup da capa real e CTA principal logo abaixo.
+- Sequência de venda: identificação com a rotina, benefícios do plano, amostra concreta, três etapas, relatos com fonte, pesquisas, oferta com lista completa e fechamento.
+- CTAs distribuídos ao longo da página para a mesma oferta; checkout centralizado em `config.js`.
 - Conteúdo comercial limitado ao guia real: 50 páginas, 21 desafios, exemplos, adaptações e acompanhamento.
 - Não há desconto fictício, contador, escassez, avaliações inventadas, estatísticas de clientes ou garantia de reconquista.
 - Os relatos externos identificam a prática e o material utilizados em cada experiência. Não são avaliações do nosso produto.
-- Vinho `#542c41`, rosa suave `#f9edf1`, CTA `#a13258` e branco. Paleta escolhida por contexto editorial e contraste; não é apresentada como cor comprovadamente superior para mulheres.
+- Vinho escuro `#280f20`, rosa `#ffbed5`, fundos claros e CTAs em verde `#49dd91`, com texto escuro. Contraste e hierarquia orientam a escolha; não há alegação de cor comprovadamente superior para mulheres.
 - Tipografia nativa, imagem WebP local, zero bibliotecas, fontes ou rastreadores externos na carga inicial.
 - Botão fixo no celular aparece após a Hero e desaparece quando a oferta entra na tela. FAQ nativa, diálogos acessíveis, foco de teclado e respeito à preferência de movimento reduzido.
 
@@ -63,4 +65,4 @@ Veja a documentação de pesquisa em `docs/fontes.md`.
 - Configuração simulada: preço, passagem de UTMs sem sobrescrever valores do checkout e carregamento da VSL somente após clique.
 - Estados sem preço, VSL e checkout conferidos; nenhum erro JavaScript observado.
 
-A publicação e uma compra real ainda precisam de hospedagem e configuração comercial. Não há resultado de conversão medido nesta etapa.
+A Vercel foi publicada pelo proprietário. Preço, checkout e VSL continuam pendentes em `config.js`; as simulações de configuração não são compras reais. Não há resultado de conversão medido nesta etapa.

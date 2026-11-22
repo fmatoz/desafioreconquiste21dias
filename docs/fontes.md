@@ -28,4 +28,4 @@ Não usar fotos genéricas dessas pessoas, estrelas de compradores, selos de apr
 - **CXL, Which CTA Button Color Converts the Best?:** contexto e contraste do CTA têm mais utilidade do que tratar uma tonalidade como vencedora universal.
   https://cxl.com/blog/which-color-converts-the-best/
 
-Hipótese de design: vinho e rosa remetem à identidade da capa já aprovada; a cor saturada do CTA cria contraste com fundos claros. Uma conclusão sobre conversão depende de tráfego e experimento próprios, mantendo oferta e conteúdo constantes.
+Hipótese de design: vinho e rosa remetem à identidade da capa já aprovada; o verde fica reservado às ações principais, criando contraste com os fundos escuros e rosados. A segunda versão usa Hero central de vendas, VSL 16:9 e benefícios mais concretos. Uma conclusão sobre conversão depende de tráfego e experimento próprios, mantendo oferta e conteúdo constantes.
