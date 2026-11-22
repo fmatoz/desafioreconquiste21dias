@@ -130,15 +130,14 @@ strong{font-weight:700}
 .section-action{text-align:center;margin-top:38px}
 .section-action p{font-size:.8125rem;margin-top:17px;color:#ddc2d1}
 .experiences{background:#fff7fa}
-.quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.quote-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:start}
 .quote-grid figure{display:flex;flex-direction:column;background:white;border:1px solid var(--line);border-radius:11px;padding:26px}
 .quote-mark{font:3.5rem/.9 var(--serif);color:var(--accent);height:35px}
 .quote-grid blockquote{font-size:1.0625rem;line-height:1.75;font-weight:600;letter-spacing:-.01em;margin:15px 0 25px}
-.quote-grid figcaption{margin-top:auto}
+.quote-grid figcaption{margin-top:0}
 .quote-grid figcaption strong{display:block;font-size:.9375rem;color:var(--wine)}
-.quote-grid figcaption span{display:block;font-size:.8125rem;color:var(--muted);line-height:1.6;margin-top:6px;min-height:65px}
+.quote-grid figcaption span{display:block;font-size:.8125rem;color:var(--muted);line-height:1.6;margin-top:0}
 .quote-grid figcaption a{display:block;color:var(--accent);font-size:.75rem;line-height:1.5;margin-top:13px;text-underline-offset:4px}
-.source-caption{font-size:.75rem;line-height:1.6;color:var(--muted);text-align:center;margin-top:23px}
 .proof-action{text-align:center;margin-top:-38px;position:relative}
 .research{display:grid;grid-template-columns:1fr 1fr;gap:65px;padding-block:65px;align-items:center}
 .research h2{font-size:1.85rem}
@@ -259,7 +258,6 @@ h2{font-size:2rem;line-height:1.23}
 .journey-grid{grid-template-columns:1fr;gap:15px;margin-top:28px}.journey-grid article{padding:24px}.journey-grid h3{font-size:1.375rem;margin:21px 0 13px}.journey-grid h3 br{display:none}.journey-grid p{font-size:.875rem;line-height:1.8}.phase-example{font-size:.75rem;margin-top:18px;padding-top:14px}
 .section-action{margin-top:27px}.section-action .button{width:100%}.section-action p{font-size:.75rem}
 .quote-grid{grid-template-columns:1fr;gap:15px}.quote-grid figure{padding:25px}.quote-grid blockquote{font-size:1rem;margin-block:12px 22px}.quote-grid figcaption span{min-height:0}.quote-grid figcaption a{font-size:.75rem}
-.source-caption{font-size:.6875rem;margin-top:20px;line-height:1.8}
 .proof-action{margin-top:-25px}.proof-action .button{width:100%}
 .research{grid-template-columns:1fr;gap:25px;padding-block:48px}.research h2{font-size:1.75rem}.research .eyebrow{font-size:.625rem}.research-topics strong{font-size:.875rem}.research-topics span{font-size:.75rem}
 .offer-section .section-heading h2{font-size:2rem}.offer-section .section-heading h2 br{display:none}
@@ -418,9 +416,8 @@ dialog{padding:35px 24px}dialog h2{font-size:1.75rem}dialog p{font-size:.875rem}
 .experiences .section-heading h2{font-size:clamp(1.75rem,3vw,2.5rem)}
 .experiences .section-heading>p:last-child{margin-top:14px}
 .person-heading{margin-bottom:15px}
-.quote-grid blockquote{margin-block:10px 18px}
+.quote-grid blockquote{margin-block:8px 10px}
 .quote-grid figure{padding:23px}
-.quote-controls{display:none}
 .compact-product .inside{gap:55px}
 .compact-product .book-scene{min-height:360px}
 .compact-product .book{width:220px}
@@ -457,20 +454,15 @@ dialog{padding:35px 24px}dialog h2{font-size:1.75rem}dialog p{font-size:.875rem}
 .experiences .section-heading{margin-bottom:22px}
 .experiences .section-heading h2{font-size:1.75rem}
 .experiences .section-heading>p:last-child{font-size:.875rem;margin-top:13px}
-.quote-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#d5afc0 transparent;gap:14px;padding-block:2px 7px;align-items:stretch}
-.quote-grid figure{flex:0 0 100%;scroll-snap-align:start;scroll-snap-stop:always;min-width:0;padding:22px}
-.quote-grid blockquote{font-size:1rem;line-height:1.75;margin:8px 0 19px}
+.quote-grid{grid-template-columns:1fr;gap:14px}
+.quote-grid figure{min-width:0;padding:22px}
+.quote-grid blockquote{font-size:1rem;line-height:1.75;margin:8px 0 10px}
 .quote-grid figcaption span{font-size:.8125rem}
 .person-heading{margin-bottom:14px}
 .person-avatar{width:58px;height:58px}
 .authority-avatar{width:56px;height:56px}
 .person-meta strong{font-size:.9375rem}
 .person-meta>span{font-size:.6875rem}
-.quote-controls{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:15px}
-.quote-controls button{border:1px solid #d5afc0;border-radius:6px;background:white;color:var(--wine);min-height:42px;padding:9px 14px;font-size:.8125rem;font-weight:700}
-.quote-controls button:disabled{opacity:.4;cursor:default}
-.quote-position{font-size:.75rem;color:var(--muted);line-height:1.5;text-align:center}
-.source-caption{font-size:.6875rem;margin-top:17px}
 .compact-product .inside{gap:21px}
 .compact-product .book-scene{min-height:270px;width:min(100%,320px)}
 .compact-product .book{width:165px}

@@ -117,32 +117,4 @@
     }, { once: true });
   }
 
-  // Relatos em carrossel manual no celular, sem rotação automática.
-  const quoteTrack = $("#relatos-carrossel");
-  if (quoteTrack) {
-    const previous = $("#quote-prev");
-    const next = $("#quote-next");
-    const position = $("#quote-position");
-    const count = quoteTrack.children.length;
-    const step = () => quoteTrack.firstElementChild.getBoundingClientRect().width +
-      (parseFloat(getComputedStyle(quoteTrack).columnGap) || 0);
-    const current = () => Math.max(0, Math.min(count - 1, Math.round(quoteTrack.scrollLeft / step())));
-    const update = () => {
-      const index = current();
-      const text = String(index + 1);
-      if (position.textContent !== text) position.textContent = text;
-      previous.disabled = index === 0;
-      next.disabled = index === count - 1;
-    };
-    const move = (direction) => quoteTrack.scrollTo({
-      left: Math.max(0, Math.min(count - 1, current() + direction)) * step(),
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
-    });
-    previous.addEventListener("click", () => move(-1));
-    next.addEventListener("click", () => move(1));
-    quoteTrack.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-    update();
-  }
-
 })();
