@@ -1,6 +1,6 @@
 # Fontes e contexto editorial
 
-Pesquisa consultada em 21/11/2026. Os depoimentos foram conferidos nas publicações originais. Os trechos na LP são traduções curtas; nomes e contextos foram mantidos. As fontes documentam práticas de conexão; não validam este guia, seu título ou seu prazo de 21 dias.
+Pesquisa consultada em 21/11/2026. Os depoimentos foram conferidos nas publicações originais. Os trechos na LP são traduções curtas; os contextos foram mantidos e Yainak aparece com a inicial Y.. As fontes documentam práticas de conexão; não validam este guia, seu título ou seu prazo de 21 dias.
 
 ## Experiências publicadas
 
@@ -28,7 +28,7 @@ Não usar fotos genéricas dessas pessoas, estrelas de compradores, selos de apr
 - **CXL, Which CTA Button Color Converts the Best?:** contexto e contraste do CTA têm mais utilidade do que tratar uma tonalidade como vencedora universal.
   https://cxl.com/blog/which-color-converts-the-best/
 
-Hipótese de design: vinho e rosa remetem à identidade da capa já aprovada; o verde fica reservado às ações principais, criando contraste com os fundos escuros e rosados. A segunda versão usa Hero central de vendas, VSL 16:9 e benefícios mais concretos. Uma conclusão sobre conversão depende de tráfego e experimento próprios, mantendo oferta e conteúdo constantes.
+Hipótese de design: vinho e rosa remetem à identidade da capa já aprovada; o verde fica reservado às ações principais, criando contraste com os fundos escuros e rosados. A versão atual usa Hero central e espaço para VSL vertical em 9:16. Uma conclusão sobre conversão depende de tráfego e experimento próprios, mantendo oferta e conteúdo constantes.
 
 
 ## Retratos e avatares dos relatos

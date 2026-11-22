@@ -61,7 +61,7 @@ Veja a documentação de pesquisa em `docs/fontes.md`.
 - Build e conferência de arquivos/âncoras aprovados; saída completa de aproximadamente 65 KB.
 - Navegador Edge sem interface: capturas e conferência visual em desktop e celular.
 - Sem rolagem horizontal em 320, 375, 390, 768, 1024 e 1440 px.
-- FAQ, diálogos, fechamento por Escape, retorno de foco conferidos. Relatos com navegação manual no celular.
+- FAQ, diálogos, fechamento por Escape, retorno de foco conferidos. Relatos empilhados no celular.
 - Configuração simulada: preço, passagem de UTMs sem sobrescrever valores do checkout e carregamento da VSL somente após clique.
 - Estados sem preço, VSL e checkout conferidos; nenhum erro JavaScript observado.
 
@@ -69,7 +69,7 @@ A Vercel foi publicada pelo proprietário. Preço, checkout e VSL continuam pend
 
 ## Prazo de oferta e contagem
 
-O componente do topo fica pronto em `offerCountdown`, mas está desativado. O preço e a condição que termina ainda não foram definidos.
+O contador aparece na seção da oferta quando há checkout HTTPS e um prazo válido configurado em `offerCountdown`. O preço e a condição que termina ainda não foram definidos.
 
 Para ativar: fornecer `expiresAt` como data ISO absoluta e ativar `checkoutEnforcesDeadline` somente quando a plataforma realmente encerrar a condição nesse prazo. Para dez minutos individuais por visitante, o backend deve criar e manter esse prazo por sessão; o navegador não inicia nem reinicia uma oferta fictícia ao entrar ou recarregar.
 
@@ -79,7 +79,7 @@ Ao terminar uma condição real, o contador desaparece, o preço promocional é 
 
 O player mantém 9:16 antes e depois de reproduzir, sem cortar o vídeo. Em todos os tamanhos, fica centralizado abaixo da promessa, com o CTA logo depois. A altura se adapta à tela. A VSL ainda precisa ser fornecida.
 
-Os créditos dos retratos de Logan Ury e Kristen Meinzer estão reunidos no diálogo “Créditos de imagens”, acessível pelo rodapé. O cartão de Yainak usa a inicial Y como identificação de perfil sem foto; o retrato gerado não é utilizado.
+Os créditos dos retratos de Logan Ury e Kristen Meinzer estão reunidos no diálogo “Créditos de imagens”, acessível pelo rodapé. O cartão do relato de Yainak exibe apenas a inicial Y. para identificação e não tem foto; o retrato gerado não é utilizado.
 
 As referências aparecem como identificação em texto nos cartões. Não há links externos de fontes na LP; as URLs e os contextos verificáveis permanecem em `docs/fontes.md`. Os créditos de imagens continuam disponíveis pelo diálogo do rodapé, sem navegação para fora da página.
 
@@ -87,8 +87,8 @@ As referências aparecem como identificação em texto nos cartões. Não há li
 
 Removidos os blocos sobre o problema da rotina, as três etapas em seção própria e a chamada final repetida. As etapas ficam resumidas na apresentação do produto.
 
-No celular, as autoridades ficam em três cartões lado a lado; os relatos usam carrossel manual com botões e gesto horizontal. Nenhum relato ou contexto de origem foi excluído. A amostra fica dentro de “material por dentro”, aberta por escolha da visitante. A oferta não repete o mockup da capa e a FAQ tem três perguntas. O espaçamento vertical foi reduzido.
+No celular, as autoridades ficam em três cartões lado a lado; os três relatos ficam empilhados, com altura ajustada ao conteúdo. Nenhum relato ou contexto de origem foi excluído. A amostra fica dentro de “material por dentro”, aberta por escolha da visitante. A oferta não repete o mockup da capa e a FAQ tem três perguntas. O espaçamento vertical foi reduzido.
 
-Verificação desta redução em viewport de 390 × 844 px: altura inicial de 11.395 px e altura compacta de aproximadamente 4.847 px, cerca de 57% menor. Carrossel (anterior/próximo), expansão da amostra, CTA e ausência de rolagem horizontal conferidos em seis larguras. As fotografias externas usam identificação por iniciais se indisponíveis no ambiente de teste.
+Verificação desta redução em viewport de 390 × 844 px: altura inicial de 11.395 px e altura compacta de aproximadamente 4.847 px, cerca de 57% menor. Na versão anterior, carrossel (anterior/próximo), expansão da amostra, CTA e ausência de rolagem horizontal conferidos em seis larguras. As fotografias externas usam identificação por iniciais se indisponíveis no ambiente de teste.
 
 O cabeçalho de marca e informações acima da Hero foi removido. A logo completa foi preservada no rodapé. O botão fixo do celular, sua lógica e o espaço reservado a ele foram removidos; os CTAs das seções continuam disponíveis.
