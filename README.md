@@ -51,7 +51,7 @@ Produção informada pelo proprietário: https://desafioreconquiste21dias.vercel
 - Não há desconto fictício, escassez, avaliações inventadas, estatísticas de clientes ou garantia de reconquista. O componente de contagem está desativado até existir uma condição real com prazo no checkout.
 - Os relatos externos identificam a prática e o material utilizados em cada experiência. Não são avaliações do nosso produto.
 - Vinho escuro `#280f20`, rosa `#ffbed5`, fundos claros e CTAs em verde `#49dd91`, com texto escuro. Contraste e hierarquia orientam a escolha; não há alegação de cor comprovadamente superior para mulheres.
-- Tipografia nativa, capa e retrato ilustrativo em WebP local, sem bibliotecas, fontes ou rastreadores externos. Dois retratos oficiais são carregados de seus CDNs, sob demanda, sem enviar a URL da LP como referenciador.
+- Tipografia nativa, capa em WebP local, sem bibliotecas, fontes ou rastreadores externos. Dois retratos oficiais são carregados de seus CDNs, sob demanda, sem enviar a URL da LP como referenciador.
 - Botão fixo no celular aparece após o texto inicial da Hero e desaparece quando a oferta entra na tela. FAQ nativa, diálogos acessíveis, foco de teclado e respeito à preferência de movimento reduzido.
 
 Veja a documentação de pesquisa em `docs/fontes.md`.
@@ -79,4 +79,4 @@ Ao terminar uma condição real, o contador desaparece, o preço promocional é 
 
 O player mantém 9:16 antes e depois de reproduzir, sem cortar o vídeo. Em todos os tamanhos, fica centralizado abaixo da promessa, com o CTA logo depois. A altura se adapta à tela. A VSL ainda precisa ser fornecida.
 
-Os créditos dos retratos de Logan Ury e Kristen Meinzer estão reunidos no diálogo “Créditos de imagens”, acessível pelo rodapé. A identificação “Imagem ilustrativa” permanece junto ao retrato gerado do cartão de Yainak.
+Os créditos dos retratos de Logan Ury e Kristen Meinzer estão reunidos no diálogo “Créditos de imagens”, acessível pelo rodapé. O cartão de Yainak usa a inicial Y como identificação de perfil sem foto; o retrato gerado não é utilizado.
