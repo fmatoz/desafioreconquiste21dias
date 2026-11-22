@@ -143,16 +143,4 @@
     update();
   }
 
-  if ("IntersectionObserver" in window) {
-    let heroVisible = true; let offerVisible = false;
-    const updateSticky = () => { $("#mobile-cta").hidden = heroVisible || offerVisible; };
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.target.id === "hero-copy") heroVisible = entry.isIntersecting;
-        if (entry.target.id === "plano") offerVisible = entry.isIntersecting;
-      });
-      updateSticky();
-    }, { threshold: 0 });
-    observer.observe($("#hero-copy")); observer.observe($("#plano"));
-  }
 })();

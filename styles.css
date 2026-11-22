@@ -194,7 +194,7 @@ details[open] summary:after{content:"−"}
 .footer-links{display:flex;justify-content:center;gap:23px;margin:15px 0}
 .footer-links button{background:none;border:0;color:#d7bacb;font-size:.75rem;text-decoration:underline;text-underline-offset:4px;min-height:40px;padding:8px}
 .site-footer small{font-size:.6875rem}
-.mobile-cta{display:none}
+
 dialog{width:min(530px,calc(100% - 32px));max-height:85dvh;background:white;border:1px solid #ddbbc9;border-radius:16px;padding:40px;color:var(--ink);box-shadow:0 20px 60px #210b1950}
 dialog::backdrop{background:#210b19d6;backdrop-filter:blur(5px)}
 dialog h2{font-size:2rem;margin-bottom:20px}
@@ -268,8 +268,8 @@ h2{font-size:2rem;line-height:1.23}
 .faq{grid-template-columns:1fr;gap:26px}.faq h2{font-size:2rem}summary{font-size:.9375rem;padding-block:19px}.faq-items p{font-size:.875rem}
 .closing-section{padding-block:48px 52px}.closing-section p{font-size:.8125rem}.closing-section h2{font-size:2rem}.closing-section .button{width:100%;max-width:420px;font-size:.875rem}
 .site-footer{padding-bottom:110px}.site-footer p{font-size:.75rem}
-.mobile-cta:not([hidden]){display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 18px calc(13px + env(safe-area-inset-bottom));position:fixed;inset:auto 0 0;background:#fffffff5;border-top:1px solid var(--line);z-index:10;backdrop-filter:blur(10px);box-shadow:0 -5px 22px #542c4110}
-.mobile-cta>span{font-size:.75rem;line-height:1.5}.mobile-cta>span strong{display:block;color:var(--wine);font-size:.9375rem}.mobile-cta .button{min-height:44px;font-size:.875rem;padding:12px 18px;box-shadow:0 3px 0 #198e55}
+
+
 dialog{padding:35px 24px}dialog h2{font-size:1.75rem}dialog p{font-size:.875rem}
 }
 @media(max-width:360px){.hero h1{font-size:1.9rem}.hero-facts{gap:6px 9px;font-size:.5625rem}.hero-description{font-size:.875rem}.video-poster{padding-inline:16px;gap:8px}.poster-subtitle{display:none}.poster-overline{margin-bottom:9px}.video-placeholder{margin-top:13px}.book-scene:after{width:290px;height:290px}.book-scene:before{width:250px;height:250px}.benefit-strip .wrap{font-size:.5625rem;gap:9px}.benefit-strip span+span:before{margin-right:9px}}
@@ -500,3 +500,7 @@ dialog{padding:35px 24px}dialog h2{font-size:1.75rem}dialog p{font-size:.875rem}
 .faq h2{font-size:1.75rem}
 .site-footer{padding-top:28px}
 }
+
+/* Marca preservada no rodapé; página sem cabeçalho e sem CTA fixo. */
+.site-footer .brand{width:fit-content;margin-inline:auto;justify-content:center;text-align:left;font-size:1.875rem}
+.site-footer{padding-bottom:30px}

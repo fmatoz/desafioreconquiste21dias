@@ -2,7 +2,7 @@
 
 Landing page responsiva do guia **Reconquiste seu Marido — Plano de 21 Dias de Atitudes que Aproximam**. HTML, CSS e JavaScript, sem dependências de produção, sem coleta de dados nesta versão. Os retratos reais carregam de fontes externas oficiais, com identificação por iniciais como alternativa se indisponíveis.
 
-![Prévia da Hero](docs/preview-desktop.webp)
+[Ver a LP publicada](https://desafioreconquiste21dias.vercel.app/)
 
 ## Executar
 
@@ -30,7 +30,7 @@ Edite `config.js`:
 
 URL de embed: `https://www.youtube-nocookie.com/embed/ID_DO_VIDEO` ou `https://player.vimeo.com/video/ID_DO_VIDEO`. Sem VSL, o espaço apresenta uma capa editorial e a indicação “Em breve”, sem botão de reprodução falso.
 
-O checkout configurado recebe os parâmetros `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_term`, `fbclid` e `gclid` da visita, preservando valores já definidos no destino. Não há envio de eventos à Meta nem a n8n nesta versão. Para integrar o tracking, utilize os eventos locais `reconquiste:event` (`hero_cta`, `checkout_cta`, `mobile_cta`, `vsl_play`) e revise privacidade/consentimento antes de instalar ferramentas externas. Nenhum evento `purchase` é disparado por um clique.
+O checkout configurado recebe os parâmetros `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_term`, `fbclid` e `gclid` da visita, preservando valores já definidos no destino. Não há envio de eventos à Meta nem a n8n nesta versão. Para integrar o tracking, utilize os eventos locais `reconquiste:event` (`hero_cta`, `checkout_cta`, `vsl_play`) e revise privacidade/consentimento antes de instalar ferramentas externas. Nenhum evento `purchase` é disparado por um clique.
 
 O PDF completo **não está no repositório público**. A imagem `assets/capa.webp` reproduz a capa real; a entrega do material fica na plataforma de venda.
 
@@ -52,7 +52,7 @@ Produção informada pelo proprietário: https://desafioreconquiste21dias.vercel
 - Os relatos externos identificam a prática e o material utilizados em cada experiência. Não são avaliações do nosso produto.
 - Vinho escuro `#280f20`, rosa `#ffbed5`, fundos claros e CTAs em verde `#49dd91`, com texto escuro. Contraste e hierarquia orientam a escolha; não há alegação de cor comprovadamente superior para mulheres.
 - Tipografia nativa, capa em WebP local, sem bibliotecas, fontes ou rastreadores externos. Retratos oficiais são carregados de suas fontes, sob demanda, sem enviar a URL da LP como referenciador.
-- Botão fixo no celular aparece após o texto inicial da Hero e desaparece quando a oferta entra na tela. FAQ nativa, diálogos acessíveis, foco de teclado e respeito à preferência de movimento reduzido.
+- FAQ nativa, diálogos acessíveis, foco de teclado e respeito à preferência de movimento reduzido.
 
 Veja a documentação de pesquisa em `docs/fontes.md`.
 
@@ -61,7 +61,7 @@ Veja a documentação de pesquisa em `docs/fontes.md`.
 - Build e conferência de arquivos/âncoras aprovados; saída completa de aproximadamente 65 KB.
 - Navegador Edge sem interface: capturas e conferência visual em desktop e celular.
 - Sem rolagem horizontal em 320, 375, 390, 768, 1024 e 1440 px.
-- FAQ, diálogos, fechamento por Escape, retorno de foco e CTA móvel contextual conferidos. Relatos com navegação manual no celular.
+- FAQ, diálogos, fechamento por Escape, retorno de foco conferidos. Relatos com navegação manual no celular.
 - Configuração simulada: preço, passagem de UTMs sem sobrescrever valores do checkout e carregamento da VSL somente após clique.
 - Estados sem preço, VSL e checkout conferidos; nenhum erro JavaScript observado.
 
@@ -90,3 +90,5 @@ Removidos os blocos sobre o problema da rotina, as três etapas em seção próp
 No celular, as autoridades ficam em três cartões lado a lado; os relatos usam carrossel manual com botões e gesto horizontal. Nenhum relato ou contexto de origem foi excluído. A amostra fica dentro de “material por dentro”, aberta por escolha da visitante. A oferta não repete o mockup da capa e a FAQ tem três perguntas. O espaçamento vertical foi reduzido.
 
 Verificação desta redução em viewport de 390 × 844 px: altura inicial de 11.395 px e altura compacta de aproximadamente 4.847 px, cerca de 57% menor. Carrossel (anterior/próximo), expansão da amostra, CTA e ausência de rolagem horizontal conferidos em seis larguras. As fotografias externas usam identificação por iniciais se indisponíveis no ambiente de teste.
+
+O cabeçalho de marca e informações acima da Hero foi removido. A logo completa foi preservada no rodapé. O botão fixo do celular, sua lógica e o espaço reservado a ele foram removidos; os CTAs das seções continuam disponíveis.
