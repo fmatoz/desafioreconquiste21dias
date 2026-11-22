@@ -69,7 +69,7 @@ A Vercel foi publicada pelo proprietário. Preço, checkout e VSL continuam pend
 
 ## Prazo de oferta e contagem
 
-O componente do topo fica pronto em `offerCountdown`, mas está desativado. O preço e a condição que termina ainda não foram definidos.
+O contador aparece na seção da oferta quando há checkout HTTPS e um prazo válido configurado em `offerCountdown`. O preço e a condição que termina ainda não foram definidos.
 
 Para ativar: fornecer `expiresAt` como data ISO absoluta e ativar `checkoutEnforcesDeadline` somente quando a plataforma realmente encerrar a condição nesse prazo. Para dez minutos individuais por visitante, o backend deve criar e manter esse prazo por sessão; o navegador não inicia nem reinicia uma oferta fictícia ao entrar ou recarregar.
 
@@ -79,7 +79,7 @@ Ao terminar uma condição real, o contador desaparece, o preço promocional é 
 
 O player mantém 9:16 antes e depois de reproduzir, sem cortar o vídeo. Em todos os tamanhos, fica centralizado abaixo da promessa, com o CTA logo depois. A altura se adapta à tela. A VSL ainda precisa ser fornecida.
 
-Os créditos dos retratos de Logan Ury e Kristen Meinzer estão reunidos no diálogo “Créditos de imagens”, acessível pelo rodapé. O cartão de Yainak usa a inicial Y como identificação de perfil sem foto; o retrato gerado não é utilizado.
+Os créditos dos retratos de Logan Ury e Kristen Meinzer estão reunidos no diálogo “Créditos de imagens”, acessível pelo rodapé. O cartão do relato de Yainak exibe apenas a inicial Y. para identificação e não tem foto; o retrato gerado não é utilizado.
 
 As referências aparecem como identificação em texto nos cartões. Não há links externos de fontes na LP; as URLs e os contextos verificáveis permanecem em `docs/fontes.md`. Os créditos de imagens continuam disponíveis pelo diálogo do rodapé, sem navegação para fora da página.
 

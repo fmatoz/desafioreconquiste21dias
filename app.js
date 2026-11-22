@@ -11,33 +11,6 @@
     window.dispatchEvent(new CustomEvent("reconquiste:event", { detail: { name, ...detail } }));
   };
 
-  // O prazo vem do checkout/backend; nunca é inventado ou reiniciado pelo navegador.
-  const offer = config.offerCountdown;
-  const offerDeadline = Date.parse(offer?.expiresAt || "");
-  if (offer?.enabled === true && offer.checkoutEnforcesDeadline === true && Number.isFinite(offerDeadline)) {
-    const clock = $("#offer-countdown");
-    const wrapper = $("#offer-countdown-wrap");
-    let timer;
-    const tick = () => {
-      const remaining = Math.max(0, Math.ceil((offerDeadline - Date.now()) / 1000));
-      const minutes = String(Math.floor(remaining / 60)).padStart(2, "0");
-      const seconds = String(remaining % 60).padStart(2, "0");
-      clock.textContent = minutes + ":" + seconds;
-      wrapper.hidden = remaining === 0;
-      $("#offer-banner-title").textContent = remaining ? "CONDIÇÃO ESPECIAL" : "ESTA CONDIÇÃO ENCERROU";
-      $("#offer-banner-description").textContent = remaining ? "Encerra em" : "Consulte o valor atual no checkout.";
-      if (!remaining) {
-        clearInterval(timer);
-        $("#price-block").hidden = true;
-        $("#purchase-button").textContent = "Consultar condição atual";
-      }
-    };
-    tick();
-    if (offerDeadline > Date.now()) timer = setInterval(tick, 1000);
-    document.addEventListener("visibilitychange", () => { if (!document.hidden) tick(); });
-    window.addEventListener("pageshow", tick);
-  }
-
   // Se um retrato externo estiver indisponível, preserva a identificação por iniciais.
   document.querySelectorAll(".person-avatar img").forEach((image) => {
     const show = () => image.classList.add("is-loaded");
@@ -66,6 +39,35 @@
       $("#availability-dialog").showModal();
     });
   }
+  // O prazo vem do checkout/backend; nunca é inventado ou reiniciado pelo navegador.
+  const offer = config.offerCountdown;
+  const offerDeadline = Date.parse(offer?.expiresAt || "");
+  if (checkout && offer?.enabled === true && offer.checkoutEnforcesDeadline === true && Number.isFinite(offerDeadline)) {
+    const banner = $("#offer-banner");
+    const clock = $("#offer-countdown");
+    const wrapper = $("#offer-countdown-wrap");
+    let timer;
+    const tick = () => {
+      const remaining = Math.max(0, Math.ceil((offerDeadline - Date.now()) / 1000));
+      const minutes = String(Math.floor(remaining / 60)).padStart(2, "0");
+      const seconds = String(remaining % 60).padStart(2, "0");
+      clock.textContent = minutes + ":" + seconds;
+      wrapper.hidden = remaining === 0;
+      $("#offer-banner-title").textContent = remaining ? "CONDIÇÃO ESPECIAL" : "ESTA CONDIÇÃO ENCERROU";
+      $("#offer-banner-description").textContent = remaining ? "Encerra em" : "Consulte o valor atual no checkout.";
+      if (!remaining) {
+        clearInterval(timer);
+        $("#price-block").hidden = true;
+        $("#purchase-button").textContent = "Consultar condição atual";
+      }
+    };
+    tick();
+    banner.hidden = false;
+    if (offerDeadline > Date.now()) timer = setInterval(tick, 1000);
+    document.addEventListener("visibilitychange", () => { if (!document.hidden) tick(); });
+    window.addEventListener("pageshow", tick);
+  }
+
   document.querySelectorAll("[data-track]").forEach((element) => {
     element.addEventListener("click", () => emit(element.dataset.track, { checkoutConfigured: Boolean(checkout) }));
   });
