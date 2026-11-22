@@ -1,6 +1,6 @@
 # Reconquiste — Plano de 21 Dias
 
-Landing page responsiva do guia **Reconquiste seu Marido — Plano de 21 Dias de Atitudes que Aproximam**. HTML, CSS e JavaScript, sem dependências de produção, sem coleta de dados nesta versão. Os dois retratos reais nos relatos carregam de fontes externas oficiais, com identificação por iniciais como alternativa se indisponíveis.
+Landing page responsiva do guia **Reconquiste seu Marido — Plano de 21 Dias de Atitudes que Aproximam**. HTML, CSS e JavaScript, sem dependências de produção, sem coleta de dados nesta versão. Os retratos reais carregam de fontes externas oficiais, com identificação por iniciais como alternativa se indisponíveis.
 
 ![Prévia da Hero](docs/preview-desktop.webp)
 
@@ -51,7 +51,7 @@ Produção informada pelo proprietário: https://desafioreconquiste21dias.vercel
 - Não há desconto fictício, escassez, avaliações inventadas, estatísticas de clientes ou garantia de reconquista. O componente de contagem está desativado até existir uma condição real com prazo no checkout.
 - Os relatos externos identificam a prática e o material utilizados em cada experiência. Não são avaliações do nosso produto.
 - Vinho escuro `#280f20`, rosa `#ffbed5`, fundos claros e CTAs em verde `#49dd91`, com texto escuro. Contraste e hierarquia orientam a escolha; não há alegação de cor comprovadamente superior para mulheres.
-- Tipografia nativa, capa em WebP local, sem bibliotecas, fontes ou rastreadores externos. Dois retratos oficiais são carregados de seus CDNs, sob demanda, sem enviar a URL da LP como referenciador.
+- Tipografia nativa, capa em WebP local, sem bibliotecas, fontes ou rastreadores externos. Retratos oficiais são carregados de suas fontes, sob demanda, sem enviar a URL da LP como referenciador.
 - Botão fixo no celular aparece após o texto inicial da Hero e desaparece quando a oferta entra na tela. FAQ nativa, diálogos acessíveis, foco de teclado e respeito à preferência de movimento reduzido.
 
 Veja a documentação de pesquisa em `docs/fontes.md`.

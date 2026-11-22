@@ -44,3 +44,18 @@ Os retratos públicos identificam as autoras dos relatos externos; não represen
 A fonte de Yainak não informa sua nacionalidade; o relato não é apresentado como brasileiro.
 
 As URLs de consulta ficam nesta documentação. A LP mantém nomes, instituições e contexto das práticas em texto, sem links de fontes que retirem a visitante da página.
+
+
+## Retratos dos pesquisadores
+
+- **John Gottman:** imagem identificada na página oficial “John & Julie Gottman”, do The Gottman Institute.
+  Página: https://www.gottman.com/about/john-julie-gottman/
+  Imagem: https://www.gottman.com/wp-content/uploads/John.jpg
+- **Sara Algoe:** fotografia identificada como “Sara Algoe Headshot”, em sua página institucional na University of Notre Dame.
+  Página: https://ethics.nd.edu/fellowships-and-grants/fellows/sara-algoe-2026-2027/
+  Imagem: https://ethics.nd.edu/assets/656419/600x600/algoe_sara_headshot_2026.jpg
+- **Arthur Aron:** fotografia identificada na seção “About the expert” da entrevista da American Psychological Association.
+  Página: https://www.apa.org/news/podcasts/speaking-of-psychology/lasting-love
+  Imagem: https://www.apa.org/images/arthur-aron_tcm7-301708_w1024_n.jpeg
+
+As fotos identificam os autores das pesquisas mencionadas. Não são depoimentos, aprovação do guia ou endosso comercial. Os créditos ficam no diálogo do rodapé. Não há links externos nos cartões. As imagens carregam das fontes institucionais; caso indisponíveis, as iniciais preservam a identificação.
