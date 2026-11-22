@@ -496,3 +496,32 @@ dialog{padding:35px 24px}dialog h2{font-size:1.75rem}dialog p{font-size:.875rem}
 /* Marca preservada no rodapé; página sem cabeçalho e sem CTA fixo. */
 .site-footer .brand{width:fit-content;margin-inline:auto;justify-content:center;text-align:left;font-size:1.875rem}
 .site-footer{padding-bottom:30px}
+
+/* Destaque da amostra de pesquisa abaixo dos pesquisadores. */
+.research-highlight {
+  max-width: 720px;
+  margin: 24px auto 0;
+  padding: 22px 18px;
+  border-radius: 11px;
+  background: var(--wine);
+  color: white;
+  text-align: center;
+}
+.research-highlight strong {
+  display: block;
+  color: #ffbed5;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  line-height: 1.3;
+}
+.research-highlight span {
+  display: block;
+  margin-top: 8px;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.research-highlight small {
+  display: block;
+  margin-top: 12px;
+  color: #eadbe3;
+  font-size: .875rem;
+}
