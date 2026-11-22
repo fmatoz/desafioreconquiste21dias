@@ -33,9 +33,9 @@ Hipótese de design: vinho e rosa remetem à identidade da capa já aprovada; o 
 
 ## Retratos e avatares dos relatos
 
-- **Logan Ury:** retrato identificado na página oficial da autora na editora Simon & Schuster. A imagem é carregada do CDN da editora; o cartão inclui crédito e link para a página original.
+- **Logan Ury:** retrato identificado na página oficial da autora na editora Simon & Schuster. A imagem é carregada do CDN da editora; os créditos e o link para a página original estão no rodapé.
   https://www.simonandschuster.com/authors/Logan-Ury/156464550
-- **Kristen Meinzer:** retrato publicado na página oficial de headshots da autora, creditado a Lauren Eliot Photography. O cartão inclui crédito e link para a página original.
+- **Kristen Meinzer:** retrato publicado na página oficial de headshots da autora, creditado a Lauren Eliot Photography. Os créditos e o link para a página original estão no rodapé.
   https://www.kristenmeinzer.com/headshots
 - **Yainak:** a fonte do relato não identifica uma fotografia. O cartão utiliza um retrato fotográfico realista de uma personagem fictícia gerado por IA para o layout, com a legenda visível “Imagem ilustrativa” e texto alternativo que informa que a imagem não retrata Yainak. Não é uma reconstrução da aparência da participante.
 

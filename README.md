@@ -44,7 +44,7 @@ Produção informada pelo proprietário: https://desafioreconquiste21dias.vercel
 
 ## Conteúdo e decisões
 
-- VSL vertical em 9:16, no pôster e nos players MP4/WebM e iframe. Desktop com chamada e CTA ao lado; celular com vídeo centralizado e altura limitada à tela.
+- VSL vertical em 9:16, no pôster e nos players MP4/WebM e iframe. Hero centralizada, com vídeo vertical abaixo da chamada e altura limitada à tela.
 - Sequência de venda: Hero, autoridades de pesquisa, relatos com retratos e fonte, identificação com a rotina, benefícios do plano, amostra concreta, três etapas, oferta com lista completa e fechamento.
 - CTAs distribuídos ao longo da página para a mesma oferta; checkout centralizado em `config.js`.
 - Conteúdo comercial limitado ao guia real: 50 páginas, 21 desafios, exemplos, adaptações e acompanhamento.
@@ -77,4 +77,6 @@ Ao terminar uma condição real, o contador desaparece, o preço promocional é 
 
 ## VSL vertical
 
-O player mantém 9:16 antes e depois de reproduzir, sem cortar o vídeo. No desktop, fica ao lado da promessa e do CTA; no celular, fica centralizado. A altura se adapta à tela. A VSL ainda precisa ser fornecida.
+O player mantém 9:16 antes e depois de reproduzir, sem cortar o vídeo. Em todos os tamanhos, fica centralizado abaixo da promessa, com o CTA logo depois. A altura se adapta à tela. A VSL ainda precisa ser fornecida.
+
+Os créditos dos retratos de Logan Ury e Kristen Meinzer estão reunidos no diálogo “Créditos de imagens”, acessível pelo rodapé. A identificação “Imagem ilustrativa” permanece junto ao retrato gerado do cartão de Yainak.
