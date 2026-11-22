@@ -1,6 +1,6 @@
 # Fontes e contexto editorial
 
-Pesquisa consultada em 21/11/2026. Os depoimentos foram conferidos nas publicações originais. Os trechos na LP são traduções curtas; os contextos foram mantidos e Yainak aparece com a inicial Y.. As fontes documentam práticas de conexão; não validam este guia, seu título ou seu prazo de 21 dias.
+Pesquisa consultada em 21/11/2026. Os depoimentos foram conferidos nas publicações originais. Os trechos na LP são traduções curtas, adaptadas ao português brasileiro e conferidas novamente em 22/11/2026. Yainak aparece com seu nome e a inicial Y no avatar. Os contextos completos estão registrados abaixo. As fontes documentam práticas de conexão; não validam este guia, seu título ou seu prazo de 21 dias.
 
 ## Experiências publicadas
 
@@ -43,7 +43,7 @@ Os retratos públicos identificam as autoras dos relatos externos; não represen
 
 A fonte de Yainak não informa sua nacionalidade; o relato não é apresentado como brasileiro.
 
-As URLs de consulta ficam nesta documentação. A LP mantém nomes, instituições e contexto das práticas em texto, sem links de fontes que retirem a visitante da página.
+As URLs de consulta ficam nesta documentação. Os cartões dos relatos mostram os nomes e os comentários. As publicações de origem e os contextos completos permanecem nesta documentação.
 
 
 ## Retratos dos pesquisadores

@@ -49,7 +49,7 @@ Produção informada pelo proprietário: https://desafioreconquiste21dias.vercel
 - CTAs distribuídos ao longo da página para a mesma oferta; checkout centralizado em `config.js`.
 - Conteúdo comercial limitado ao guia real: 50 páginas, 21 desafios, exemplos, adaptações e acompanhamento.
 - Não há desconto fictício, escassez, avaliações inventadas, estatísticas de clientes ou garantia de reconquista. O componente de contagem está desativado até existir uma condição real com prazo no checkout.
-- Os relatos externos identificam a publicação de origem; a prática e o material de cada experiência estão documentados em `docs/fontes.md`. Não são avaliações do nosso produto.
+- Os relatos externos têm traduções adaptadas ao português brasileiro. A publicação de origem, a prática e o material de cada experiência estão documentados em `docs/fontes.md`. Não são avaliações do nosso produto.
 - Vinho escuro `#280f20`, rosa `#ffbed5`, fundos claros e CTAs em verde `#49dd91`, com texto escuro. Contraste e hierarquia orientam a escolha; não há alegação de cor comprovadamente superior para mulheres.
 - Tipografia nativa, capa em WebP local, sem bibliotecas, fontes ou rastreadores externos. Retratos oficiais são carregados de suas fontes, sob demanda, sem enviar a URL da LP como referenciador.
 - FAQ nativa, diálogos acessíveis, foco de teclado e respeito à preferência de movimento reduzido.
@@ -81,7 +81,7 @@ O player mantém 9:16 antes e depois de reproduzir, sem cortar o vídeo. Em todo
 
 Os créditos dos retratos de Logan Ury e Kristen Meinzer estão reunidos no diálogo “Créditos de imagens”, acessível pelo rodapé. O cartão do relato de Yainak exibe seu nome e usa a inicial Y no avatar; o retrato gerado não é utilizado.
 
-As referências aparecem como identificação em texto nos cartões. Não há links externos de fontes na LP; as URLs e os contextos verificáveis permanecem em `docs/fontes.md`. Os créditos de imagens continuam disponíveis pelo diálogo do rodapé, sem navegação para fora da página.
+Os cartões dos relatos exibem nome, avatar e comentário. Não há links externos de fontes na LP; as URLs e os contextos verificáveis permanecem em `docs/fontes.md`. Os créditos de imagens continuam disponíveis pelo diálogo do rodapé, sem navegação para fora da página.
 
 ## Versão compacta
 
