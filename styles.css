@@ -515,3 +515,113 @@ dialog{padding:35px 24px}dialog h2{font-size:1.75rem}dialog p{font-size:.875rem}
   font-size: 1rem;
   line-height: 1.6;
 }
+
+/* Oferta com foco no conteúdo do plano e na ação principal. */
+.offer-section {
+  background: radial-gradient(ellipse at top, #63304c, #280f20 75%);
+  border: 0;
+  padding-block: 48px;
+}
+.offer-section .section-heading {
+  margin-bottom: 26px;
+}
+.offer-section .section-heading h2 {
+  color: white;
+  font-size: clamp(1.875rem, 4vw, 2.75rem);
+}
+.offer-section .section-heading h2 br {
+  display: initial;
+}
+.offer-section .section-heading em {
+  color: #ffbed5;
+}
+.offer-layout {
+  max-width: 560px;
+  border: 1px solid #f2bfd3;
+  border-radius: 20px;
+  box-shadow: 0 20px 55px #16071266;
+}
+.offer-card {
+  padding: 0;
+}
+.offer-summary {
+  padding: 26px 28px 22px;
+  background: linear-gradient(120deg, #fff7fa, #f7e0eb);
+  border-bottom: 1px solid var(--line);
+}
+.offer-summary .eyebrow {
+  font-size: .75rem;
+  margin-bottom: 9px;
+}
+.offer-summary h3 {
+  font-size: clamp(1.875rem, 4vw, 2.25rem);
+  line-height: 1.15;
+}
+.offer-format {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: .875rem;
+}
+.offer-card .offer-list {
+  padding: 24px 28px;
+}
+.offer-card .offer-list li {
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0 0 20px;
+}
+.offer-card .offer-list li:last-child {
+  margin-bottom: 0;
+}
+.offer-card .offer-list svg {
+  width: 28px;
+  height: 28px;
+  padding: 5px;
+  margin-top: 1px;
+  border-radius: 50%;
+  color: #197746;
+  background: #e5f7ed;
+}
+.offer-card .offer-list strong {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+.offer-card .offer-list span {
+  font-size: .875rem;
+  line-height: 1.5;
+  margin-top: 4px;
+}
+.offer-checkout {
+  padding: 22px 28px 24px;
+  border-top: 1px solid var(--line);
+  background: #fff7fa;
+}
+.offer-checkout .price-block {
+  padding-top: 0;
+  border-top: 0;
+}
+.offer-card .purchase-button {
+  min-height: 62px;
+  padding: 16px 12px;
+  border-radius: 10px;
+  font-size: 1.0625rem;
+}
+.offer-card .format-note {
+  font-size: .875rem;
+  line-height: 1.5;
+  margin: 16px 0 0;
+}
+@media (max-width: 760px) {
+  .offer-section {
+    padding-block: 34px;
+  }
+  .offer-summary {
+    padding: 23px 22px 20px;
+  }
+  .offer-card .offer-list {
+    padding: 22px;
+  }
+  .offer-checkout {
+    padding: 20px 22px 22px;
+  }
+}
