@@ -185,7 +185,7 @@ details[open] summary:after{content:"−"}
 .closing-section h2{font-size:clamp(2rem,3.5vw,3rem)}
 .closing-section h2 em{color:#ffbed5}
 .closing-section .button{margin-top:28px}
-.site-footer{background:#fff;color:var(--muted);padding:36px 0 30px;text-align:center}
+.site-footer{background:#fff7fa;color:var(--muted);padding:36px 0 30px;text-align:center}
 .footer-brand{font:1.75rem var(--serif);text-decoration:none;letter-spacing:-.05em;color:#fff}
 .footer-brand span{margin-left:8px;color:#f0acc8}
 .site-footer p{font-size:.8125rem;margin-top:9px}
