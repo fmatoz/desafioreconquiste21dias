@@ -21,7 +21,13 @@
   });
   $("#year").textContent = new Date().getFullYear();
   if (typeof config.price === "number" && Number.isFinite(config.price) && config.price > 0) {
-    $("#price-label").textContent = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(config.price);
+    const currency = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
+    $("#price-label").textContent = currency.format(config.price);
+    const originalPrice = $("#original-price");
+    if (originalPrice && Number.isFinite(config.originalPrice) && config.originalPrice > config.price) {
+      $("#original-price-label").textContent = currency.format(config.originalPrice);
+      originalPrice.hidden = false;
+    }
     $("#price-block").hidden = false;
   }
   const checkout = safeHttps(config.checkoutUrl);

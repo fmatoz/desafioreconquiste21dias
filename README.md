@@ -23,7 +23,8 @@ Edite `config.js`:
 | Campo | Configuração |
 | --- | --- |
 | `checkoutUrl` | URL HTTPS real do checkout. Sem esse valor, o CTA abre um aviso de disponibilidade futura e não processa uma compra. |
-| `price` | Preço real, em reais. `null` oculta a área do preço; nenhum valor foi inventado. |
+| `price` | Preço atual em reais, definido pelo proprietário como R$ 14,97. `null` oculta a área do preço. |
+| `originalPrice` | Preço anterior, definido pelo proprietário como R$ 47,00. Aparece riscado quando maior que `price`. |
 | `videoUrl` | URL pública HTTPS do MP4/WebM ou URL de embed do YouTube/Vimeo. O vídeo só carrega após clique. |
 | `videoType` | `video` para arquivo; `embed` para YouTube/Vimeo. |
 | `supportEmail` | Contato real para atendimento e privacidade. |
@@ -65,7 +66,7 @@ Veja a documentação de pesquisa em `docs/fontes.md`.
 - Configuração simulada: preço, passagem de UTMs sem sobrescrever valores do checkout e carregamento da VSL somente após clique.
 - Estados sem preço, VSL e checkout conferidos; nenhum erro JavaScript observado.
 
-A Vercel foi publicada pelo proprietário. Preço, checkout e VSL continuam pendentes em `config.js`; as simulações de configuração não são compras reais. Não há resultado de conversão medido nesta etapa.
+A Vercel foi publicada pelo proprietário. O preço foi definido em `config.js`, de R$ 47,00 por R$ 14,97. Checkout e VSL continuam pendentes; as simulações de configuração não são compras reais. Não há resultado de conversão medido nesta etapa.
 
 ## Prazo de oferta e contagem
 
