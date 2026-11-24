@@ -647,15 +647,12 @@ dialog{padding:35px 24px}dialog h2{font-size:1.75rem}dialog p{font-size:.875rem}
   .bonus-copy p{margin-top:9px}
 }
 
-/* Reações da visitante aos relatos. */
+/* Detalhes visuais dos relatos. */
 .quote-grid{align-items:stretch}
 .quote-grid figure{border-radius:18px}
 .quote-grid .person-heading{margin-bottom:18px}
 .quote-grid blockquote{font-weight:500}
-.quote-actions{margin-top:auto;padding-top:20px}
-.quote-like{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 13px;border:1px solid var(--line);border-radius:999px;background:#fff7fa;color:var(--muted);font:600 .8125rem var(--sans);cursor:pointer}
-.quote-like svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round}
-.quote-like:hover{background:#f8e7ef;color:var(--accent)}
-.quote-like[aria-pressed="true"]{background:#f8e7ef;border-color:#e4b2c8;color:var(--accent)}
-.quote-like[aria-pressed="true"] svg{fill:currentColor}
-.quote-like:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.quote-reactions{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:auto;padding-top:20px}
+.quote-reaction{display:inline-flex;align-items:center;gap:7px;color:var(--muted);font-size:.75rem;line-height:1.5}
+.quote-reaction svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round}
+.quote-heart svg{fill:var(--accent);stroke:var(--accent)}

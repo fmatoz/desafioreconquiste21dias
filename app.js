@@ -19,18 +19,6 @@
     image.addEventListener("error", fallback, { once: true });
     if (image.complete) image.naturalWidth > 0 ? show() : fallback();
   });
-  document.querySelectorAll(".quote-like").forEach((button) => {
-    const author = button.closest("figure").querySelector(".person-meta strong").textContent;
-    const label = button.querySelector(".quote-like-label");
-    button.setAttribute("aria-label", "Curtir relato de " + author);
-    button.hidden = false;
-    button.addEventListener("click", () => {
-      const liked = button.getAttribute("aria-pressed") !== "true";
-      button.setAttribute("aria-pressed", String(liked));
-      label.textContent = liked ? "Você curtiu" : "Curtir";
-    });
-  });
-
   $("#year").textContent = new Date().getFullYear();
   if (typeof config.price === "number" && Number.isFinite(config.price) && config.price > 0) {
     const currency = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
