@@ -656,3 +656,5 @@ dialog{padding:35px 24px}dialog h2{font-size:1.75rem}dialog p{font-size:.875rem}
 .quote-reaction{display:inline-flex;align-items:center;gap:7px;color:var(--muted);font-size:.75rem;line-height:1.5}
 .quote-reaction svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round}
 .quote-heart svg{fill:var(--accent);stroke:var(--accent)}
+
+.person-avatar.couple-avatar img{object-fit:contain;object-position:center}

@@ -33,8 +33,8 @@ Hipótese de design: vinho e rosa remetem à identidade da capa já aprovada; o 
 
 ## Retratos e avatares dos relatos
 
-- **Logan Ury:** retrato identificado na página oficial da autora na editora Simon & Schuster. A imagem é carregada do CDN da editora; os créditos estão no rodapé; a URL original permanece nesta documentação.
-  https://www.simonandschuster.com/authors/Logan-Ury/156464550
+- **Logan Ury e Scott:** fotografia do casal fornecida pelo proprietário, correspondente à imagem de abertura do relato no The Gottman Institute. O avatar circular mostra a imagem inteira, com ajuste `contain` para preservar os dois rostos.
+  https://www.gottman.com/blog/heres-what-happened-when-i-went-on-eight-therapist-designed-dates/
 - **Kristen Meinzer:** retrato publicado na página oficial de headshots da autora, creditado a Lauren Eliot Photography. Os créditos estão no rodapé; a URL original permanece nesta documentação.
   https://www.kristenmeinzer.com/headshots
 - **Yainak:** o cartão utiliza somente a inicial Y, como perfil sem foto. O retrato gerado não é utilizado na LP.
