@@ -33,7 +33,7 @@ Hipótese de design: vinho e rosa remetem à identidade da capa já aprovada; o 
 
 ## Retratos e avatares dos relatos
 
-- **Logan Ury e Scott:** fotografia do casal fornecida pelo proprietário, correspondente à imagem de abertura do relato no The Gottman Institute. O avatar circular mostra a imagem inteira, com ajuste `contain` para preservar os dois rostos.
+- **Logan Ury e Scott:** fotografia do casal fornecida pelo proprietário, correspondente à imagem de abertura do relato no The Gottman Institute. O avatar circular preenche o círculo com `object-fit: cover` e recorte deslocado à direita para enquadrar os dois rostos.
   https://www.gottman.com/blog/heres-what-happened-when-i-went-on-eight-therapist-designed-dates/
 - **Kristen Meinzer:** retrato publicado na página oficial de headshots da autora, creditado a Lauren Eliot Photography. Os créditos estão no rodapé; a URL original permanece nesta documentação.
   https://www.kristenmeinzer.com/headshots
