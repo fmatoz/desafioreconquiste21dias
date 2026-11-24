@@ -83,7 +83,7 @@ O player mantém 9:16 antes e depois de reproduzir, sem cortar o vídeo. Em todo
 
 Os créditos dos retratos de Logan Ury e Kristen Meinzer estão reunidos no diálogo “Créditos de imagens”, acessível pelo rodapé. O cartão do relato de Yainak exibe seu nome e usa a inicial Y no avatar; o retrato gerado não é utilizado.
 
-Os cartões dos relatos exibem nome, avatar e comentário. Não há links externos de fontes na LP; as URLs e os contextos verificáveis permanecem em `docs/fontes.md`. Os créditos de imagens continuam disponíveis pelo diálogo do rodapé, sem navegação para fora da página.
+Os cartões dos relatos exibem nome, avatar, comentário e um botão de coração para curtir. A reação pode ser alternada pela visitante durante a visita, sem contagem pública agregada. Não há links externos de fontes na LP; as URLs e os contextos verificáveis permanecem em `docs/fontes.md`. Os créditos de imagens continuam disponíveis pelo diálogo do rodapé, sem navegação para fora da página.
 
 ## Versão compacta
 
