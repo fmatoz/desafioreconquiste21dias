@@ -46,7 +46,8 @@ Produção informada pelo proprietário: https://desafioreconquiste21dias.vercel
 ## Conteúdo e decisões
 
 - VSL vertical em 9:16, no pôster e nos players MP4/WebM e iframe. Hero centralizada, com vídeo vertical abaixo da chamada e altura limitada à tela.
-- Seis blocos de venda: Hero/VSL, autoridades compactas, relatos, material por dentro com amostra expansível, oferta e FAQ.
+- Ordem da página: hero com VSL, material com amostra, bônus exclusivos, relatos “O que elas viveram”, oferta, pesquisas sobre conexão, garantia, dúvidas frequentes e rodapé.
+- A seção `#bonus` fica oculta enquanto os materiais extras estão em desenvolvimento.
 - CTAs distribuídos ao longo da página para a mesma oferta; checkout centralizado em `config.js`.
 - Conteúdo comercial limitado ao guia real: 50 páginas, 21 desafios, exemplos, adaptações e acompanhamento.
 - Não há desconto fictício, escassez, avaliações inventadas, estatísticas de clientes ou garantia de reconquista. O componente de contagem está desativado até existir uma condição real com prazo no checkout.

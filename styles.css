@@ -118,6 +118,8 @@ strong{font-weight:700}
 .journey{background:var(--wine-deep);color:#fff}
 .section-heading{text-align:center;max-width:850px;margin:0 auto 40px}
 .section-heading>p:last-child:not(.eyebrow){margin-top:20px;font-size:1rem;color:var(--muted)}
+.section-heading.garantia-copy{max-width:640px;margin-bottom:0}
+#garantia{border-bottom:1px solid var(--line)}
 .journey .eyebrow{color:#f3acc9}
 .journey h2 em{color:#ffbed5}
 .journey-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:40px}
