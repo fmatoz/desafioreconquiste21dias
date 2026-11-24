@@ -47,7 +47,7 @@ Produção informada pelo proprietário: https://desafioreconquiste21dias.vercel
 
 - VSL vertical em 9:16, no pôster e nos players MP4/WebM e iframe. Hero centralizada, com vídeo vertical abaixo da chamada e altura limitada à tela.
 - Ordem da página: hero com VSL, material com amostra, bônus exclusivos, relatos “O que elas viveram”, oferta, pesquisas sobre conexão, garantia, dúvidas frequentes e rodapé.
-- A seção `#bonus` fica oculta enquanto os materiais extras estão em desenvolvimento.
+- A seção `#bonus`, logo após o material, apresenta três extras incluídos no plano: 12 mensagens para WhatsApp, 7 encontros de 15 minutos em casa e um calendário para depois dos 21 dias. Imagens locais em WebP. Os PDFs são entregues pela plataforma de venda.
 - CTAs distribuídos ao longo da página para a mesma oferta; checkout centralizado em `config.js`.
 - Conteúdo comercial limitado ao guia real: 50 páginas, 21 desafios, exemplos, adaptações e acompanhamento.
 - Não há desconto fictício, escassez, avaliações inventadas, estatísticas de clientes ou garantia de reconquista. O componente de contagem está desativado até existir uma condição real com prazo no checkout.
