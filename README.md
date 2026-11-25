@@ -1,6 +1,6 @@
 # Reconquiste — Plano de 21 Dias
 
-Landing page responsiva do guia **Reconquiste seu Marido — Plano de 21 Dias de Atitudes que Aproximam**. HTML, CSS e JavaScript, sem dependências de produção, sem coleta de dados nesta versão. As fotografias dos relatos são arquivos locais em WebP. Os retratos das autoridades carregam de fontes externas oficiais, com identificação por iniciais como alternativa se indisponíveis.
+Landing page responsiva do guia **Reconquiste seu Marido — Plano de 21 Dias de Atitudes que Aproximam**. HTML, CSS e JavaScript, sem dependências de produção, sem coleta de dados nesta versão. As fotografias dos relatos são arquivos locais em WebP e PNG. Os retratos das autoridades carregam de fontes externas oficiais, com identificação por iniciais como alternativa se indisponíveis.
 
 [Ver a LP publicada](https://desafioreconquiste21dias.vercel.app/)
 

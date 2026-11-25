@@ -686,3 +686,6 @@ dialog{padding:35px 24px}dialog h2{font-size:1.75rem}dialog p{font-size:.875rem}
   .quote-track{animation:none;transform:none;will-change:auto}
   .quote-track figure[aria-hidden="true"]{display:none}
 }
+
+/* Enquadramento da fotografia espontânea fornecida para Barbara. */
+.person-avatar.barbara-avatar img{inset:-4% auto auto -79%;width:175%;height:175%;max-width:none;object-position:50% 50%}

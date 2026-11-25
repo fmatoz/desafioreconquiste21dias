@@ -78,7 +78,8 @@ As frases abaixo são adaptações contextuais curtas para o português brasilei
 - Contexto: em “Five Ways to Renew an Old Love”, a autora relata que entrou por engano numa estradinha sem saída ao lado de uma loja. A situação virou uma piada recorrente com o marido Jeff, produzindo pequenos momentos de amor. O trecho é uma experiência pessoal da autora, não o resultado de uma intervenção com o guia.
 - Relato: https://greatergood.berkeley.edu/article/item/five_ways_to_renew_an_old_love
 - Perfil com retrato: https://greatergood.berkeley.edu/profile/barbara_fredrickson
-- Imagem: https://ggsc.s3.us-west-2.amazonaws.com/assets/images/avatar_12811_-_abcdef_-_906fcc2fbfa38b9bbb7f6ff4a7005598a38c7cfa.webp
+- Imagem anterior: https://ggsc.s3.us-west-2.amazonaws.com/assets/images/avatar_12811_-_abcdef_-_906fcc2fbfa38b9bbb7f6ff4a7005598a38c7cfa.webp
+- Imagem atual (24/11/2026): fotografia espontânea de Barbara sorrindo junto a uma janela, fornecida pelo proprietário. Arquivo original preservado em `assets/relato-barbara-natural.png`; o CSS enquadra o rosto no avatar circular.
 
 ### Franciele Grossi
 
