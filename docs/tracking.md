@@ -75,6 +75,6 @@ PageViews e IC brutos continuam registrados normalmente, com os mesmos IDs envia
 
 Esses indicadores começam com a implantação desta versão; linhas antigas sem sufixo não entram no total de únicos. Se o navegador bloquear o armazenamento, a linha fica sem sufixo e não é apresentada como um visitante identificado. Limpar dados, usar outro navegador, mudar de domínio/origem ou expirar o ID pode gerar uma nova identificação. Diagnósticos ficam excluídos e usam chave de armazenamento própria. Recusar medição apaga o ID salvo.
 
-O fluxo Tracking já preserva event_id e não precisa ser alterado. A contagem utiliza COUNTUNIQUE com filtro exato por evento e oferta, sem depender de uma operação de consulta/gravação sujeita a corridas.
+O fluxo Tracking já preserva event_id e não precisa ser alterado. A contagem utiliza ROWS(UNIQUE(FILTER(...))) com filtro exato por evento e oferta, sem depender de uma operação de consulta/gravação sujeita a corridas.
 
-Validação: quatro execuções diagnósticas no fluxo Tracking (IDs 560924–560927), incluindo um event_id repetido e dois navegadores, resultaram em 2 únicos numa fórmula nativa de teste. A fórmula temporária foi removida. Os eventos `diagnostico_daily_qa` permanecem como registros de auditoria e não entram nos indicadores reais.
+Validação: quatro execuções diagnósticas no fluxo Tracking (IDs 560924–560927), incluindo um event_id repetido e dois navegadores, resultaram em 2 únicos numa fórmula nativa de teste. O caso sem resultados foi validado com retorno zero. A fórmula temporária foi removida. Os eventos `diagnostico_daily_qa` permanecem como registros de auditoria e não entram nos indicadores reais.
