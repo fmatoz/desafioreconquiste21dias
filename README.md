@@ -1,6 +1,6 @@
 # Reconquiste — Plano de 21 Dias
 
-Landing page responsiva do guia **Reconquiste seu Marido — Plano de 21 Dias de Atitudes que Aproximam**. HTML, CSS e JavaScript, sem dependências de produção, sem coleta de dados nesta versão. Os retratos reais carregam de fontes externas oficiais, com identificação por iniciais como alternativa se indisponíveis.
+Landing page responsiva do guia **Reconquiste seu Marido — Plano de 21 Dias de Atitudes que Aproximam**. HTML, CSS e JavaScript, sem dependências de produção, sem coleta de dados nesta versão. As fotografias dos relatos são arquivos locais em WebP. Os retratos das autoridades carregam de fontes externas oficiais, com identificação por iniciais como alternativa se indisponíveis.
 
 [Ver a LP publicada](https://desafioreconquiste21dias.vercel.app/)
 
@@ -81,7 +81,7 @@ Ao terminar uma condição real, o contador desaparece, o preço promocional é 
 
 O player mantém 9:16 antes e depois de reproduzir, sem cortar o vídeo. Em todos os tamanhos, fica centralizado abaixo da promessa, com o CTA logo depois. A altura se adapta à tela. A VSL ainda precisa ser fornecida.
 
-Os créditos dos retratos de Logan Ury e Kristen Meinzer estão reunidos no diálogo “Créditos de imagens”, acessível pelo rodapé. O cartão do relato de Yainak exibe seu nome e usa a inicial Y no avatar; o retrato gerado não é utilizado.
+Os quatro relatos atuais são de Logan Ury, Laura Heck, Barbara Fredrickson e Franciele Grossi, com imagens locais e créditos no diálogo do rodapé. Yainak foi retirada por não ter foto identificada. Kristen Meinzer foi retirada após a busca por um retrato mais espontâneo.
 
 Os cartões dos relatos exibem nome, avatar, comentário, coração e ícone de comentários fixos. Esses detalhes são decorativos, sem interação ou contagem de engajamento. Não há links externos de fontes na LP; as URLs e os contextos verificáveis permanecem em `docs/fontes.md`. Os créditos de imagens continuam disponíveis pelo diálogo do rodapé, sem navegação para fora da página.
 
@@ -89,7 +89,7 @@ Os cartões dos relatos exibem nome, avatar, comentário, coração e ícone de 
 
 Removidos os blocos sobre o problema da rotina, as três etapas em seção própria e a chamada final repetida. As etapas ficam resumidas na apresentação do produto.
 
-No celular, as autoridades ficam em três cartões lado a lado; os três relatos ficam empilhados, com altura ajustada ao conteúdo. Os três relatos foram preservados. As legendas abaixo dos comentários foram removidas, e o contexto completo permanece em `docs/fontes.md`. A amostra fica dentro de “material por dentro”, aberta por escolha da visitante. A oferta não repete o mockup da capa e a FAQ tem três perguntas. O espaçamento vertical foi reduzido.
+No celular, as autoridades ficam em três cartões lado a lado; os quatro relatos ficam empilhados, com altura ajustada ao conteúdo. No desktop, ficam em duas colunas. As legendas abaixo dos comentários foram removidas, e o contexto completo permanece em `docs/fontes.md`. A amostra fica dentro de “material por dentro”, aberta por escolha da visitante. A oferta não repete o mockup da capa e a FAQ tem três perguntas. O espaçamento vertical foi reduzido.
 
 Verificação desta redução em viewport de 390 × 844 px: altura inicial de 11.395 px e altura compacta de aproximadamente 4.847 px, cerca de 57% menor. Na versão anterior, carrossel (anterior/próximo), expansão da amostra, CTA e ausência de rolagem horizontal conferidos em seis larguras. As fotografias externas usam identificação por iniciais se indisponíveis no ambiente de teste.
 

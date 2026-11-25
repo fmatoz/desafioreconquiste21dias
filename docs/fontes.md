@@ -1,6 +1,6 @@
 # Fontes e contexto editorial
 
-Pesquisa consultada em 21/11/2026. Os depoimentos foram conferidos nas publicações originais. Os trechos na LP são traduções curtas, adaptadas ao português brasileiro e conferidas novamente em 22/11/2026. Yainak aparece com seu nome e a inicial Y no avatar. Os contextos completos estão registrados abaixo. As fontes documentam práticas de conexão; não validam este guia, seu título ou seu prazo de 21 dias.
+Pesquisa consultada em 21/11/2026. Os depoimentos foram conferidos nas publicações originais. Os trechos na LP são traduções curtas, adaptadas ao português brasileiro e conferidas novamente em 22/11/2026. Os relatos atuais foram atualizados em 24/11/2026. Yainak e Kristen Meinzer foram retiradas da LP. As referências dessas versões anteriores permanecem neste histórico. Os contextos completos estão registrados abaixo. As fontes documentam práticas de conexão; não validam este guia, seu título ou seu prazo de 21 dias.
 
 ## Experiências publicadas
 
@@ -59,3 +59,32 @@ As URLs de consulta ficam nesta documentação. Os cartões dos relatos mostram 
   Imagem: https://www.apa.org/images/arthur-aron_tcm7-301708_w1024_n.jpeg
 
 As fotos identificam os autores das pesquisas mencionadas. Não são depoimentos, aprovação do guia ou endosso comercial. Os créditos ficam no diálogo do rodapé. Não há links externos nos cartões. As imagens carregam das fontes institucionais; caso indisponíveis, as iniciais preservam a identificação.
+
+## Relatos adicionados em 24/11/2026
+
+As frases abaixo são adaptações contextuais curtas para o português brasileiro. Preservam a primeira pessoa e o sentido da passagem original. São experiências externas ao guia. Laura é terapeuta, Barbara é pesquisadora e Franciele relata uma experiência com psicoterapia de casal.
+
+### Laura Heck
+
+- Texto na LP: “Consegui falar sobre meus medos sem criticar nem ficar na defensiva. A gente encontrou um caminho que fazia sentido para os dois.”
+- Contexto: depois do nascimento do filho, uma promoção do marido implicaria uma mudança de Seattle para Utah. Laura conta que compartilhou seus pensamentos e receios sem criticar ou ficar na defensiva, e que construíram um sonho compartilhado.
+- Relato: https://www.gottman.com/blog/3-factors-will-make-break-relationship/
+- Retrato identificado no perfil: https://www.gottman.com/author/laura-heck/
+- Imagem: https://www.gottman.com/wp-content/uploads/2017/04/laura-heck-5.jpg
+
+### Barbara Fredrickson
+
+- Texto na LP: “Uma situação engraçada no caminho virou uma piada nossa. Até hoje, ela rende risadas e pequenos momentos de carinho entre nós.”
+- Contexto: em “Five Ways to Renew an Old Love”, a autora relata que entrou por engano numa estradinha sem saída ao lado de uma loja. A situação virou uma piada recorrente com o marido Jeff, produzindo pequenos momentos de amor. O trecho é uma experiência pessoal da autora, não o resultado de uma intervenção com o guia.
+- Relato: https://greatergood.berkeley.edu/article/item/five_ways_to_renew_an_old_love
+- Perfil com retrato: https://greatergood.berkeley.edu/profile/barbara_fredrickson
+- Imagem: https://ggsc.s3.us-west-2.amazonaws.com/assets/images/avatar_12811_-_abcdef_-_906fcc2fbfa38b9bbb7f6ff4a7005598a38c7cfa.webp
+
+### Franciele Grossi
+
+- Texto na LP: “Na terapia, passamos a nos ouvir mais e conversar sobre sentimentos e dúvidas que antes a gente não dividia.”
+- Contexto: entrevista de setembro de 2019, reproduzida pelo Cenapop a partir da revista Quem. Franciele conta que ela e Diego fizeram terapia de casal e passaram a ouvir mais um ao outro e conversar sobre sentimentos e dúvidas. A menção à terapia foi preservada na própria frase da LP.
+- Relato e foto do casal: https://cenapop.uol.com.br/noticias/famosos/186614-a-terapia-de-casal-salvou-meu-casamento-diz-ex-bbb-franciele.html
+- Imagem, creditada como reprodução de Instagram: https://cenapop.uol.com.br/media/_versions/legacy/2019/09/exbbbfranciele_rep_inst_00_widelg.jpg
+
+As três imagens foram conferidas nas fontes e armazenadas em WebP em assets/. O avatar de Franciele prioriza seu rosto no recorte circular. A busca por uma foto mais espontânea da Kristen incluiu o site oficial e uma entrevista na Condé Nast Traveler, cuja imagem de abertura era uma ilustração. O retrato de estúdio foi retirado com autorização do proprietário.
