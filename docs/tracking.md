@@ -78,3 +78,8 @@ Esses indicadores começam com a implantação desta versão; linhas antigas sem
 O fluxo Tracking já preserva event_id e não precisa ser alterado. A contagem utiliza ROWS(UNIQUE(FILTER(...))) com filtro exato por evento e oferta, sem depender de uma operação de consulta/gravação sujeita a corridas.
 
 Validação: quatro execuções diagnósticas no fluxo Tracking (IDs 560924–560927), incluindo um event_id repetido e dois navegadores, resultaram em 2 únicos numa fórmula nativa de teste. O caso sem resultados foi validado com retorno zero. A fórmula temporária foi removida. Os eventos `diagnostico_daily_qa` permanecem como registros de auditoria e não entram nos indicadores reais.
+
+
+## Compras Reconquiste configuradas
+
+Em 25/11/2026, o fluxo Vendas foi publicado com rota exclusiva por produto, credencial segura do novo pixel, valores reais e event_id estável. Webhook receptor e flags de duplicação foram testados. Veja `vendas-reconquiste.md` para evidências e pendências de validação na Wiapy.
