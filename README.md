@@ -100,3 +100,7 @@ Verificação desta redução em viewport de 390 × 844 px: altura inicial de 11
 
 O cabeçalho de marca e informações acima da Hero foi removido. A logo completa foi preservada no rodapé. O botão fixo do celular, sua lógica e o espaço reservado a ele foram removidos; os CTAs das seções continuam disponíveis.
 
+
+## Visitantes únicos
+
+A aba `funil!A22:D29` separa visualizações totais, visitantes únicos diários e IC únicos diários da oferta Reconquiste. O navegador mantém um ID aleatório por até 180 dias, independente do `click_id` de atribuição. Recarregar a LP preserva o visitante, mas continua gerando PageView. Sem armazenamento persistente, o acesso fica fora da contagem de únicos identificáveis. Os únicos começam nesta versão e respeitam o período ativo no Sheets; em vários dias, somam os únicos de cada dia. Veja `docs/tracking.md`.

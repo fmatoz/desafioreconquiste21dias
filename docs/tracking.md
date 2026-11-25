@@ -66,3 +66,15 @@ Referências: https://developers.facebook.com/documentation/meta-pixel/reference
 ## Atualização de 25/11/2026
 
 A pedido do proprietário, o aviso automático foi removido. A medição inicia no carregamento, salvo preferência de recusa salva. A opção em Privacidade permite desativar ou reativar a medição. Essa decisão substitui as descrições anteriores de autorização prévia.
+
+## Visitantes e IC únicos por dia
+
+O navegador salva um ID aleatório em `reconquiste:visitor:v1` por 180 dias. O `event_id` preserva sua parte única por carregamento e acrescenta `__vid_ID`. O `click_id` continua sendo o identificador de atribuição por sessão/campanha, separado do visitante. Não usa IP, fingerprint ou dados pessoais para unir navegadores.
+
+PageViews e IC brutos continuam registrados normalmente, com os mesmos IDs enviados à Meta. A aba `funil!A22:D29` mostra visualizações totais, visitantes únicos diários e IC únicos diários da oferta Reconquiste, respeitando as datas B4:B5. Para os únicos, agrupa pelo sufixo do navegador e pela data R da linha, calculada pelo servidor em America/Sao_Paulo. Repetições, inclusive em abas simultâneas, não aumentam os únicos. Em períodos com vários dias, o resultado é a soma dos únicos de cada dia.
+
+Esses indicadores começam com a implantação desta versão; linhas antigas sem sufixo não entram no total de únicos. Se o navegador bloquear o armazenamento, a linha fica sem sufixo e não é apresentada como um visitante identificado. Limpar dados, usar outro navegador, mudar de domínio/origem ou expirar o ID pode gerar uma nova identificação. Diagnósticos ficam excluídos e usam chave de armazenamento própria. Recusar medição apaga o ID salvo.
+
+O fluxo Tracking já preserva event_id e não precisa ser alterado. A contagem utiliza COUNTUNIQUE com filtro exato por evento e oferta, sem depender de uma operação de consulta/gravação sujeita a corridas.
+
+Validação: quatro execuções diagnósticas no fluxo Tracking (IDs 560924–560927), incluindo um event_id repetido e dois navegadores, resultaram em 2 únicos numa fórmula nativa de teste. A fórmula temporária foi removida. Os eventos `diagnostico_daily_qa` permanecem como registros de auditoria e não entram nos indicadores reais.

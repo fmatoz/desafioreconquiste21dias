@@ -12,6 +12,7 @@
   const keys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "utm_id", "fbclid", "gclid"];
   const consentKey = "reconquiste:measurement:v2";
   const sessionKey = "reconquiste:attribution:v1";
+  const visitorKey = test ? "reconquiste:visitor:test:v1" : "reconquiste:visitor:v1";
   const ttl = 30 * 60 * 1000;
   const id = () => crypto.randomUUID?.() || Date.now().toString(36) + "_" + Math.random().toString(36).slice(2);
   const pageId = id();
@@ -23,6 +24,22 @@
   const savedConsent = read(local, consentKey);
   let consent = savedConsent && Date.now() - savedConsent.at < 180 * 86400000 ? savedConsent.allowed === true : true;
   let session;
+  let visitor;
+  // Identifica o navegador, sem fingerprinting. Só marca como identificável se persistir.
+  const visitorId = () => {
+    if (visitor !== undefined) return visitor;
+    const saved = read(local, visitorKey);
+    const valid = typeof saved?.id === "string" && /^[A-Za-z0-9_-]{8,100}$/.test(saved.id)
+      && Number.isFinite(saved.at) && Date.now() - saved.at >= 0 && Date.now() - saved.at < 180 * 86400000;
+    const candidate = valid ? saved : { id: id(), at: Date.now() };
+    write(local, visitorKey, candidate);
+    visitor = read(local, visitorKey)?.id === candidate.id ? candidate.id : null;
+    return visitor;
+  };
+  const eventId = (event) => {
+    const browser = visitorId();
+    return event + "_" + pageId + (browser ? "__vid_" + browser : "");
+  };
   const sent = new Set();
   const buffered = new Set();
   const readMetaCookie = (name) => {
@@ -115,11 +132,12 @@
     if (consent !== true || sent.has(event)) return;
     sent.add(event);
     const data = ensureSession();
-    pixelEvent(event, event + "_" + pageId);
+    const currentEventId = eventId(event);
+    pixelEvent(event, currentEventId);
     // Envia apenas a rota; parâmetros livres podem conter informações pessoais.
     const payload = {
       event: (test ? "diagnostico_" : "") + event,
-      event_id: event + "_" + pageId,
+      event_id: currentEventId,
       click_id: data.click_id,
       ...Object.fromEntries(keys.slice(0, 5).map(key => [key, data.attribution[key] || ""])),
       fbclid: data.attribution.fbclid || "",
@@ -157,6 +175,8 @@
     if (!allowed) {
       if (pixelReady) window.fbq("consent", "revoke");
       session = null;
+      visitor = undefined;
+      try { local.removeItem(visitorKey); } catch { /* Sem armazenamento. */ }
       buffered.clear();
       try { sessionStorageSafe.removeItem(sessionKey); } catch { /* Sem armazenamento. */ }
     } else {
