@@ -1,6 +1,6 @@
 // Configure o checkout e a VSL sem alterar o layout. Nenhum segredo deve entrar neste arquivo público.
 window.RECONQUISTE_CONFIG = Object.freeze({
-  checkoutUrl: "",
+  checkoutUrl: "https://pay.wiapy.com/v9l2cgEla5fk",
   // Valores em reais. Null oculta o preço; originalPrice só aparece quando maior que price.
   price: 14.97,
   originalPrice: 47,

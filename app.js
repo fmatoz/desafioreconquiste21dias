@@ -37,8 +37,10 @@
       const value = incoming.get(key);
       if (value && !checkout.searchParams.has(key)) checkout.searchParams.set(key, value);
     });
-    $("#purchase-button").href = checkout.href;
-    $("#purchase-button").rel = "nofollow";
+    document.querySelectorAll('[data-track="hero_cta"], [data-track="benefits_cta"], [data-track="checkout_cta"]').forEach((button) => {
+      button.href = checkout.href;
+      button.rel = "nofollow";
+    });
   } else {
     $("#purchase-button").addEventListener("click", (event) => {
       event.preventDefault();
