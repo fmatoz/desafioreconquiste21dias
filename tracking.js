@@ -21,7 +21,7 @@
   const local = storage("localStorage");
   const sessionStorageSafe = storage("sessionStorage");
   const savedConsent = read(local, consentKey);
-  let consent = savedConsent && Date.now() - savedConsent.at < 180 * 86400000 ? savedConsent.allowed === true : null;
+  let consent = savedConsent && Date.now() - savedConsent.at < 180 * 86400000 ? savedConsent.allowed === true : true;
   let session;
   const sent = new Set();
   const buffered = new Set();
@@ -149,7 +149,7 @@
   panel.className = "measurement-choice";
   panel.setAttribute("aria-label", "Preferências de medição");
   panel.innerHTML = '<p>Você permite cookies e medição de visitas e vídeo para analisar esta página e nossos anúncios na Meta?</p><div><button type="button" data-measure="no">Agora não</button><button type="button" data-measure="yes">Permitir</button></div>';
-  panel.hidden = consent !== null;
+  panel.hidden = true;
   const setConsent = (allowed) => {
     consent = allowed;
     write(local, consentKey, { allowed, at: Date.now() });

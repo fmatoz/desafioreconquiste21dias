@@ -11,7 +11,7 @@
 
 | Evento | Momento | Limite por carregamento |
 | --- | --- | --- |
-| `page_view` | Medição permitida pela visitante | 1 |
+| `page_view` | Carregamento da página, salvo recusa registrada | 1 |
 | `vsl_play` | Vídeo completo realmente começa com áudio | 1 |
 | `vsl_25`, `vsl_50`, `vsl_75` | Progresso do vídeo completo | 1 de cada |
 | `vsl_complete` | Vídeo completo termina | 1 |
@@ -21,7 +21,7 @@
 
 ## Atribuição
 
-Após permissão, um `click_id` aleatório é guardado em `sessionStorage`. Visitas diretas na mesma sessão preservam a campanha; novos parâmetros de campanha ou expiração após 30 minutos sem nova visita iniciam outra atribuição. O ID e os eventos enviados antes da revogação continuam sendo registros históricos.
+Com a medição ativa, um `click_id` aleatório é guardado em `sessionStorage`. Visitas diretas na mesma sessão preservam a campanha; novos parâmetros de campanha ou expiração após 30 minutos sem nova visita iniciam outra atribuição. O ID e os eventos enviados antes da revogação continuam sendo registros históricos.
 
 Os três links recebem os parâmetros conhecidos da campanha e `utm_content=CONTEUDO_ORIGINAL||cid:CLICK_ID`. O `Format Venda` existente separa o marcador e grava `click_id` e `utm_content_original`. O conteúdo original do anúncio é preservado. Parâmetros do checkout já configurados têm prioridade. `utm_id`, `fbclid` e `gclid` também são encaminhados; a estrutura atual da aba tracking armazena `fbclid`, mas não possui colunas próprias para `utm_id` e `gclid`.
 
@@ -61,3 +61,8 @@ O modo de diagnóstico não carrega a Meta. A recusa e a revogação interrompem
 O envio de compras pela CAPI depende de atualização segura no n8n, com filtro pelo produto Reconquiste, confirmação de pagamento aprovado e tratamento de estornos. Não reutilizar o pixel novo indiscriminadamente para produtos antigos. Não ativar duas fontes de Purchase sem validar event_name + event_id para deduplicação. Webhook e CAPI são integrações diferentes; o token Meta não autentica chamadas Wiapy → n8n.
 
 Referências: https://developers.facebook.com/documentation/meta-pixel/reference e https://docs.n8n.io/connect/n8n-api/authentication.md
+
+
+## Atualização de 25/11/2026
+
+A pedido do proprietário, o aviso automático foi removido. A medição inicia no carregamento, salvo preferência de recusa salva. A opção em Privacidade permite desativar ou reativar a medição. Essa decisão substitui as descrições anteriores de autorização prévia.
