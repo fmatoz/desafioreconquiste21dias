@@ -30,7 +30,7 @@ Edite `config.js`:
 | `videoPosterUrl` | Pôster mostrado antes da prévia ou quando autoplay estiver bloqueado. |
 | `supportEmail` | Contato real para atendimento e privacidade. |
 
-O player nativo usa apenas um botão de play/pause. Não há barra de progresso, volume, velocidade, fullscreen ou Picture-in-Picture. A primeira ação de play troca a prévia pelo vídeo completo, do início e com áudio; pause e continuar preservam o ponto. A prévia é interrompida fora da tela, em aba oculta ou com preferência por movimento reduzido. Bloqueios de autoplay preservam o pôster e o play.
+O player nativo mostra o botão “Assista esse Vídeo” na prévia e quando pausado. Durante a reprodução, o vídeo fica sem botões visíveis; tocar na tela pausa, e o play reaparece para continuar. O mesmo controle funciona por teclado com Enter ou espaço. Não há barra de progresso, volume, velocidade, fullscreen ou Picture-in-Picture. A primeira ação de play troca a prévia pelo vídeo completo, do início e com áudio; pause e continuar preservam o ponto. A prévia é interrompida fora da tela, em aba oculta ou com preferência por movimento reduzido. Bloqueios de autoplay preservam o pôster e o play.
 
 O checkout configurado recebe os parâmetros `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_term`, `fbclid` e `gclid` da visita, preservando valores já definidos no destino. Não há envio de eventos à Meta nem a n8n nesta versão. Para integrar o tracking, utilize os eventos locais `reconquiste:event` (`hero_cta`, `checkout_cta`, `vsl_play`) e revise privacidade/consentimento antes de instalar ferramentas externas. Nenhum evento `purchase` é disparado por um clique.
 

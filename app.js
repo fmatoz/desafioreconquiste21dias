@@ -123,7 +123,8 @@
       const playing = started && !video.paused && !video.ended;
       videoShell.dataset.state = starting ? "loading" : !started ? "preview" : video.ended ? "ended" : playing ? "playing" : "paused";
       videoButton.disabled = starting;
-      videoButton.setAttribute("aria-label", starting ? "Carregando vídeo" : !started ? "Reproduzir vídeo com som" : playing ? "Pausar vídeo" : video.ended ? "Reproduzir vídeo novamente" : "Continuar vídeo");
+      videoButton.querySelector(".vsl-label").textContent = starting ? "Carregando…" : "Assista esse Vídeo";
+      videoButton.setAttribute("aria-label", starting ? "Carregando vídeo" : !started ? "Assista esse Vídeo com som" : playing ? "Pausar vídeo" : video.ended ? "Assista esse Vídeo novamente" : "Assista esse Vídeo: continuar");
       videoShell.setAttribute("aria-busy", String(starting));
     };
     const showVideoError = () => {
