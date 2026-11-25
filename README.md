@@ -82,7 +82,7 @@ Ao terminar uma condição real, o contador desaparece, o preço promocional é 
 
 O player mantém 9:16 antes e depois de reproduzir, sem cortar o vídeo. Em todos os tamanhos, fica centralizado abaixo da promessa, com o CTA logo depois. A altura se adapta à tela. A VSL final é `assets/vsl-reconquiste.mp4` (720 × 1280, aproximadamente 1min59), com legendas já presentes na imagem. A prévia de seis segundos, sem faixa de áudio, fica em `assets/vsl-previa.mp4`. O master em 1080 × 1920 é mantido fora do repositório. O evento `vsl_play` só é emitido quando a apresentação com áudio começa, uma vez por carregamento, e `vsl_complete` sinaliza o fim.
 
-Os quatro relatos atuais são de Logan Ury, Laura Heck, Barbara Fredrickson e Franciele Grossi, com imagens locais e créditos no diálogo do rodapé. Yainak foi retirada por não ter foto identificada. Kristen Meinzer foi retirada após a busca por um retrato mais espontâneo.
+Os quatro cartões dos relatos mostram apenas os primeiros nomes: Logan, Laura, Barbara e Franciele. A identificação completa é preservada em `docs/fontes.md` e nos créditos de imagens do rodapé. Yainak foi retirada por não ter foto identificada. Kristen Meinzer foi retirada após a busca por um retrato mais espontâneo.
 
 Os cartões dos relatos exibem nome, avatar, comentário, coração e ícone de comentários fixos. Esses detalhes são decorativos, sem interação ou contagem de engajamento. Não há links externos de fontes na LP; as URLs e os contextos verificáveis permanecem em `docs/fontes.md`. Os créditos de imagens continuam disponíveis pelo diálogo do rodapé, sem navegação para fora da página.
 

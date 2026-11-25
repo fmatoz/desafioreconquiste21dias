@@ -90,3 +90,7 @@ As frases abaixo são adaptações contextuais curtas para o português brasilei
 - Imagem atual (24/11/2026): fotografia de Franciele e Diego sorrindo juntos, fornecida pelo proprietário. Original preservado em `assets/relato-franciele-casal.png`; o enquadramento circular em CSS mostra os dois rostos.
 
 As três imagens foram conferidas nas fontes e armazenadas em WebP em assets/. O avatar atual de Franciele enquadra os dois rostos no recorte circular. A busca por uma foto mais espontânea da Kristen incluiu o site oficial e uma entrevista na Condé Nast Traveler, cuja imagem de abertura era uma ilustração. O retrato de estúdio foi retirado com autorização do proprietário.
+
+## Nomes nos cartões
+
+Em 25/11/2026, os nomes visíveis nos relatos foram abreviados para Logan, Laura, Barbara e Franciele, conforme solicitado pelo proprietário. As identidades completas e as fontes permanecem nesta documentação e nos créditos de imagens.
