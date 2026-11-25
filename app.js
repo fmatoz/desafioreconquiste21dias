@@ -38,7 +38,7 @@
       const value = incoming.get(key);
       if (value && !checkout.searchParams.has(key)) checkout.searchParams.set(key, value);
     });
-    document.querySelectorAll('[data-track="hero_cta"], [data-track="benefits_cta"], [data-track="checkout_cta"]').forEach((button) => {
+    document.querySelectorAll('[data-track="checkout_cta"]').forEach((button) => {
       button.href = checkout.href;
       button.rel = "nofollow";
     });

@@ -15,7 +15,7 @@
 | `vsl_play` | Vídeo completo realmente começa com áudio | 1 |
 | `vsl_25`, `vsl_50`, `vsl_75` | Progresso do vídeo completo | 1 de cada |
 | `vsl_complete` | Vídeo completo termina | 1 |
-| `initiate_checkout` | Clique em um dos três CTAs com checkout válido | 1, somando os três CTAs |
+| `initiate_checkout` | Clique no CTA da oferta com checkout válido | 1 |
 
 `initiate_checkout` significa **clique para ir ao checkout**; não comprova que a página de pagamento carregou. Não representa Pix gerado nem compra. Repetições de um mesmo evento usam o mesmo `event_id`; a coluna `unique_flag` da planilha deduplica por evento + ID.
 
@@ -23,7 +23,7 @@
 
 Com a medição ativa, um `click_id` aleatório é guardado em `sessionStorage`. Visitas diretas na mesma sessão preservam a campanha; novos parâmetros de campanha ou expiração após 30 minutos sem nova visita iniciam outra atribuição. O ID e os eventos enviados antes da revogação continuam sendo registros históricos.
 
-Os três links recebem os parâmetros conhecidos da campanha e `utm_content=CONTEUDO_ORIGINAL||cid:CLICK_ID`. O `Format Venda` existente separa o marcador e grava `click_id` e `utm_content_original`. O conteúdo original do anúncio é preservado. Parâmetros do checkout já configurados têm prioridade. `utm_id`, `fbclid` e `gclid` também são encaminhados; a estrutura atual da aba tracking armazena `fbclid`, mas não possui colunas próprias para `utm_id` e `gclid`.
+Somente o link de checkout na oferta recebe os parâmetros conhecidos da campanha e `utm_content=CONTEUDO_ORIGINAL||cid:CLICK_ID`. O `Format Venda` existente separa o marcador e grava `click_id` e `utm_content_original`. O conteúdo original do anúncio é preservado. Parâmetros do checkout já configurados têm prioridade. `utm_id`, `fbclid` e `gclid` também são encaminhados; a estrutura atual da aba tracking armazena `fbclid`, mas não possui colunas próprias para `utm_id` e `gclid`.
 
 A LP envia apenas origem + rota em `page_url`, sem parâmetros livres. Não pede nome, telefone, documento ou dados de pagamento. Após consentimento v2, carrega o pixel da Meta e permite cookies de medição de anúncios. O consentimento v1 não autoriza essa nova finalidade. A escolha de medição dura até 180 dias em `localStorage` e pode ser alterada em **Privacidade**. Sem permissão, o site e a compra continuam funcionando; a LP não envia eventos nem adiciona o identificador interno aos links.
 

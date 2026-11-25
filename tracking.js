@@ -59,7 +59,7 @@
     try { checkout = new URL(config.checkoutUrl); } catch { return; }
     if (checkout.protocol !== "https:") return;
     decorate(checkout);
-    document.querySelectorAll('[data-track="hero_cta"], [data-track="benefits_cta"], [data-track="checkout_cta"]')
+    document.querySelectorAll('[data-track="checkout_cta"]')
       .forEach(link => { link.href = checkout.href; });
   };
   window.RECONQUISTE_TRACKING = Object.freeze({ decorate });
@@ -137,7 +137,7 @@
   };
   window.addEventListener("reconquiste:event", ({ detail }) => {
     const name = detail?.name;
-    const event = ["hero_cta", "benefits_cta", "checkout_cta"].includes(name)
+    const event = name === "checkout_cta"
       ? detail.checkoutConfigured ? "initiate_checkout" : null
       : ["vsl_play", "vsl_25", "vsl_50", "vsl_75", "vsl_complete"].includes(name) ? name : null;
     if (!event) return;

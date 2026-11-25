@@ -14,10 +14,12 @@ function page({ search = '', local = memory(), session = memory(), blocked = fal
 }
 const local = memory(), session = memory();
 const p = page({ search: '?utm_source=FB&utm_campaign=ABO%7C123&utm_content=CT%7C456&email=private@example.com', local, session });
-assert.equal(p.requests.length, 0, 'Não enviar antes da escolha');
+assert.equal(p.requests.length, 1, 'Medição automática sem aviso');
 p.event('vsl_play'); p.allow();
 assert.deepEqual(p.requests.map(r => r.event), ['page_view', 'vsl_play']);
-p.event('vsl_play'); p.event('hero_cta'); p.event('checkout_cta'); p.event('purchase');
+p.event('vsl_play'); p.event('hero_cta'); p.event('benefits_cta');
+assert.equal(p.requests.length, 2, 'Ir à oferta não inicia checkout');
+p.event('checkout_cta'); p.event('checkout_cta'); p.event('purchase');
 assert.deepEqual(p.requests.map(r => r.event), ['page_view', 'vsl_play', 'initiate_checkout']);
 assert(p.requests.every(r => !r.page_url.includes('email') && !r.page_url.includes('?')));
 assert.equal(p.requests[0].utm_content, 'CT|456');
@@ -37,10 +39,10 @@ assert.equal(denied.requests.length, 0);
 const blocked = page({ blocked: true, search: '?tracking_test=1' }); blocked.allow(); blocked.event('vsl_complete');
 assert.deepEqual(blocked.requests.map(r => r.event), ['diagnostico_page_view', 'diagnostico_vsl_complete']);
 assert.equal(blocked.requests[0].click_id, blocked.requests[1].click_id);
-console.log('Tracking: consentimento, revogação, atribuição, deduplicação, UTMs, armazenamento bloqueado e diagnóstico aprovados.');
+console.log('Tracking: preferências, atribuição, CTAs, deduplicação, UTMs e diagnóstico aprovados.');
 
 const pixel = page({ metaPixelId: '1795323998419205' });
-assert.equal(pixel.scripts.length, 0, 'Meta não carrega antes da escolha');
+assert.equal(pixel.scripts.length, 1, 'Meta carrega sem aviso automático');
 pixel.allow();
 assert.equal(pixel.scripts.length, 1, 'Meta carrega uma vez depois da escolha');
 assert.equal(pixel.scripts[0].src, 'https://connect.facebook.net/en_US/fbevents.js');
@@ -48,7 +50,9 @@ const commands = () => pixel.window.fbq.queue.map(args => Array.from(args));
 assert(commands().some(c => c[0] === 'init' && c[1] === '1795323998419205'));
 assert(commands().some(c => c[0] === 'trackSingle' && c[2] === 'PageView' && c[4].eventID === pixel.requests[0].event_id));
 assert(commands().some(c => c[0] === 'trackSingle' && c[2] === 'ViewContent'));
-pixel.event('hero_cta'); pixel.event('checkout_cta'); pixel.event('vsl_play'); pixel.event('vsl_25'); pixel.event('vsl_complete'); pixel.event('purchase');
+pixel.event('hero_cta'); pixel.event('benefits_cta');
+assert(!commands().some(c => c[2] === 'InitiateCheckout'), 'CTAs internos não enviam InitiateCheckout');
+pixel.event('checkout_cta'); pixel.event('vsl_play'); pixel.event('vsl_25'); pixel.event('vsl_complete'); pixel.event('purchase');
 assert.equal(commands().filter(c => c[2] === 'InitiateCheckout').length, 1);
 assert.equal(commands().find(c => c[2] === 'InitiateCheckout')[3].currency, 'BRL');
 assert(!commands().some(c => c[2] === 'Purchase'), 'LP nunca emite compra');
@@ -64,6 +68,6 @@ assert.equal(diagnosticPixel.scripts.length, 0, 'Diagnóstico não envia à Meta
 const legacyConsent = memory();
 legacyConsent.setItem('reconquiste:measurement:v1', JSON.stringify({ allowed: true, at: Date.now() }));
 const migrated = page({ local: legacyConsent, metaPixelId: '1795323998419205' });
-assert.equal(migrated.requests.length, 0);
-assert.equal(migrated.scripts.length, 0, 'Consentimento antigo não autoriza publicidade');
-console.log('Pixel: bloqueio antes da escolha, migração do consentimento, IDs de eventos, recusa, deduplicação e ausência de Purchase aprovados.');
+assert.equal(migrated.requests.length, 1);
+assert.equal(migrated.scripts.length, 1, 'Medição automática em visitas antigas');
+console.log('Pixel: CTAs internos, IDs, recusa, deduplicação e ausência de Purchase aprovados.');

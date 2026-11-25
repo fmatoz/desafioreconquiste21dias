@@ -22,7 +22,7 @@ Edite `config.js`:
 
 | Campo | Configuração |
 | --- | --- |
-| `checkoutUrl` | Oferta Principal da Wiapy: `https://pay.wiapy.com/v9l2cgEla5fk`. Os três CTAs de compra levam a esse endereço. |
+| `checkoutUrl` | Oferta Principal da Wiapy: `https://pay.wiapy.com/v9l2cgEla5fk`. Somente o botão da oferta abre esse endereço; os demais CTAs levam à seção `#plano`. |
 | `price` | Preço atual em reais, definido pelo proprietário como R$ 14,97. `null` oculta a área do preço. |
 | `originalPrice` | Preço anterior, definido pelo proprietário como R$ 47,00. Aparece riscado quando maior que `price`. |
 | `videoUrl` | MP4/WebM local em `assets/` ou HTTPS. A versão completa só carrega após play. |
@@ -32,7 +32,7 @@ Edite `config.js`:
 
 O player nativo mostra o botão “Assista esse Vídeo” na prévia e quando pausado. Durante a reprodução, o vídeo fica sem botões visíveis; tocar na tela pausa, e o play reaparece para continuar. O mesmo controle funciona por teclado com Enter ou espaço. Ao terminar, o play central dá lugar à mensagem “Seu próximo passo começa aqui”, que orienta a visitante a tocar no botão verde abaixo para receber o plano e os três bônus. “Assistir novamente” reinicia a VSL; o fim não dispara compra nem navegação automática. Não há barra de progresso, volume, velocidade, fullscreen ou Picture-in-Picture. A primeira ação de play troca a prévia pelo vídeo completo, do início e com áudio; pause e continuar preservam o ponto. A prévia é interrompida fora da tela, em aba oculta ou com preferência por movimento reduzido. Bloqueios de autoplay preservam o pôster e o play.
 
-O checkout recebe UTMs e identificadores de clique. Com a medição ativa, `tracking.js` registra `page_view`, início/progresso/fim da VSL e `initiate_checkout` na planilha existente por meio do n8n. Um `click_id` no `utm_content` permite associar a venda recebida da Wiapy à visita. `initiate_checkout` significa clique de saída, e não checkout carregado ou compra. O navegador nunca dispara `purchase`. O pixel público `1795323998419205` carrega automaticamente, salvo recusa registrada, com PageView, ViewContent, InitiateCheckout no clique de saída e eventos personalizados da VSL. O modo `tracking_test=1` não carrega a Meta. O aviso automático foi removido; a preferência pode ser alterada em Privacidade. Nenhum token entra no frontend. O envio de Purchase via CAPI e o webhook Wiapy ainda dependem da configuração segura no n8n. Veja `docs/tracking.md`.
+O checkout recebe UTMs e identificadores de clique. Com a medição ativa, `tracking.js` registra `page_view`, início/progresso/fim da VSL e `initiate_checkout` na planilha existente por meio do n8n. Um `click_id` no `utm_content` permite associar a venda recebida da Wiapy à visita. `initiate_checkout` significa clique de saída, e não checkout carregado ou compra. O navegador nunca dispara `purchase`. O pixel público `1795323998419205` carrega automaticamente, salvo recusa registrada, com PageView, ViewContent, InitiateCheckout no clique de saída da oferta e eventos personalizados da VSL. O modo `tracking_test=1` não carrega a Meta. O aviso automático foi removido; a preferência pode ser alterada em Privacidade. Nenhum token entra no frontend. O envio de Purchase via CAPI e o webhook Wiapy ainda dependem da configuração segura no n8n. Veja `docs/tracking.md`.
 
 O PDF completo **não está no repositório público**. A imagem `assets/capa.webp` reproduz a capa real; a entrega do material fica na plataforma de venda.
 
@@ -49,7 +49,7 @@ Produção informada pelo proprietário: https://desafioreconquiste21dias.vercel
 - VSL vertical em 9:16, com prévia muda e player nativo MP4/WebM. Hero centralizada, com vídeo vertical abaixo da chamada e altura limitada à tela.
 - Ordem da página: hero com VSL, material com amostra, bônus exclusivos, relatos “O que elas viveram”, oferta, pesquisas sobre conexão, garantia, dúvidas frequentes e rodapé.
 - A seção `#bonus`, logo após o material, apresenta três extras incluídos no plano: 12 mensagens para WhatsApp, 7 encontros de 15 minutos em casa e um calendário para depois dos 21 dias. Imagens locais em WebP. Os PDFs são entregues pela plataforma de venda.
-- Os CTAs da hero, do material e da oferta levam à mesma Oferta Principal da Wiapy, centralizada em `config.js`, preservando UTMs e identificadores de clique.
+- Os CTAs da hero e do material rolam até a oferta (`#plano`). Somente o CTA da oferta abre a Wiapy, preservando UTMs e identificadores de clique.
 - Conteúdo comercial limitado ao guia real: 50 páginas, 21 desafios, exemplos, adaptações e acompanhamento.
 - Não há desconto fictício, escassez, avaliações inventadas, estatísticas de clientes ou garantia de reconquista. O componente de contagem está desativado até existir uma condição real com prazo no checkout.
 - Os relatos externos têm traduções adaptadas ao português brasileiro. A publicação de origem, a prática e o material de cada experiência estão documentados em `docs/fontes.md`. Não são avaliações do nosso produto.
