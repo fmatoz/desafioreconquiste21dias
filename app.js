@@ -123,4 +123,81 @@
     }, { once: true });
   }
 
+  const quoteCarousel = $("#relatos-carousel");
+  if (quoteCarousel) {
+    const cards = [...quoteCarousel.querySelectorAll("figure")];
+    const toggle = $("#quote-toggle");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let playing = !reducedMotion.matches;
+    let hovering = false;
+    let touching = false;
+    let timer;
+    const metrics = () => {
+      const gap = parseFloat(getComputedStyle(quoteCarousel).gap) || 0;
+      const step = cards[0].getBoundingClientRect().width + gap;
+      const visible = Math.max(1, Math.round((quoteCarousel.clientWidth + gap) / step));
+      const last = Math.max(0, cards.length - visible);
+      const current = Math.min(last, Math.max(0, Math.round(quoteCarousel.scrollLeft / step)));
+      return { step, visible, last, current };
+    };
+    const updatePosition = () => {
+      const { visible, current } = metrics();
+      const end = Math.min(cards.length, current + visible);
+      $("#quote-position").textContent = visible > 1
+        ? (current + 1) + "–" + end + " de " + cards.length
+        : (current + 1) + " de " + cards.length;
+      toggle.textContent = playing ? "Pausar" : "Reproduzir";
+      toggle.setAttribute("aria-label", playing
+        ? "Pausar rotação automática dos relatos"
+        : "Iniciar rotação automática dos relatos");
+    };
+    const move = (direction) => {
+      const { step, last, current } = metrics();
+      const next = (current + direction + last + 1) % (last + 1);
+      quoteCarousel.scrollTo({
+        left: next * step,
+        behavior: reducedMotion.matches ? "instant" : "smooth"
+      });
+    };
+    const schedule = () => {
+      clearTimeout(timer);
+      if (playing && !hovering && !touching && !document.hidden &&
+          !quoteCarousel.parentElement.contains(document.activeElement)) {
+        timer = setTimeout(() => { move(1); schedule(); }, 5500);
+      }
+    };
+    $("#quote-controls").hidden = false;
+    $("#quote-prev").addEventListener("click", () => move(-1));
+    $("#quote-next").addEventListener("click", () => move(1));
+    toggle.addEventListener("click", () => {
+      playing = !playing;
+      updatePosition();
+      schedule();
+    });
+    quoteCarousel.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+        event.preventDefault();
+        move(event.key === "ArrowRight" ? 1 : -1);
+      }
+    });
+    quoteCarousel.parentElement.addEventListener("focusin", schedule);
+    quoteCarousel.parentElement.addEventListener("focusout", () => setTimeout(schedule, 0));
+    quoteCarousel.addEventListener("mouseenter", () => { hovering = true; schedule(); });
+    quoteCarousel.addEventListener("mouseleave", () => { hovering = false; schedule(); });
+    quoteCarousel.addEventListener("pointerdown", () => { touching = true; schedule(); });
+    const release = () => { touching = false; schedule(); };
+    window.addEventListener("pointerup", release);
+    window.addEventListener("pointercancel", release);
+    quoteCarousel.addEventListener("scroll", () => { updatePosition(); schedule(); }, { passive: true });
+    window.addEventListener("resize", () => { updatePosition(); schedule(); });
+    document.addEventListener("visibilitychange", schedule);
+    reducedMotion.addEventListener("change", () => {
+      playing = !reducedMotion.matches;
+      updatePosition();
+      schedule();
+    });
+    updatePosition();
+    schedule();
+  }
+
 })();

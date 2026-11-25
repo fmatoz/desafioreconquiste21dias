@@ -63,7 +63,7 @@ Veja a documentação de pesquisa em `docs/fontes.md`.
 - Build e conferência de arquivos/âncoras aprovados; saída completa de aproximadamente 65 KB.
 - Navegador Edge sem interface: capturas e conferência visual em desktop e celular.
 - Sem rolagem horizontal em 320, 375, 390, 768, 1024 e 1440 px.
-- FAQ, diálogos, fechamento por Escape, retorno de foco conferidos. Relatos empilhados no celular.
+- FAQ, diálogos, fechamento por Escape, retorno de foco conferidos. Carrossel de relatos no celular.
 - Configuração simulada: preço, passagem de UTMs sem sobrescrever valores do checkout e carregamento da VSL somente após clique.
 - Estados sem preço, VSL e checkout conferidos; nenhum erro JavaScript observado.
 
@@ -89,7 +89,7 @@ Os cartões dos relatos exibem nome, avatar, comentário, coração e ícone de 
 
 Removidos os blocos sobre o problema da rotina, as três etapas em seção própria e a chamada final repetida. As etapas ficam resumidas na apresentação do produto.
 
-No celular, as autoridades ficam em três cartões lado a lado; os quatro relatos ficam empilhados, com altura ajustada ao conteúdo. No desktop, ficam em duas colunas. As legendas abaixo dos comentários foram removidas, e o contexto completo permanece em `docs/fontes.md`. A amostra fica dentro de “material por dentro”, aberta por escolha da visitante. A oferta não repete o mockup da capa e a FAQ tem três perguntas. O espaçamento vertical foi reduzido.
+No celular, as autoridades ficam em três cartões lado a lado; os quatro relatos ficam num carrossel horizontal, com um cartão inteiro visível por vez. No desktop, são três cartões lado a lado. A rotação ocorre a cada 5,5 segundos, com controles para avançar, voltar e pausar. Ela pausa durante leitura com mouse/foco, toque e aba oculta. A preferência por movimento reduzido inicia a rotação pausada. As legendas abaixo dos comentários foram removidas, e o contexto completo permanece em `docs/fontes.md`. A amostra fica dentro de “material por dentro”, aberta por escolha da visitante. A oferta não repete o mockup da capa e a FAQ tem três perguntas. O espaçamento vertical foi reduzido.
 
 Verificação desta redução em viewport de 390 × 844 px: altura inicial de 11.395 px e altura compacta de aproximadamente 4.847 px, cerca de 57% menor. Na versão anterior, carrossel (anterior/próximo), expansão da amostra, CTA e ausência de rolagem horizontal conferidos em seis larguras. As fotografias externas usam identificação por iniciais se indisponíveis no ambiente de teste.
 
