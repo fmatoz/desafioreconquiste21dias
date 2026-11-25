@@ -660,7 +660,7 @@ dialog{padding:35px 24px}dialog h2{font-size:1.75rem}dialog p{font-size:.875rem}
 .person-avatar.couple-avatar img{object-fit:cover;object-position:78% 50%}
 
 .experiences .quote-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-.person-avatar.franciele-avatar img{object-position:8% 40%}
+.person-avatar.franciele-avatar img{inset:0 auto auto -36%;width:206%;height:206%;max-width:none;object-position:50% 50%}
 @media(max-width:760px){.experiences .quote-grid{grid-template-columns:1fr}}
 
 /* Relatos com navegação horizontal e rotação automática. */
