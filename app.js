@@ -126,9 +126,7 @@
   const quoteCarousel = $("#relatos-carousel");
   if (quoteCarousel) {
     const cards = [...quoteCarousel.querySelectorAll("figure")];
-    const toggle = $("#quote-toggle");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let playing = !reducedMotion.matches;
     let hovering = false;
     let touching = false;
     let timer;
@@ -140,17 +138,6 @@
       const current = Math.min(last, Math.max(0, Math.round(quoteCarousel.scrollLeft / step)));
       return { step, visible, last, current };
     };
-    const updatePosition = () => {
-      const { visible, current } = metrics();
-      const end = Math.min(cards.length, current + visible);
-      $("#quote-position").textContent = visible > 1
-        ? (current + 1) + "–" + end + " de " + cards.length
-        : (current + 1) + " de " + cards.length;
-      toggle.textContent = playing ? "Pausar" : "Reproduzir";
-      toggle.setAttribute("aria-label", playing
-        ? "Pausar rotação automática dos relatos"
-        : "Iniciar rotação automática dos relatos");
-    };
     const move = (direction) => {
       const { step, last, current } = metrics();
       const next = (current + direction + last + 1) % (last + 1);
@@ -161,19 +148,11 @@
     };
     const schedule = () => {
       clearTimeout(timer);
-      if (playing && !hovering && !touching && !document.hidden &&
+      if (!reducedMotion.matches && !hovering && !touching && !document.hidden &&
           !quoteCarousel.parentElement.contains(document.activeElement)) {
         timer = setTimeout(() => { move(1); schedule(); }, 5500);
       }
     };
-    $("#quote-controls").hidden = false;
-    $("#quote-prev").addEventListener("click", () => move(-1));
-    $("#quote-next").addEventListener("click", () => move(1));
-    toggle.addEventListener("click", () => {
-      playing = !playing;
-      updatePosition();
-      schedule();
-    });
     quoteCarousel.addEventListener("keydown", (event) => {
       if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
         event.preventDefault();
@@ -188,15 +167,10 @@
     const release = () => { touching = false; schedule(); };
     window.addEventListener("pointerup", release);
     window.addEventListener("pointercancel", release);
-    quoteCarousel.addEventListener("scroll", () => { updatePosition(); schedule(); }, { passive: true });
-    window.addEventListener("resize", () => { updatePosition(); schedule(); });
+    quoteCarousel.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
     document.addEventListener("visibilitychange", schedule);
-    reducedMotion.addEventListener("change", () => {
-      playing = !reducedMotion.matches;
-      updatePosition();
-      schedule();
-    });
-    updatePosition();
+    reducedMotion.addEventListener("change", schedule);
     schedule();
   }
 

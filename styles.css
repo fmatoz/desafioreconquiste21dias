@@ -667,13 +667,6 @@ dialog{padding:35px 24px}dialog h2{font-size:1.75rem}dialog p{font-size:.875rem}
 .experiences .quote-carousel{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;align-items:stretch}
 .quote-carousel::-webkit-scrollbar{display:none}
 .quote-carousel figure{flex:0 0 calc((100% - 44px)/3);min-width:0;scroll-snap-align:start}
-.quote-controls{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:18px}
-.quote-navigation{display:flex;align-items:center;gap:14px}
-.quote-arrow,.quote-toggle{min-height:44px;border:1px solid var(--line);background:#fff;color:var(--wine);font-family:var(--sans)}
-.quote-arrow{width:44px;border-radius:50%;font-size:1.75rem;line-height:1}
-.quote-toggle{border-radius:999px;padding:8px 17px;font-size:.8125rem;font-weight:600}
-.quote-position{font-size:.8125rem;color:var(--muted);min-width:70px;text-align:center}
-.quote-arrow:hover,.quote-toggle:hover{background:#f8e7ef}
 @media(max-width:760px){
   .experiences .quote-carousel{gap:16px}
   .quote-carousel figure{flex-basis:100%}
