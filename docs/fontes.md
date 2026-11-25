@@ -82,8 +82,8 @@ As frases abaixo são adaptações contextuais curtas para o português brasilei
 
 ### Franciele Grossi
 
-- Texto na LP: “Na terapia, passamos a nos ouvir mais e conversar sobre sentimentos e dúvidas que antes a gente não dividia.”
-- Contexto: entrevista de setembro de 2019, reproduzida pelo Cenapop a partir da revista Quem. Franciele conta que ela e Diego fizeram terapia de casal e passaram a ouvir mais um ao outro e conversar sobre sentimentos e dúvidas. A menção à terapia foi preservada na própria frase da LP.
+- Texto na LP: “Passamos a nos ouvir mais e conversar sobre sentimentos e dúvidas que antes a gente não dividia.”
+- Contexto: entrevista de setembro de 2019, reproduzida pelo Cenapop a partir da revista Quem. Franciele conta que ela e Diego fizeram terapia de casal e passaram a ouvir mais um ao outro e conversar sobre sentimentos e dúvidas. A frase na LP apresenta o trecho sobre escuta e diálogo, conforme solicitado pelo proprietário. O contexto completo da psicoterapia de casal permanece registrado aqui.
 - Relato e foto do casal: https://cenapop.uol.com.br/noticias/famosos/186614-a-terapia-de-casal-salvou-meu-casamento-diz-ex-bbb-franciele.html
 - Imagem, creditada como reprodução de Instagram: https://cenapop.uol.com.br/media/_versions/legacy/2019/09/exbbbfranciele_rep_inst_00_widelg.jpg
 
