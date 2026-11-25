@@ -704,3 +704,15 @@ dialog{padding:35px 24px}dialog h2{font-size:1.75rem}dialog p{font-size:.875rem}
 .vsl-message{position:absolute;z-index:2;inset:auto 14px 108px;margin:0;padding:12px;border-radius:9px;background:#210f1bea;color:#fff;font-size:.8125rem;line-height:1.45;text-align:center}
 .vsl-player video::-webkit-media-controls{display:none!important}
 @media(prefers-reduced-motion:reduce){.vsl-player .vsl-toggle{transition:none}}
+
+/* Chamada ao final da VSL, apontando para o CTA de compra já existente. */
+.vsl-end{position:absolute;z-index:3;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px 20px;text-align:center;color:#fff9f5;background:linear-gradient(180deg,#280f20e8,#411c34f5)}
+.vsl-end[hidden],.vsl-player .vsl-toggle[hidden]{display:none}
+.vsl-end-kicker{margin:0;color:#e5becc;font-size:.625rem;font-weight:700;letter-spacing:.14em}
+.vsl-end .vsl-end-title{margin:0;font-size:1.6rem;font-weight:800;letter-spacing:-.035em;line-height:1.18;color:#fff9f5}
+.vsl-end-copy{margin:0;font-size:.9375rem;line-height:1.6}
+.vsl-end-copy strong{color:#ffc4d9}
+.vsl-end-arrow{width:28px;height:36px;color:#65e7a7;flex-shrink:0}
+.vsl-replay{min-height:44px;padding:6px 10px;border:0;background:transparent;color:#e0cbd6;font-size:.75rem;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.vsl-replay:hover{color:#fff}
+.vsl-replay:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:5px}

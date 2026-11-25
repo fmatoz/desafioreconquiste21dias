@@ -105,6 +105,8 @@
   const videoButton = $("#video-play");
   const videoShell = $("#video-container");
   const videoMessage = $("#vsl-message");
+  const videoEnd = $("#vsl-end");
+  const videoReplay = $("#vsl-replay");
   const fullVideo = mediaUrl(config.videoUrl);
   const previewVideo = mediaUrl(config.videoPreviewUrl);
   const videoPoster = mediaUrl(config.videoPosterUrl);
@@ -120,7 +122,10 @@
     video.disableRemotePlayback = true;
 
     const updateVideoButton = () => {
+      const ended = started && video.ended;
       const playing = started && !video.paused && !video.ended;
+      videoButton.hidden = ended;
+      videoEnd.hidden = !ended;
       videoShell.dataset.state = starting ? "loading" : !started ? "preview" : video.ended ? "ended" : playing ? "playing" : "paused";
       videoButton.disabled = starting;
       videoButton.querySelector(".vsl-label").textContent = starting ? "Carregando…" : "Assista esse Vídeo";
@@ -177,6 +182,7 @@
       });
     };
     videoButton.addEventListener("click", toggleVideo);
+    videoReplay.addEventListener("click", toggleVideo);
     video.addEventListener("click", toggleVideo);
     video.addEventListener("playing", () => {
       if (!started) return;
