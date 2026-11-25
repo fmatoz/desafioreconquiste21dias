@@ -671,3 +671,18 @@ dialog{padding:35px 24px}dialog h2{font-size:1.75rem}dialog p{font-size:.875rem}
   .experiences .quote-carousel{gap:16px}
   .quote-carousel figure{flex-basis:100%}
 }
+
+/* A sequência duplicada mantém a continuidade visual ao completar cada volta. */
+.quote-carousel.has-loop{display:block;overflow:hidden;scroll-snap-type:none;--quote-gap:22px}
+.quote-track{display:flex;position:relative;width:100%;gap:var(--quote-gap);align-items:stretch;animation:quote-drift var(--quote-duration,60s) linear infinite;will-change:transform}
+.quote-track figure{scroll-snap-align:none}
+.quote-carousel:focus-within .quote-track,
+.quote-carousel.is-interacting .quote-track,
+.quote-carousel.is-inactive .quote-track{animation-play-state:paused}
+@keyframes quote-drift{to{transform:translateX(calc(-1 * var(--quote-distance,0px)))}}
+@media(max-width:760px){.quote-carousel.has-loop{--quote-gap:16px}}
+@media(prefers-reduced-motion:reduce){
+  .quote-carousel.has-loop{overflow-x:auto}
+  .quote-track{animation:none;transform:none;will-change:auto}
+  .quote-track figure[aria-hidden="true"]{display:none}
+}

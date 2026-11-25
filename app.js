@@ -123,55 +123,62 @@
     }, { once: true });
   }
 
+
   const quoteCarousel = $("#relatos-carousel");
   if (quoteCarousel) {
     const cards = [...quoteCarousel.querySelectorAll("figure")];
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let hovering = false;
-    let touching = false;
-    let timer;
-    const metrics = () => {
-      const gap = parseFloat(getComputedStyle(quoteCarousel).gap) || 0;
-      const step = cards[0].getBoundingClientRect().width + gap;
-      const visible = Math.max(1, Math.round((quoteCarousel.clientWidth + gap) / step));
-      const last = Math.max(0, cards.length - visible);
-      const current = Math.min(last, Math.max(0, Math.round(quoteCarousel.scrollLeft / step)));
-      return { step, visible, last, current };
-    };
-    const move = (direction) => {
-      const { step, last, current } = metrics();
-      const next = (current + direction + last + 1) % (last + 1);
-      quoteCarousel.scrollTo({
-        left: next * step,
-        behavior: reducedMotion.matches ? "instant" : "smooth"
+    const track = document.createElement("div");
+    track.className = "quote-track";
+    track.append(...cards);
+    // A segunda sequência permite que a primeira reapareça na mesma posição visual.
+    const copies = cards.map((card) => {
+      const copy = card.cloneNode(true);
+      copy.setAttribute("aria-hidden", "true");
+      copy.inert = true;
+      copy.querySelectorAll("img").forEach((image) => {
+        image.alt = "";
+        image.classList.add("is-loaded");
+        image.addEventListener("error", () => { image.hidden = true; }, { once: true });
       });
-    };
-    const schedule = () => {
-      clearTimeout(timer);
-      if (!reducedMotion.matches && !hovering && !touching && !document.hidden &&
-          !quoteCarousel.parentElement.contains(document.activeElement)) {
-        timer = setTimeout(() => { move(1); schedule(); }, 5500);
-      }
-    };
-    quoteCarousel.addEventListener("keydown", (event) => {
-      if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
-        event.preventDefault();
-        move(event.key === "ArrowRight" ? 1 : -1);
-      }
+      return copy;
     });
-    quoteCarousel.parentElement.addEventListener("focusin", schedule);
-    quoteCarousel.parentElement.addEventListener("focusout", () => setTimeout(schedule, 0));
-    quoteCarousel.addEventListener("mouseenter", () => { hovering = true; schedule(); });
-    quoteCarousel.addEventListener("mouseleave", () => { hovering = false; schedule(); });
-    quoteCarousel.addEventListener("pointerdown", () => { touching = true; schedule(); });
-    const release = () => { touching = false; schedule(); };
+    track.append(...copies);
+    quoteCarousel.append(track);
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const measure = () => {
+      if (reducedMotion.matches) return;
+      const distance = copies[0].getBoundingClientRect().left - cards[0].getBoundingClientRect().left;
+      track.style.setProperty("--quote-distance", distance + "px");
+      track.style.setProperty("--quote-duration", distance / 24 + "s");
+    };
+    quoteCarousel.classList.add("has-loop");
+    measure();
+    new ResizeObserver(measure).observe(quoteCarousel);
+    quoteCarousel.addEventListener("pointerdown", () => quoteCarousel.classList.add("is-interacting"));
+    const release = () => quoteCarousel.classList.remove("is-interacting");
     window.addEventListener("pointerup", release);
     window.addEventListener("pointercancel", release);
-    quoteCarousel.addEventListener("scroll", schedule, { passive: true });
-    window.addEventListener("resize", schedule);
-    document.addEventListener("visibilitychange", schedule);
-    reducedMotion.addEventListener("change", schedule);
-    schedule();
+    document.addEventListener("visibilitychange", () => {
+      quoteCarousel.classList.toggle("is-inactive", document.hidden);
+    });
+    quoteCarousel.addEventListener("keydown", (event) => {
+      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+      event.preventDefault();
+      const direction = event.key === "ArrowRight" ? 1 : -1;
+      const step = cards[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).gap);
+      const animation = track.getAnimations()[0];
+      if (animation) {
+        const duration = Number(animation.effect.getTiming().duration);
+        const distance = copies[0].offsetLeft - cards[0].offsetLeft;
+        animation.currentTime = (Number(animation.currentTime) + direction * step / distance * duration + duration) % duration;
+      } else {
+        quoteCarousel.scrollBy({ left: direction * step, behavior: "instant" });
+      }
+    });
+    reducedMotion.addEventListener("change", () => {
+      quoteCarousel.scrollLeft = 0;
+      measure();
+    });
   }
 
 })();
