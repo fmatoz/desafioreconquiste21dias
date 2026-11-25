@@ -9,6 +9,11 @@ window.RECONQUISTE_CONFIG = Object.freeze({
   videoPreviewUrl: "assets/vsl-previa.mp4",
   videoPosterUrl: "assets/vsl-poster.webp",
   supportEmail: "",
+  tracking: {
+    enabled: true,
+    endpoint: "https://projetopessoal-n8n.h574he.easypanel.host/webhook/track",
+    offerName: "Reconquiste seu Marido — Plano de 21 Dias"
+  },
   // Só ativar com uma condição que expire de fato na plataforma de pagamento.
   // expiresAt é o prazo absoluto fornecido pelo checkout/backend, inclusive por sessão.
   offerCountdown: { enabled: false, expiresAt: "", checkoutEnforcesDeadline: false }

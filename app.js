@@ -7,7 +7,7 @@
     catch { return null; }
   };
   const emit = (name, detail = {}) => {
-    // Evento local: integrar o destino de tracking somente com consentimento e política atualizada.
+    // O módulo de tracking cuida do consentimento e do envio externo.
     window.dispatchEvent(new CustomEvent("reconquiste:event", { detail: { name, ...detail } }));
   };
 
@@ -32,6 +32,7 @@
   }
   const checkout = safeHttps(config.checkoutUrl);
   if (checkout) {
+    if (window.RECONQUISTE_TRACKING) window.RECONQUISTE_TRACKING.decorate(checkout);
     const incoming = new URLSearchParams(window.location.search);
     ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid", "gclid"].forEach((key) => {
       const value = incoming.get(key);
@@ -116,6 +117,7 @@
     let started = false;
     let starting = false;
     let tracked = false;
+    const milestones = new Set();
     let inView = true;
     const reducedVideoMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (videoPoster) video.poster = videoPoster.href;
@@ -196,6 +198,15 @@
       updateVideoButton();
     });
     video.addEventListener("pause", updateVideoButton);
+    video.addEventListener("timeupdate", () => {
+      if (!started || video.muted || !tracked || !Number.isFinite(video.duration) || !video.duration) return;
+      [25, 50, 75].forEach((percent) => {
+        if (video.currentTime / video.duration * 100 >= percent && !milestones.has(percent)) {
+          milestones.add(percent);
+          emit("vsl_" + percent);
+        }
+      });
+    });
     video.addEventListener("ended", () => {
       updateVideoButton();
       if (started) emit("vsl_complete");

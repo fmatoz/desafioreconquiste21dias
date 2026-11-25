@@ -1,6 +1,6 @@
 # Reconquiste — Plano de 21 Dias
 
-Landing page responsiva do guia **Reconquiste seu Marido — Plano de 21 Dias de Atitudes que Aproximam**. HTML, CSS e JavaScript, sem dependências de produção, sem coleta de dados nesta versão. As fotografias dos relatos são arquivos locais em WebP e PNG. Os retratos das autoridades carregam de fontes externas oficiais, com identificação por iniciais como alternativa se indisponíveis.
+Landing page responsiva do guia **Reconquiste seu Marido — Plano de 21 Dias de Atitudes que Aproximam**. HTML, CSS e JavaScript, sem dependências de produção, com medição opcional de visitas, VSL e cliques integrada ao n8n e Google Sheets. As fotografias dos relatos são arquivos locais em WebP e PNG. Os retratos das autoridades carregam de fontes externas oficiais, com identificação por iniciais como alternativa se indisponíveis.
 
 [Ver a LP publicada](https://desafioreconquiste21dias.vercel.app/)
 
@@ -32,7 +32,7 @@ Edite `config.js`:
 
 O player nativo mostra o botão “Assista esse Vídeo” na prévia e quando pausado. Durante a reprodução, o vídeo fica sem botões visíveis; tocar na tela pausa, e o play reaparece para continuar. O mesmo controle funciona por teclado com Enter ou espaço. Ao terminar, o play central dá lugar à mensagem “Seu próximo passo começa aqui”, que orienta a visitante a tocar no botão verde abaixo para receber o plano e os três bônus. “Assistir novamente” reinicia a VSL; o fim não dispara compra nem navegação automática. Não há barra de progresso, volume, velocidade, fullscreen ou Picture-in-Picture. A primeira ação de play troca a prévia pelo vídeo completo, do início e com áudio; pause e continuar preservam o ponto. A prévia é interrompida fora da tela, em aba oculta ou com preferência por movimento reduzido. Bloqueios de autoplay preservam o pôster e o play.
 
-O checkout configurado recebe os parâmetros `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_term`, `fbclid` e `gclid` da visita, preservando valores já definidos no destino. Não há envio de eventos à Meta nem a n8n nesta versão. Para integrar o tracking, utilize os eventos locais `reconquiste:event` (`hero_cta`, `checkout_cta`, `vsl_play`) e revise privacidade/consentimento antes de instalar ferramentas externas. Nenhum evento `purchase` é disparado por um clique.
+O checkout recebe UTMs e identificadores de clique. Após permissão de medição, `tracking.js` registra `page_view`, início/progresso/fim da VSL e `initiate_checkout` na planilha existente por meio do n8n. Um `click_id` no `utm_content` permite associar a venda recebida da Wiapy à visita. `initiate_checkout` significa clique de saída, e não checkout carregado ou compra. O navegador nunca dispara `purchase`. O pixel da Meta ainda não está instalado; a configuração da oferta no webhook Wiapy e o pixel do fluxo de vendas precisam ser conferidos antes de anunciar. Veja `docs/tracking.md`.
 
 O PDF completo **não está no repositório público**. A imagem `assets/capa.webp` reproduz a capa real; a entrega do material fica na plataforma de venda.
 
@@ -54,7 +54,7 @@ Produção informada pelo proprietário: https://desafioreconquiste21dias.vercel
 - Não há desconto fictício, escassez, avaliações inventadas, estatísticas de clientes ou garantia de reconquista. O componente de contagem está desativado até existir uma condição real com prazo no checkout.
 - Os relatos externos têm traduções adaptadas ao português brasileiro. A publicação de origem, a prática e o material de cada experiência estão documentados em `docs/fontes.md`. Não são avaliações do nosso produto.
 - Vinho escuro `#280f20`, rosa `#ffbed5`, fundos claros e CTAs em verde `#49dd91`, com texto escuro. Contraste e hierarquia orientam a escolha; não há alegação de cor comprovadamente superior para mulheres.
-- Tipografia nativa, capa em WebP local, sem bibliotecas, fontes ou rastreadores externos. Retratos oficiais são carregados de suas fontes, sob demanda, sem enviar a URL da LP como referenciador.
+- Tipografia nativa, capa em WebP local, sem bibliotecas ou fontes adicionais; a medição opcional usa um módulo local e o webhook n8n. Retratos oficiais são carregados de suas fontes, sob demanda, sem enviar a URL da LP como referenciador.
 - FAQ nativa, diálogos acessíveis, foco de teclado e respeito à preferência de movimento reduzido.
 
 Veja a documentação de pesquisa em `docs/fontes.md`.
@@ -99,3 +99,4 @@ No celular, as autoridades ficam em três cartões lado a lado; os quatro relato
 Verificação desta redução em viewport de 390 × 844 px: altura inicial de 11.395 px e altura compacta de aproximadamente 4.847 px, cerca de 57% menor. Na versão anterior, carrossel (anterior/próximo), expansão da amostra, CTA e ausência de rolagem horizontal conferidos em seis larguras. As fotografias externas usam identificação por iniciais se indisponíveis no ambiente de teste.
 
 O cabeçalho de marca e informações acima da Hero foi removido. A logo completa foi preservada no rodapé. O botão fixo do celular, sua lógica e o espaço reservado a ele foram removidos; os CTAs das seções continuam disponíveis.
+

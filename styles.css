@@ -716,3 +716,11 @@ dialog{padding:35px 24px}dialog h2{font-size:1.75rem}dialog p{font-size:.875rem}
 .vsl-replay{min-height:44px;padding:6px 10px;border:0;background:transparent;color:#e0cbd6;font-size:.75rem;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .vsl-replay:hover{color:#fff}
 .vsl-replay:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:5px}
+.measurement-choice{position:fixed;z-index:40;bottom:12px;left:12px;right:12px;max-width:440px;margin-left:auto;padding:16px;border:1px solid #dfc7d3;border-radius:14px;background:#fff;box-shadow:0 8px 35px #280f2024;color:#34202b}
+.measurement-choice[hidden]{display:none}
+.measurement-choice p{margin:0 0 12px;font-size:.875rem;line-height:1.5}
+.measurement-choice>div{display:flex;gap:10px}
+.measurement-choice button,#measurement-settings{min-height:44px;padding:10px 16px;border:1px solid #987080;border-radius:8px;background:#fff7fa;color:#542c41;font:inherit;cursor:pointer}
+.measurement-choice button{flex:1;font-size:.875rem;font-weight:650}
+.measurement-choice button:focus-visible,#measurement-settings:focus-visible{outline:3px solid #542c41;outline-offset:3px}
+
