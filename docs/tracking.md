@@ -5,7 +5,7 @@
 - Planilha: **Trackeamento Meta Ads**. Abas `tracking`, `vendas`, `ads_meta`, `dashboard`, `funil`, `horarios` e `status`.
 - Coleta da LP: fluxo **Tracking** no n8n, endpoint público de entrada definido em `config.js`. Esse endereço não concede acesso à leitura da planilha.
 - Pagamentos: fluxo **Vendas**, com normalizador Wiapy. A ligação desse webhook à oferta Reconquiste deve ser conferida na conta da Wiapy.
-- O fluxo de vendas existente envia `Purchase` para um pixel antigo. Antes de conectar esta oferta, configurar o pixel correto e conferir a deduplicação. Tokens da Meta ficam no servidor, nunca em arquivos públicos.
+- O pixel da LP é `1795323998419205`. O fluxo de vendas existente ainda envia `Purchase` para um pixel antigo. Antes de conectar esta oferta, configurar o pixel correto e conferir a deduplicação. Tokens da Meta ficam no servidor, nunca em arquivos públicos.
 
 ## Eventos da LP
 
@@ -25,7 +25,7 @@ Após permissão, um `click_id` aleatório é guardado em `sessionStorage`. Visi
 
 Os três links recebem os parâmetros conhecidos da campanha e `utm_content=CONTEUDO_ORIGINAL||cid:CLICK_ID`. O `Format Venda` existente separa o marcador e grava `click_id` e `utm_content_original`. O conteúdo original do anúncio é preservado. Parâmetros do checkout já configurados têm prioridade. `utm_id`, `fbclid` e `gclid` também são encaminhados; a estrutura atual da aba tracking armazena `fbclid`, mas não possui colunas próprias para `utm_id` e `gclid`.
 
-A LP envia apenas origem + rota em `page_url`, sem parâmetros livres. Não pede nome, telefone, documento ou dados de pagamento. Nesta etapa não instala pixel nem cria cookies de publicidade. A escolha de medição dura até 180 dias em `localStorage` e pode ser alterada em **Privacidade**. Sem permissão, o site e a compra continuam funcionando; a LP não envia eventos nem adiciona o identificador interno aos links.
+A LP envia apenas origem + rota em `page_url`, sem parâmetros livres. Não pede nome, telefone, documento ou dados de pagamento. Após consentimento v2, carrega o pixel da Meta e permite cookies de medição de anúncios. O consentimento v1 não autoriza essa nova finalidade. A escolha de medição dura até 180 dias em `localStorage` e pode ser alterada em **Privacidade**. Sem permissão, o site e a compra continuam funcionando; a LP não envia eventos nem adiciona o identificador interno aos links.
 
 ## Confirmação da Wiapy
 
@@ -51,3 +51,13 @@ Em 25/11/2026, o fluxo Tracking foi corrigido para Google Sheets `values.append`
 - Painel web deverá exigir autenticação e retornar somente agregados necessários. Não publicar a planilha ou dados pessoais de compradores para alimentar o frontend.
 
 Referência da gravação pela API: https://developers.google.com/workspace/sheets/api/reference/rest/v4/spreadsheets.values/append
+
+## Meta Pixel — 25/11/2026
+
+O ID público `1795323998419205` está centralizado em `config.js`. O script oficial da Meta carrega após permissão. PageView e ViewContent sinalizam a visita; InitiateCheckout sinaliza o clique de saída para o checkout, conforme o exemplo da referência oficial da Meta. O clique continua sem comprovar carregamento do checkout nem compra. Eventos da VSL são personalizados. Todos usam IDs de eventos estáveis por carregamento e são enviados apenas ao pixel configurado (trackSingle / trackSingleCustom).
+
+O modo de diagnóstico não carrega a Meta. A recusa e a revogação interrompem novos eventos; preferências antigas exigem nova escolha. O código da LP não envia campos de correspondência avançada nem dispara Purchase. O token da Conversions API nunca deve ser gravado em config.js, HTML, JavaScript, documentação ou histórico público.
+
+O envio de compras pela CAPI depende de atualização segura no n8n, com filtro pelo produto Reconquiste, confirmação de pagamento aprovado e tratamento de estornos. Não reutilizar o pixel novo indiscriminadamente para produtos antigos. Não ativar duas fontes de Purchase sem validar event_name + event_id para deduplicação. Webhook e CAPI são integrações diferentes; o token Meta não autentica chamadas Wiapy → n8n.
+
+Referências: https://developers.facebook.com/documentation/meta-pixel/reference e https://docs.n8n.io/connect/n8n-api/authentication.md

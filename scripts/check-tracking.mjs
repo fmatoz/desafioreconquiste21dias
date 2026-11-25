@@ -3,14 +3,14 @@ import vm from 'node:vm';
 import { readFile } from 'node:fs/promises';
 const source = await readFile(new URL('../tracking.js', import.meta.url), 'utf8');
 const memory = () => { const data = new Map(); return { getItem: key => data.get(key) || null, setItem: (key, value) => data.set(key, value), removeItem: key => data.delete(key) }; };
-function page({ search = '', local = memory(), session = memory(), blocked = false } = {}) {
-  const listeners = {}, choices = {}, requests = [], links = [{ href: '' }];
+function page({ search = '', local = memory(), session = memory(), blocked = false, metaPixelId = '' } = {}) {
+  const listeners = {}, choices = {}, requests = [], links = [{ href: '' }], scripts = [];
   const panel = { hidden: false, setAttribute() {}, querySelector: selector => ({ addEventListener: (_, handler) => { choices[selector] = handler; } }) };
-  const document = { createElement: () => panel, querySelectorAll: () => links, querySelector: () => ({ addEventListener() {} }), body: { append() {} } };
-  const window = { RECONQUISTE_CONFIG: { price: 14.97, checkoutUrl: 'https://pay.wiapy.com/test', tracking: { enabled: true, endpoint: 'https://tracking.example/track', offerName: 'Reconquiste' } }, addEventListener: (name, handler) => { listeners[name] = handler; } };
+  const document = { cookie: '', createElement: tag => tag === 'script' ? {} : panel, head: { append: script => scripts.push(script) }, querySelectorAll: () => links, querySelector: () => ({ addEventListener() {} }), body: { append() {} } };
+  const window = { RECONQUISTE_CONFIG: { price: 14.97, checkoutUrl: 'https://pay.wiapy.com/test', tracking: { enabled: true, endpoint: 'https://tracking.example/track', offerName: 'Reconquiste', metaPixelId } }, addEventListener: (name, handler) => { listeners[name] = handler; } };
   for (const [key, value] of [['localStorage', local], ['sessionStorage', session]]) Object.defineProperty(window, key, { get() { if (blocked) throw Error('blocked'); return value; } });
   vm.runInNewContext(source, { window, document, location: { search, origin: 'https://lp.example', pathname: '/' }, crypto: { randomUUID: () => crypto.randomUUID() }, URL, URLSearchParams, Date, navigator: { userAgent: 'test', sendBeacon: (url, body) => { requests.push(Object.fromEntries(body)); return true; } }, fetch: () => { throw Error('Unexpected fallback'); } });
-  return { window, requests, links, allow: () => choices['[data-measure="yes"]'](), deny: () => choices['[data-measure="no"]'](), event: (name, checkoutConfigured = true) => listeners['reconquiste:event']({ detail: { name, checkoutConfigured } }) };
+  return { window, requests, links, scripts, allow: () => choices['[data-measure="yes"]'](), deny: () => choices['[data-measure="no"]'](), event: (name, checkoutConfigured = true) => listeners['reconquiste:event']({ detail: { name, checkoutConfigured } }) };
 }
 const local = memory(), session = memory();
 const p = page({ search: '?utm_source=FB&utm_campaign=ABO%7C123&utm_content=CT%7C456&email=private@example.com', local, session });
@@ -38,3 +38,32 @@ const blocked = page({ blocked: true, search: '?tracking_test=1' }); blocked.all
 assert.deepEqual(blocked.requests.map(r => r.event), ['diagnostico_page_view', 'diagnostico_vsl_complete']);
 assert.equal(blocked.requests[0].click_id, blocked.requests[1].click_id);
 console.log('Tracking: consentimento, revogação, atribuição, deduplicação, UTMs, armazenamento bloqueado e diagnóstico aprovados.');
+
+const pixel = page({ metaPixelId: '1795323998419205' });
+assert.equal(pixel.scripts.length, 0, 'Meta não carrega antes da escolha');
+pixel.allow();
+assert.equal(pixel.scripts.length, 1, 'Meta carrega uma vez depois da escolha');
+assert.equal(pixel.scripts[0].src, 'https://connect.facebook.net/en_US/fbevents.js');
+const commands = () => pixel.window.fbq.queue.map(args => Array.from(args));
+assert(commands().some(c => c[0] === 'init' && c[1] === '1795323998419205'));
+assert(commands().some(c => c[0] === 'trackSingle' && c[2] === 'PageView' && c[4].eventID === pixel.requests[0].event_id));
+assert(commands().some(c => c[0] === 'trackSingle' && c[2] === 'ViewContent'));
+pixel.event('hero_cta'); pixel.event('checkout_cta'); pixel.event('vsl_play'); pixel.event('vsl_25'); pixel.event('vsl_complete'); pixel.event('purchase');
+assert.equal(commands().filter(c => c[2] === 'InitiateCheckout').length, 1);
+assert.equal(commands().find(c => c[2] === 'InitiateCheckout')[3].currency, 'BRL');
+assert(!commands().some(c => c[2] === 'Purchase'), 'LP nunca emite compra');
+assert.equal(pixel.scripts.length, 1);
+pixel.deny();
+assert(commands().some(c => c[0] === 'consent' && c[1] === 'revoke'));
+const afterRevoke = commands().length;
+pixel.event('vsl_75');
+assert.equal(commands().length, afterRevoke);
+const diagnosticPixel = page({ search: '?tracking_test=1', metaPixelId: '1795323998419205' });
+diagnosticPixel.allow(); diagnosticPixel.event('hero_cta');
+assert.equal(diagnosticPixel.scripts.length, 0, 'Diagnóstico não envia à Meta');
+const legacyConsent = memory();
+legacyConsent.setItem('reconquiste:measurement:v1', JSON.stringify({ allowed: true, at: Date.now() }));
+const migrated = page({ local: legacyConsent, metaPixelId: '1795323998419205' });
+assert.equal(migrated.requests.length, 0);
+assert.equal(migrated.scripts.length, 0, 'Consentimento antigo não autoriza publicidade');
+console.log('Pixel: bloqueio antes da escolha, migração do consentimento, IDs de eventos, recusa, deduplicação e ausência de Purchase aprovados.');

@@ -11,6 +11,7 @@ window.RECONQUISTE_CONFIG = Object.freeze({
   supportEmail: "",
   tracking: {
     enabled: true,
+    metaPixelId: "1795323998419205",
     endpoint: "https://projetopessoal-n8n.h574he.easypanel.host/webhook/track",
     offerName: "Reconquiste seu Marido — Plano de 21 Dias"
   },

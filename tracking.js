@@ -10,7 +10,7 @@
   const params = new URLSearchParams(location.search);
   const test = params.get("tracking_test") === "1";
   const keys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "utm_id", "fbclid", "gclid"];
-  const consentKey = "reconquiste:measurement:v1";
+  const consentKey = "reconquiste:measurement:v2";
   const sessionKey = "reconquiste:attribution:v1";
   const ttl = 30 * 60 * 1000;
   const id = () => crypto.randomUUID?.() || Date.now().toString(36) + "_" + Math.random().toString(36).slice(2);
@@ -25,6 +25,10 @@
   let session;
   const sent = new Set();
   const buffered = new Set();
+  const readMetaCookie = (name) => {
+    try { return (document.cookie || "").split(";").map(v => v.trim()).find(v => v.startsWith(name + "="))?.slice(name.length + 1) || ""; }
+    catch { return ""; }
+  };
   const stripClickId = (value) => String(value || "").replace(/(?:^|\|\|)cid:[A-Za-z0-9_-]+/g, "").replace(/\|\|$/, "");
 
   const ensureSession = () => {
@@ -60,10 +64,58 @@
   };
   window.RECONQUISTE_TRACKING = Object.freeze({ decorate });
 
+
+  // O token CAPI pertence ao servidor. Aqui entra apenas o ID público do pixel.
+  const pixelId = String(settings.metaPixelId || "");
+  let pixelReady = false;
+  const startPixel = () => {
+    if (test || consent !== true || !/^\d{10,20}$/.test(pixelId)) return false;
+    if (!pixelReady) {
+      if (!window.fbq) {
+        const fbq = function () {
+          if (fbq.callMethod) fbq.callMethod.apply(fbq, arguments);
+          else fbq.queue.push(arguments);
+        };
+        fbq.push = fbq;
+        fbq.loaded = true;
+        fbq.version = "2.0";
+        fbq.queue = [];
+        window.fbq = window._fbq = fbq;
+        const script = document.createElement("script");
+        script.async = true;
+        script.src = "https://connect.facebook.net/en_US/fbevents.js";
+        document.head.append(script);
+      }
+      window.fbq("consent", "grant");
+      window.fbq("set", "autoConfig", false, pixelId);
+      window.fbq("init", pixelId);
+      pixelReady = true;
+    } else window.fbq("consent", "grant");
+    return true;
+  };
+  const pixelEvent = (event, eventId) => {
+    try {
+      if (!startPixel()) return;
+      const properties = { content_ids: ["reconquiste-21-dias"], content_type: "product" };
+      const options = { eventID: eventId };
+      if (event === "page_view") {
+        window.fbq("trackSingle", pixelId, "PageView", {}, options);
+        window.fbq("trackSingle", pixelId, "ViewContent", properties, { eventID: "view_" + pageId });
+      } else if (event === "initiate_checkout") {
+        window.fbq("trackSingle", pixelId, "InitiateCheckout", {
+          ...properties, value: Number(config.price) || 0, currency: "BRL", num_items: 1
+        }, options);
+      } else if (/^vsl_(play|25|50|75|complete)$/.test(event)) {
+        window.fbq("trackSingleCustom", pixelId, event, {}, options);
+      }
+    } catch { /* Falha ou bloqueio da Meta não interrompe o site nem o Sheets. */ }
+  };
+
   const send = (event) => {
     if (consent !== true || sent.has(event)) return;
     sent.add(event);
     const data = ensureSession();
+    pixelEvent(event, event + "_" + pageId);
     // Envia apenas a rota; parâmetros livres podem conter informações pessoais.
     const payload = {
       event: (test ? "diagnostico_" : "") + event,
@@ -71,7 +123,8 @@
       click_id: data.click_id,
       ...Object.fromEntries(keys.slice(0, 5).map(key => [key, data.attribution[key] || ""])),
       fbclid: data.attribution.fbclid || "",
-      fbp: "", fbc: "",
+      fbp: consent === true ? readMetaCookie("_fbp") : "",
+      fbc: consent === true ? readMetaCookie("_fbc") : "",
       offer_name: settings.offerName,
       offer_value: Number(config.price) || 0,
       page_url: location.origin + location.pathname,
@@ -95,13 +148,14 @@
   const panel = document.createElement("section");
   panel.className = "measurement-choice";
   panel.setAttribute("aria-label", "Preferências de medição");
-  panel.innerHTML = '<p>Podemos medir sua visita e o uso do vídeo para melhorar esta página?</p><div><button type="button" data-measure="no">Agora não</button><button type="button" data-measure="yes">Permitir</button></div>';
+  panel.innerHTML = '<p>Você permite cookies e medição de visitas e vídeo para analisar esta página e nossos anúncios na Meta?</p><div><button type="button" data-measure="no">Agora não</button><button type="button" data-measure="yes">Permitir</button></div>';
   panel.hidden = consent !== null;
   const setConsent = (allowed) => {
     consent = allowed;
     write(local, consentKey, { allowed, at: Date.now() });
     panel.hidden = true;
     if (!allowed) {
+      if (pixelReady) window.fbq("consent", "revoke");
       session = null;
       buffered.clear();
       try { sessionStorageSafe.removeItem(sessionKey); } catch { /* Sem armazenamento. */ }
