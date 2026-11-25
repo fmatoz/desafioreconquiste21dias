@@ -93,34 +93,123 @@
     $("#privacy-contact").hidden = false;
     $("#privacy-contact").textContent = "Contato: " + config.supportEmail;
   }
-  const videoUrl = safeHttps(config.videoUrl);
-  const embedHosts = ["www.youtube-nocookie.com", "www.youtube.com", "player.vimeo.com"];
-  const validEmbed = videoUrl && embedHosts.includes(videoUrl.hostname) &&
-    ((videoUrl.hostname === "player.vimeo.com" && /^\/video\/\d+/.test(videoUrl.pathname)) || /^\/embed\/[\w-]+/.test(videoUrl.pathname));
-  const validVideo = videoUrl && /\.(mp4|webm)$/i.test(videoUrl.pathname);
-  if ((config.videoType === "embed" && validEmbed) || (config.videoType === "video" && validVideo)) {
-    $("#video-placeholder").hidden = true;
-    $("#video-play").hidden = false;
-    $("#video-play").addEventListener("click", () => {
-      let player;
-      if (config.videoType === "embed") {
-        player = document.createElement("iframe");
-        player.title = "Apresentação — Reconquiste seu Marido";
-        player.allow = "autoplay; encrypted-media; fullscreen; picture-in-picture";
-        player.allowFullscreen = true;
-        player.referrerPolicy = "strict-origin-when-cross-origin";
-        videoUrl.searchParams.set("autoplay", "1");
-        player.src = videoUrl.href;
-      } else {
-        player = document.createElement("video");
-        player.controls = true; player.playsInline = true; player.preload = "metadata";
-        player.setAttribute("aria-label", "Apresentação — Reconquiste seu Marido");
-        player.src = videoUrl.href;
+  // Prévia silenciosa; a apresentação com áudio começa somente por ação da visitante.
+  const mediaUrl = (value) => {
+    if (typeof value !== "string" || !value) return null;
+    if (/^\/?assets\/[\w/-]+\.(mp4|webm|webp)$/i.test(value) && !value.split("/").includes("..")) {
+      return new URL(value, document.baseURI);
+    }
+    return safeHttps(value);
+  };
+  const video = $("#vsl-video");
+  const videoButton = $("#video-play");
+  const videoShell = $("#video-container");
+  const videoMessage = $("#vsl-message");
+  const fullVideo = mediaUrl(config.videoUrl);
+  const previewVideo = mediaUrl(config.videoPreviewUrl);
+  const videoPoster = mediaUrl(config.videoPosterUrl);
+  if (video && videoButton && fullVideo && /\.(mp4|webm)$/i.test(fullVideo.pathname)) {
+    let started = false;
+    let starting = false;
+    let tracked = false;
+    let inView = true;
+    const reducedVideoMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (videoPoster) video.poster = videoPoster.href;
+    video.controls = false;
+    video.disablePictureInPicture = true;
+    video.disableRemotePlayback = true;
+
+    const updateVideoButton = () => {
+      const playing = started && !video.paused && !video.ended;
+      videoShell.dataset.state = starting ? "loading" : !started ? "preview" : video.ended ? "ended" : playing ? "playing" : "paused";
+      videoButton.disabled = starting;
+      videoButton.setAttribute("aria-label", starting ? "Carregando vídeo" : !started ? "Reproduzir vídeo com som" : playing ? "Pausar vídeo" : video.ended ? "Reproduzir vídeo novamente" : "Continuar vídeo");
+      videoShell.setAttribute("aria-busy", String(starting));
+    };
+    const showVideoError = () => {
+      if (!started) return; // Se a prévia falhar, o pôster e o play permanecem disponíveis.
+      starting = false;
+      videoMessage.textContent = "Não foi possível carregar o vídeo. Toque em play para tentar novamente.";
+      videoMessage.hidden = false;
+      updateVideoButton();
+    };
+    const updatePreview = () => {
+      if (started || !previewVideo) return;
+      if (document.hidden || !inView || reducedVideoMotion.matches) {
+        video.pause();
+        return;
       }
-      $("#video-container").replaceChildren(player);
-      if (config.videoType === "video") player.play().catch(() => { /* Os controles continuam disponíveis. */ });
-      emit("vsl_play");
-    }, { once: true });
+      video.muted = true;
+      video.loop = true;
+      video.play().catch(() => { /* Economia de energia pode bloquear autoplay; o play continua disponível. */ });
+    };
+    const toggleVideo = () => {
+      if (starting) return;
+      if (started && !video.paused && !video.ended) {
+        video.pause();
+        return;
+      }
+      videoMessage.hidden = true;
+      const mustLoad = !started || video.error;
+      started = true;
+      if (mustLoad) {
+        video.pause();
+        video.loop = false;
+        video.autoplay = false;
+        video.muted = false;
+        video.preload = "auto";
+        video.src = fullVideo.href;
+        video.load();
+      }
+      if (video.ended) video.currentTime = 0;
+      video.muted = false;
+      starting = true;
+      updateVideoButton();
+      // Chamado diretamente no gesto de play, inclusive no Safari/iOS.
+      video.play().then(() => {
+        starting = false;
+        updateVideoButton();
+      }).catch(() => {
+        starting = false;
+        updateVideoButton();
+        if (video.error) showVideoError();
+      });
+    };
+    videoButton.addEventListener("click", toggleVideo);
+    video.addEventListener("click", toggleVideo);
+    video.addEventListener("playing", () => {
+      if (!started) return;
+      starting = false;
+      if (!tracked) {
+        tracked = true;
+        emit("vsl_play");
+      }
+      updateVideoButton();
+    });
+    video.addEventListener("pause", updateVideoButton);
+    video.addEventListener("ended", () => {
+      updateVideoButton();
+      if (started) emit("vsl_complete");
+    });
+    video.addEventListener("error", showVideoError);
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) video.pause();
+      else updatePreview();
+    });
+    reducedVideoMotion.addEventListener("change", updatePreview);
+    if (previewVideo) {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.loop = true;
+      video.preload = "none";
+      video.src = previewVideo.href;
+      const observer = new IntersectionObserver(([entry]) => {
+        inView = entry.isIntersecting;
+        updatePreview();
+      }, { rootMargin: "80px" });
+      observer.observe(videoShell);
+    }
+    updateVideoButton();
   }
 
 

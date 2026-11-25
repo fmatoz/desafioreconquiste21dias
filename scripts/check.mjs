@@ -16,5 +16,8 @@ vm.runInNewContext(await readFile(new URL('config.js', root), 'utf8'), context);
 const config = context.window.RECONQUISTE_CONFIG;
 assert(config && typeof config.checkoutUrl === 'string', 'Configuração inválida');
 assert(config.price === null || typeof config.price === 'number' && config.price > 0, 'Preço inválido');
+for (const field of ['videoUrl', 'videoPreviewUrl', 'videoPosterUrl']) {
+  if (config[field]?.startsWith('assets/')) await access(new URL(config[field], root));
+}
 console.log(`Estrutura validada: ${ids.length} IDs únicos, âncoras e arquivos locais existentes.`);
 console.log(`Checkout: ${config.checkoutUrl ? 'configurado' : 'pendente'} | VSL: ${config.videoUrl ? 'configurada' : 'pendente'} | Preço: ${config.price ?? 'pendente'}`);

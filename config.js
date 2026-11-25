@@ -4,10 +4,10 @@ window.RECONQUISTE_CONFIG = Object.freeze({
   // Valores em reais. Null oculta o preço; originalPrice só aparece quando maior que price.
   price: 14.97,
   originalPrice: 47,
-  // MP4/WebM público, ou embed HTTPS de YouTube/Vimeo. Deixe vazio até a VSL estar pronta.
-  videoUrl: "",
-  // "video" para MP4/WebM; "embed" para YouTube/Vimeo (somente URL de incorporação).
-  videoType: "video",
+  // Arquivos locais ou HTTPS. A versão completa só é carregada após o play.
+  videoUrl: "assets/vsl-reconquiste.mp4",
+  videoPreviewUrl: "assets/vsl-previa.mp4",
+  videoPosterUrl: "assets/vsl-poster.webp",
   supportEmail: "",
   // Só ativar com uma condição que expire de fato na plataforma de pagamento.
   // expiresAt é o prazo absoluto fornecido pelo checkout/backend, inclusive por sessão.

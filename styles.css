@@ -689,3 +689,20 @@ dialog{padding:35px 24px}dialog h2{font-size:1.75rem}dialog p{font-size:.875rem}
 
 /* Enquadramento da fotografia espontânea fornecida para Barbara. */
 .person-avatar.barbara-avatar img{inset:-4% auto auto -79%;width:175%;height:175%;max-width:none;object-position:50% 50%}
+
+/* Player da VSL: uma prévia muda e somente play/pause. */
+.video-shell.vsl-player{isolation:isolate;background:#210f1b}
+.vsl-player video{width:100%;height:100%;object-fit:contain;cursor:pointer}
+.vsl-player .vsl-toggle{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:82px;height:82px;min-height:48px;padding:0;border:1px solid #ffffffa8;border-radius:50%;background:#431c35e8;color:#fff;box-shadow:0 5px 30px #0005;cursor:pointer;transition:background .18s ease,width .18s ease,height .18s ease}
+.vsl-toggle svg{width:31px;height:31px;fill:currentColor;pointer-events:none}
+.vsl-toggle .vsl-icon-play{margin-left:5px}
+.vsl-toggle .vsl-icon-pause{display:none}
+.vsl-toggle:hover{background:#8c2e57f2}
+.vsl-toggle:focus-visible{outline:3px solid #fff;outline-offset:5px}
+.vsl-player[data-state="playing"] .vsl-toggle{left:auto;top:auto;right:12px;bottom:12px;transform:none;width:48px;height:48px;background:#210f1bd9}
+.vsl-player[data-state="playing"] .vsl-icon-play{display:none}
+.vsl-player[data-state="playing"] .vsl-icon-pause{display:block;width:23px;height:23px}
+.vsl-player[data-state="loading"] .vsl-toggle{cursor:wait;opacity:.75}
+.vsl-message{position:absolute;z-index:2;inset:auto 14px 108px;margin:0;padding:12px;border-radius:9px;background:#210f1bea;color:#fff;font-size:.8125rem;line-height:1.45;text-align:center}
+.vsl-player video::-webkit-media-controls{display:none!important}
+@media(prefers-reduced-motion:reduce){.vsl-player .vsl-toggle{transition:none}}

@@ -26,14 +26,13 @@
         <p class="hero-description">Saiba <strong>o que fazer, o que dizer e por onde começar</strong> para trazer mais carinho ao casamento. Um desafio por dia para transformar vontade em atitude.</p>
       </div>
       <div class="hero-media">
-        <div class="video-shell" id="video-container" aria-label="Apresentação do plano">
-          <div class="video-poster" id="video-poster">
-            <div class="poster-copy"><span class="poster-overline">RECONQUISTE SEU MARIDO</span><p>O amor também precisa<br>de um <em>próximo passo.</em></p><span class="poster-subtitle">Conheça o plano de 21 dias<br>de atitudes que aproximam.</span>
-              <div class="video-placeholder" id="video-placeholder"><span class="video-symbol" aria-hidden="true">▶</span><span>Vídeo de apresentação<small>Em breve</small></span></div>
-              <button class="video-play" id="video-play" type="button" hidden aria-label="Assistir à apresentação do plano"><span aria-hidden="true">▶</span> Assistir à apresentação</button>
-            </div>
-            <div class="poster-book" aria-hidden="true"><img src="assets/capa.webp" alt="" width="554" height="786" fetchpriority="high"><span class="poster-seal"><strong>21</strong>DIAS</span></div>
-          </div>
+        <div class="video-shell vsl-player" id="video-container" data-state="preview" aria-label="Apresentação do plano">
+          <video id="vsl-video" muted playsinline webkit-playsinline loop preload="none" poster="assets/vsl-poster.webp" controlslist="nodownload nofullscreen noremoteplayback" disablepictureinpicture disableremoteplayback aria-label="Vídeo de apresentação — Reconquiste seu Marido"></video>
+          <button class="vsl-toggle" id="video-play" type="button" aria-label="Reproduzir vídeo com som" aria-controls="vsl-video">
+            <svg class="vsl-icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5Z"/></svg>
+            <svg class="vsl-icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>
+          </button>
+          <p class="vsl-message" id="vsl-message" role="status" hidden></p>
         </div>
         <div class="hero-action"><a class="button primary" href="#plano" data-track="hero_cta">Quero começar minha reconquista</a><p class="cta-note">Uma atitude por dia. Mais intenção no tempo de vocês.</p>
           <div class="hero-facts" aria-label="O que está incluído"><span><svg><use href="#icon-check"/></svg>21 desafios práticos</span><span><svg><use href="#icon-check"/></svg>50 páginas de conteúdo</span><span><svg><use href="#icon-check"/></svg>Leia pelo celular</span></div>

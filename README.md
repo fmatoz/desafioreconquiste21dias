@@ -25,11 +25,12 @@ Edite `config.js`:
 | `checkoutUrl` | URL HTTPS real do checkout. Sem esse valor, o CTA abre um aviso de disponibilidade futura e não processa uma compra. |
 | `price` | Preço atual em reais, definido pelo proprietário como R$ 14,97. `null` oculta a área do preço. |
 | `originalPrice` | Preço anterior, definido pelo proprietário como R$ 47,00. Aparece riscado quando maior que `price`. |
-| `videoUrl` | URL pública HTTPS do MP4/WebM ou URL de embed do YouTube/Vimeo. O vídeo só carrega após clique. |
-| `videoType` | `video` para arquivo; `embed` para YouTube/Vimeo. |
+| `videoUrl` | MP4/WebM local em `assets/` ou HTTPS. A versão completa só carrega após play. |
+| `videoPreviewUrl` | Prévia curta sem áudio, em loop antes do play. |
+| `videoPosterUrl` | Pôster mostrado antes da prévia ou quando autoplay estiver bloqueado. |
 | `supportEmail` | Contato real para atendimento e privacidade. |
 
-URL de embed: `https://www.youtube-nocookie.com/embed/ID_DO_VIDEO` ou `https://player.vimeo.com/video/ID_DO_VIDEO`. Sem VSL, o espaço apresenta uma capa editorial e a indicação “Em breve”, sem botão de reprodução falso.
+O player nativo usa apenas um botão de play/pause. Não há barra de progresso, volume, velocidade, fullscreen ou Picture-in-Picture. A primeira ação de play troca a prévia pelo vídeo completo, do início e com áudio; pause e continuar preservam o ponto. A prévia é interrompida fora da tela, em aba oculta ou com preferência por movimento reduzido. Bloqueios de autoplay preservam o pôster e o play.
 
 O checkout configurado recebe os parâmetros `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_term`, `fbclid` e `gclid` da visita, preservando valores já definidos no destino. Não há envio de eventos à Meta nem a n8n nesta versão. Para integrar o tracking, utilize os eventos locais `reconquiste:event` (`hero_cta`, `checkout_cta`, `vsl_play`) e revise privacidade/consentimento antes de instalar ferramentas externas. Nenhum evento `purchase` é disparado por um clique.
 
@@ -45,7 +46,7 @@ Produção informada pelo proprietário: https://desafioreconquiste21dias.vercel
 
 ## Conteúdo e decisões
 
-- VSL vertical em 9:16, no pôster e nos players MP4/WebM e iframe. Hero centralizada, com vídeo vertical abaixo da chamada e altura limitada à tela.
+- VSL vertical em 9:16, com prévia muda e player nativo MP4/WebM. Hero centralizada, com vídeo vertical abaixo da chamada e altura limitada à tela.
 - Ordem da página: hero com VSL, material com amostra, bônus exclusivos, relatos “O que elas viveram”, oferta, pesquisas sobre conexão, garantia, dúvidas frequentes e rodapé.
 - A seção `#bonus`, logo após o material, apresenta três extras incluídos no plano: 12 mensagens para WhatsApp, 7 encontros de 15 minutos em casa e um calendário para depois dos 21 dias. Imagens locais em WebP. Os PDFs são entregues pela plataforma de venda.
 - CTAs distribuídos ao longo da página para a mesma oferta; checkout centralizado em `config.js`.
@@ -60,14 +61,14 @@ Veja a documentação de pesquisa em `docs/fontes.md`.
 
 ## Verificação realizada
 
-- Build e conferência de arquivos/âncoras aprovados; saída completa de aproximadamente 65 KB.
+- Build e conferência de arquivos/âncoras aprovados; arquivos estáticos e mídias locais incluídos na saída.
 - Navegador Edge sem interface: capturas e conferência visual em desktop e celular.
 - Sem rolagem horizontal em 320, 375, 390, 768, 1024 e 1440 px.
 - FAQ, diálogos, fechamento por Escape, retorno de foco conferidos. Carrossel de relatos no celular.
 - Configuração simulada: preço, passagem de UTMs sem sobrescrever valores do checkout e carregamento da VSL somente após clique.
 - Estados sem preço, VSL e checkout conferidos; nenhum erro JavaScript observado.
 
-A Vercel foi publicada pelo proprietário. O preço foi definido em `config.js`, de R$ 47,00 por R$ 14,97. Checkout e VSL continuam pendentes; as simulações de configuração não são compras reais. Não há resultado de conversão medido nesta etapa.
+A Vercel foi publicada pelo proprietário. O preço foi definido em `config.js`, de R$ 47,00 por R$ 14,97. A VSL final foi integrada; o checkout continua pendente; as simulações de configuração não são compras reais. Não há resultado de conversão medido nesta etapa.
 
 ## Prazo de oferta e contagem
 
@@ -79,7 +80,7 @@ Ao terminar uma condição real, o contador desaparece, o preço promocional é 
 
 ## VSL vertical
 
-O player mantém 9:16 antes e depois de reproduzir, sem cortar o vídeo. Em todos os tamanhos, fica centralizado abaixo da promessa, com o CTA logo depois. A altura se adapta à tela. A VSL ainda precisa ser fornecida.
+O player mantém 9:16 antes e depois de reproduzir, sem cortar o vídeo. Em todos os tamanhos, fica centralizado abaixo da promessa, com o CTA logo depois. A altura se adapta à tela. A VSL final é `assets/vsl-reconquiste.mp4` (720 × 1280, aproximadamente 1min59), com legendas já presentes na imagem. A prévia de seis segundos, sem faixa de áudio, fica em `assets/vsl-previa.mp4`. O master em 1080 × 1920 é mantido fora do repositório. O evento `vsl_play` só é emitido quando a apresentação com áudio começa, uma vez por carregamento, e `vsl_complete` sinaliza o fim.
 
 Os quatro relatos atuais são de Logan Ury, Laura Heck, Barbara Fredrickson e Franciele Grossi, com imagens locais e créditos no diálogo do rodapé. Yainak foi retirada por não ter foto identificada. Kristen Meinzer foi retirada após a busca por um retrato mais espontâneo.
 
