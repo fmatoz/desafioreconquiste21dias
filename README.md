@@ -72,7 +72,7 @@ A Vercel foi publicada pelo proprietário. O preço foi definido em `config.js`,
 
 ## Checkout Wiapy
 
-Em 25/11/2026, a Oferta Principal foi conferida em `https://pay.wiapy.com/v9l2cgEla5fk`, com o nome correto do produto. O checkout mostrou preço-base de R$ 14,97 e, no Pix, desconto de 10% com total de R$ 13,47. O valor da LP permanece no preço-base informado pelo proprietário. A página intermediária de vendas da Wiapy não é usada. Pagamento, entrega, reembolso e rastreamento da plataforma precisam de validação própria; abrir o checkout não é uma compra concluída.
+Em 25/11/2026, a Oferta Principal foi conferida em `https://pay.wiapy.com/v9l2cgEla5fk`, com o nome correto do produto e preço-base de R$ 14,97. Descontos adicionais por forma de pagamento são definidos na Wiapy e podem alterar o total mostrado no checkout. O valor da LP permanece no preço-base informado pelo proprietário. A página intermediária de vendas da Wiapy não é usada. Pagamento, entrega, reembolso e rastreamento da plataforma precisam de validação própria; abrir o checkout não é uma compra concluída.
 
 ## Prazo de oferta e contagem
 
