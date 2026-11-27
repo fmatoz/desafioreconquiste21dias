@@ -2,8 +2,10 @@
 window.DOCE_NO_LUCRO_CONFIG = Object.freeze({
   checkoutUrl: "",
   price: 10,
-  originalPrice: null,
+  originalPrice: 97,
   supportEmail: "",
+  // Somente relatos reais, com autorização. Campos: name, text, photoUrl (opcional).
+  testimonials: [],
   tracking: {
     enabled: false,
     metaPixelId: "",

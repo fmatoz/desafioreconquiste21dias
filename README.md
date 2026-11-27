@@ -6,10 +6,10 @@ Landing page de uma planilha de precificação para confeitaria. HTML, CSS e Jav
 
 ## Estado da oferta — 27/11/2026
 
-- Preço inicial escolhido: **R$ 10,00**, configurado em `config.js`.
-- Estrutura: hero com demonstração, conteúdo da planilha, três bônus, exemplos de uso, oferta, garantia, dúvidas e rodapé.
+- Preço inicial escolhido: **R$ 10,00**, com valor regular de **R$ 97,00** informado pelo proprietário, configurados em `config.js`.
+- Estrutura enxuta: hero com apresentação do produto, benefícios, três bônus com mockups, demonstração interativa, depoimentos (ocultos até receber relatos reais), oferta com quatro entregáveis separados, garantia, dúvidas e rodapé.
 - A seção dos pesquisadores e todo o conteúdo de relacionamento foram retirados da página.
-- A VSL antiga foi substituída por uma demonstração interativa com valores ilustrativos. Os cartões antigos foram substituídos por situações de uso, sem depoimentos inventados.
+- A demonstração interativa fica abaixo dos bônus. O bloco de situações de uso foi removido. Depoimentos reais serão cadastrados em `testimonials` de `config.js`, nos campos `name`, `text` e `photoUrl` opcional. A seção só aparece quando há relatos preenchidos.
 - Bônus apresentados: vídeo de uso, mensagens/orçamentos para WhatsApp e checklist de encomendas. A produção/entrega final desses materiais precisa estar concluída antes da abertura das vendas.
 - **Checkout novo pendente.** Sem URL válida, o botão abre um aviso de vendas ainda não disponíveis.
 - **Pixel e rastreamento desta oferta pendentes e desativados.** Nenhum pixel, checkout ou endpoint antigo está ativo nesta página.
@@ -47,6 +47,8 @@ Começar por R$ 10 e depois avaliar R$ 27, conforme orientação do proprietári
 ## Publicação e validação
 
 Publicação pela integração Git da Vercel, branch `main`, saída `dist`. O endereço da hospedagem continua sendo configurado separadamente do nome do repositório. Endereço existente: https://desafioreconquiste21dias.vercel.app/.
+
+Mockups novos gerados por imagegen e otimizados para WebP (720 × 720), um para cada bônus. São imagens ilustrativas de materiais digitais.
 
 Conferidos localmente: estrutura, referências de arquivos, âncoras, ausência do conteúdo antigo, testes do tracking e build. QA visual e funcional em navegador isolado nos tamanhos 320, 390, 768 e 1440 px: exemplos interativos, amostra, CTAs, aviso sem checkout, FAQ e privacidade. Não foi realizada compra de teste porque o checkout ainda não existe.
 

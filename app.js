@@ -8,6 +8,47 @@
     document.querySelectorAll("#price-label, [data-price]").forEach((element) => { element.textContent = money.format(config.price); });
   }
 
+  const reference = $("#original-price");
+  if (reference && Number.isFinite(config.originalPrice) && config.originalPrice > config.price) {
+    $("#original-price-label").textContent = money.format(config.originalPrice);
+    reference.hidden = false;
+  }
+
+  const testimonials = Array.isArray(config.testimonials) ? config.testimonials : [];
+  const verified = testimonials.filter(item => item && typeof item.name === "string" && item.name.trim() && typeof item.text === "string" && item.text.trim());
+  if (verified.length) {
+    const list = $("#testimonial-list");
+    verified.forEach(item => {
+      const card = document.createElement("figure");
+      card.className = "testimonial-card";
+      const quote = document.createElement("blockquote");
+      quote.textContent = item.text;
+      const caption = document.createElement("figcaption");
+      const name = document.createElement("strong");
+      name.textContent = item.name;
+      const avatar = document.createElement("span");
+      avatar.className = "testimonial-avatar";
+      avatar.textContent = item.name.trim().slice(0, 1).toUpperCase();
+      try {
+        const url = new URL(item.photoUrl);
+        if (url.protocol === "https:" && !url.username && !url.password) {
+          const image = document.createElement("img");
+          image.src = url.href;
+          image.alt = "";
+          image.width = 44;
+          image.height = 44;
+          image.loading = "lazy";
+          image.addEventListener("error", () => image.remove(), { once: true });
+          avatar.append(image);
+        }
+      } catch { /* Sem retrato fornecido, mostra apenas a inicial real. */ }
+      caption.append(avatar, name);
+      card.append(quote, caption);
+      list.append(card);
+    });
+    $("#depoimentos").hidden = false;
+  }
+
   let checkout;
   try {
     const url = new URL(config.checkoutUrl);
