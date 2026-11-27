@@ -1,21 +1,13 @@
-// Configure o checkout e a VSL sem alterar o layout. Nenhum segredo deve entrar neste arquivo público.
-window.RECONQUISTE_CONFIG = Object.freeze({
-  checkoutUrl: "https://pay.wiapy.com/v9l2cgEla5fk",
-  // Valores em reais. Null oculta o preço; originalPrice só aparece quando maior que price.
-  price: 14.97,
-  originalPrice: 47,
-  // Arquivos locais ou HTTPS. A versão completa só é carregada após o play.
-  videoUrl: "assets/vsl-reconquiste.mp4",
-  videoPreviewUrl: "assets/vsl-previa.mp4",
-  videoPosterUrl: "assets/vsl-poster.webp",
+/* Configure o novo checkout e o pixel desta oferta antes de abrir as vendas. */
+window.DOCE_NO_LUCRO_CONFIG = Object.freeze({
+  checkoutUrl: "",
+  price: 10,
+  originalPrice: null,
   supportEmail: "",
   tracking: {
-    enabled: true,
-    metaPixelId: "1795323998419205",
-    endpoint: "https://projetopessoal-n8n.h574he.easypanel.host/webhook/track",
-    offerName: "Reconquiste seu Marido — Plano de 21 Dias"
-  },
-  // Só ativar com uma condição que expire de fato na plataforma de pagamento.
-  // expiresAt é o prazo absoluto fornecido pelo checkout/backend, inclusive por sessão.
-  offerCountdown: { enabled: false, expiresAt: "", checkoutEnforcesDeadline: false }
+    enabled: false,
+    metaPixelId: "",
+    endpoint: "",
+    offerName: "Doce no Lucro — Planilha de Precificação"
+  }
 });

@@ -1,6 +1,6 @@
 (() => {
   "use strict";
-  const config = window.RECONQUISTE_CONFIG || {};
+  const config = window.DOCE_NO_LUCRO_CONFIG || {};
   const settings = config.tracking;
   if (!settings?.enabled) return;
   let endpoint;
@@ -10,9 +10,9 @@
   const params = new URLSearchParams(location.search);
   const test = params.get("tracking_test") === "1";
   const keys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "utm_id", "fbclid", "gclid"];
-  const consentKey = "reconquiste:measurement:v2";
-  const sessionKey = "reconquiste:attribution:v1";
-  const visitorKey = test ? "reconquiste:visitor:test:v1" : "reconquiste:visitor:v1";
+  const consentKey = "docenolucro:measurement:v2";
+  const sessionKey = "docenolucro:attribution:v1";
+  const visitorKey = test ? "docenolucro:visitor:test:v1" : "docenolucro:visitor:v1";
   const ttl = 30 * 60 * 1000;
   const id = () => crypto.randomUUID?.() || Date.now().toString(36) + "_" + Math.random().toString(36).slice(2);
   const pageId = id();
@@ -79,7 +79,7 @@
     document.querySelectorAll('[data-track="checkout_cta"]')
       .forEach(link => { link.href = checkout.href; });
   };
-  window.RECONQUISTE_TRACKING = Object.freeze({ decorate });
+  window.DOCE_NO_LUCRO_TRACKING = Object.freeze({ decorate });
 
 
   // O token CAPI pertence ao servidor. Aqui entra apenas o ID público do pixel.
@@ -113,7 +113,7 @@
   const pixelEvent = (event, eventId) => {
     try {
       if (!startPixel()) return;
-      const properties = { content_ids: ["reconquiste-21-dias"], content_type: "product" };
+      const properties = { content_ids: ["docenolucro-21-dias"], content_type: "product" };
       const options = { eventID: eventId };
       if (event === "page_view") {
         window.fbq("trackSingle", pixelId, "PageView", {}, options);
@@ -153,7 +153,7 @@
     if (navigator.sendBeacon?.(endpoint.href, body)) return;
     fetch(endpoint.href, { method: "POST", body, credentials: "omit", keepalive: true }).catch(() => {});
   };
-  window.addEventListener("reconquiste:event", ({ detail }) => {
+  window.addEventListener("docenolucro:event", ({ detail }) => {
     const name = detail?.name;
     const event = name === "checkout_cta"
       ? detail.checkoutConfigured ? "initiate_checkout" : null

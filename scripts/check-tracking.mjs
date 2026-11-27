@@ -7,10 +7,10 @@ function page({ search = '', local = memory(), session = memory(), blocked = fal
   const listeners = {}, choices = {}, requests = [], links = [{ href: '' }], scripts = [];
   const panel = { hidden: false, setAttribute() {}, querySelector: selector => ({ addEventListener: (_, handler) => { choices[selector] = handler; } }) };
   const document = { cookie: '', createElement: tag => tag === 'script' ? {} : panel, head: { append: script => scripts.push(script) }, querySelectorAll: () => links, querySelector: () => ({ addEventListener() {} }), body: { append() {} } };
-  const window = { RECONQUISTE_CONFIG: { price: 14.97, checkoutUrl: 'https://pay.wiapy.com/test', tracking: { enabled: true, endpoint: 'https://tracking.example/track', offerName: 'Reconquiste', metaPixelId } }, addEventListener: (name, handler) => { listeners[name] = handler; } };
+  const window = { DOCE_NO_LUCRO_CONFIG: { price: 14.97, checkoutUrl: 'https://pay.wiapy.com/test', tracking: { enabled: true, endpoint: 'https://tracking.example/track', offerName: 'Doce no Lucro', metaPixelId } }, addEventListener: (name, handler) => { listeners[name] = handler; } };
   for (const [key, value] of [['localStorage', local], ['sessionStorage', session]]) Object.defineProperty(window, key, { get() { if (blocked) throw Error('blocked'); return value; } });
   vm.runInNewContext(source, { window, document, location: { search, origin: 'https://lp.example', pathname: '/' }, crypto: { randomUUID: () => crypto.randomUUID() }, URL, URLSearchParams, Date, navigator: { userAgent: 'test', sendBeacon: (url, body) => { requests.push(Object.fromEntries(body)); return true; } }, fetch: () => { throw Error('Unexpected fallback'); } });
-  return { window, requests, links, scripts, allow: () => choices['[data-measure="yes"]'](), deny: () => choices['[data-measure="no"]'](), event: (name, checkoutConfigured = true) => listeners['reconquiste:event']({ detail: { name, checkoutConfigured } }) };
+  return { window, requests, links, scripts, allow: () => choices['[data-measure="yes"]'](), deny: () => choices['[data-measure="no"]'](), event: (name, checkoutConfigured = true) => listeners['docenolucro:event']({ detail: { name, checkoutConfigured } }) };
 }
 const local = memory(), session = memory();
 const p = page({ search: '?utm_source=FB&utm_campaign=ABO%7C123&utm_content=CT%7C456&email=private@example.com', local, session });
@@ -41,13 +41,13 @@ assert.deepEqual(blocked.requests.map(r => r.event), ['diagnostico_page_view', '
 assert.equal(blocked.requests[0].click_id, blocked.requests[1].click_id);
 console.log('Tracking: preferências, atribuição, CTAs, deduplicação, UTMs e diagnóstico aprovados.');
 
-const pixel = page({ metaPixelId: '1795323998419205' });
+const pixel = page({ metaPixelId: '123456789012345' });
 assert.equal(pixel.scripts.length, 1, 'Meta carrega sem aviso automático');
 pixel.allow();
 assert.equal(pixel.scripts.length, 1, 'Meta carrega uma vez depois da escolha');
 assert.equal(pixel.scripts[0].src, 'https://connect.facebook.net/en_US/fbevents.js');
 const commands = () => pixel.window.fbq.queue.map(args => Array.from(args));
-assert(commands().some(c => c[0] === 'init' && c[1] === '1795323998419205'));
+assert(commands().some(c => c[0] === 'init' && c[1] === '123456789012345'));
 assert(commands().some(c => c[0] === 'trackSingle' && c[2] === 'PageView' && c[4].eventID === pixel.requests[0].event_id));
 assert(commands().some(c => c[0] === 'trackSingle' && c[2] === 'ViewContent'));
 pixel.event('hero_cta'); pixel.event('benefits_cta');
@@ -62,12 +62,12 @@ assert(commands().some(c => c[0] === 'consent' && c[1] === 'revoke'));
 const afterRevoke = commands().length;
 pixel.event('vsl_75');
 assert.equal(commands().length, afterRevoke);
-const diagnosticPixel = page({ search: '?tracking_test=1', metaPixelId: '1795323998419205' });
+const diagnosticPixel = page({ search: '?tracking_test=1', metaPixelId: '123456789012345' });
 diagnosticPixel.allow(); diagnosticPixel.event('hero_cta');
 assert.equal(diagnosticPixel.scripts.length, 0, 'Diagnóstico não envia à Meta');
 const legacyConsent = memory();
-legacyConsent.setItem('reconquiste:measurement:v1', JSON.stringify({ allowed: true, at: Date.now() }));
-const migrated = page({ local: legacyConsent, metaPixelId: '1795323998419205' });
+legacyConsent.setItem('docenolucro:measurement:v1', JSON.stringify({ allowed: true, at: Date.now() }));
+const migrated = page({ local: legacyConsent, metaPixelId: '123456789012345' });
 assert.equal(migrated.requests.length, 1);
 assert.equal(migrated.scripts.length, 1, 'Medição automática em visitas antigas');
 console.log('Pixel: CTAs internos, IDs, recusa, deduplicação e ausência de Purchase aprovados.');
@@ -87,15 +87,21 @@ firstVisit.event('checkout_cta'); reload.event('checkout_cta');
 assert.equal(visitorOf(firstVisit.requests[1]), visitorOf(reload.requests[1]), 'IC mantém visitante em recarregamentos');
 assert(!visitorOf(blocked.requests[0]), 'Sem armazenamento não inventar visitante persistente');
 const deniedStorage = memory();
-deniedStorage.setItem('reconquiste:measurement:v2', JSON.stringify({ allowed: false, at: Date.now() }));
+deniedStorage.setItem('docenolucro:measurement:v2', JSON.stringify({ allowed: false, at: Date.now() }));
 page({ local: deniedStorage });
-assert.equal(deniedStorage.getItem('reconquiste:visitor:v1'), null, 'Recusa não cria ID persistente');
+assert.equal(deniedStorage.getItem('docenolucro:visitor:v1'), null, 'Recusa não cria ID persistente');
 firstVisit.deny();
-assert.equal(browserStorage.getItem('reconquiste:visitor:v1'), null, 'Revogar remove ID persistente');
+assert.equal(browserStorage.getItem('docenolucro:visitor:v1'), null, 'Revogar remove ID persistente');
 const stale = memory();
-stale.setItem('reconquiste:visitor:v1', JSON.stringify({ id: 'visitor_antigo', at: Date.now() - 181 * 86400000 }));
+stale.setItem('docenolucro:visitor:v1', JSON.stringify({ id: 'visitor_antigo', at: Date.now() - 181 * 86400000 }));
 assert.notEqual(visitorOf(page({ local: stale }).requests[0]), 'visitor_antigo', 'ID expira em 180 dias');
 const diagnosticStorage = memory();
 page({ local: diagnosticStorage, search: '?tracking_test=1' });
-assert.equal(diagnosticStorage.getItem('reconquiste:visitor:v1'), null, 'Diagnóstico isolado da identidade real');
+assert.equal(diagnosticStorage.getItem('docenolucro:visitor:v1'), null, 'Diagnóstico isolado da identidade real');
 console.log('Visitantes: recargas, novas sessões/campanhas, navegadores diferentes, recusa, expiração e armazenamento bloqueado aprovados.');
+
+// A configuração de apresentação deve encerrar antes de acessar DOM, storage ou rede.
+vm.runInNewContext(source, {
+  window: { DOCE_NO_LUCRO_CONFIG: { tracking: { enabled: false } } }
+});
+console.log('Apresentação: rastreamento desativado não acessa DOM, armazenamento ou rede.');
