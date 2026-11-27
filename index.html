@@ -21,10 +21,17 @@
 <svg class="svg-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol></svg>
 <main id="conteudo">
 <div class="hero-band">
-<header class="site-header wrap"><a class="brand" href="#inicio" aria-label="Doce no Lucro, início"><img src="assets/doce-icon.svg" width="38" height="38" alt="">doce<span>no lucro</span></a><span class="header-detail">Precificação para confeitaria</span></header>
-<section class="hero wrap" id="inicio" aria-labelledby="hero-title">
-  <div class="hero-copy"><p class="eyebrow hero-badge">PARA QUEM VENDE DOCES E BOLOS</p><h1 id="hero-title">Saiba quanto cobrar.<br><em>E quanto sobra em cada receita.</em></h1><p class="hero-description">Calcule seus custos, defina seu preço e veja o lucro estimado de cada doce. Tudo em uma planilha fácil de usar.</p><div class="hero-action"><a class="button primary" href="#plano" data-track="hero_cta">Quero minha planilha + 3 bônus</a><p class="cta-note">Comece por <strong data-price>R$ 10,00</strong> · Sem mensalidade</p></div><div class="hero-facts"><span><svg aria-hidden="true"><use href="#icon-check"/></svg>Google Planilhas</span><span><svg aria-hidden="true"><use href="#icon-check"/></svg>7 dias de garantia</span></div></div>
-  <div class="hero-product"><img src="assets/doce-planilha.svg" alt="Doce no Lucro: uma planilha para ver o custo, o preço e o lucro estimado dos seus doces." width="680" height="570" fetchpriority="high"><span class="product-pill">Você preenche. A planilha calcula.</span></div>
+<section class="hero hero-vsl wrap" id="inicio" aria-labelledby="hero-title">
+  <div class="hero-copy"><h1 id="hero-title">Saiba quanto cobrar.<br><em>E quanto sobra em cada receita.</em></h1><p class="hero-description">Calcule seus custos, defina seu preço e veja o lucro estimado de cada doce. Tudo em uma planilha fácil de usar.</p></div>
+  <div class="vsl-frame" id="vsl-container" data-state="pending" aria-label="Apresentação do Doce no Lucro">
+    <div class="vsl-cover" id="vsl-cover"><img id="vsl-poster" src="assets/doce-planilha.svg" alt="Doce no Lucro: custos e lucro estimado da produção na planilha." width="680" height="570" fetchpriority="high"><p class="vsl-pending" id="vsl-pending">Apresentação em vídeo em breve</p></div>
+    <video id="vsl-video" playsinline preload="none" disablepictureinpicture disableremoteplayback aria-label="Vídeo de apresentação do Doce no Lucro" hidden></video>
+    <button class="vsl-toggle" id="vsl-play" type="button" aria-label="Assistir ao vídeo com som" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z" fill="currentColor"/></svg><span id="vsl-play-label">Assista esse Vídeo</span></button>
+    <div class="vsl-end" id="vsl-end" hidden><p>Agora é a vez dos seus doces.</p><a class="button primary" href="#plano" data-track="vsl_offer_cta">Quero minha planilha + 3 bônus</a><button id="vsl-replay" type="button">Assistir novamente</button></div>
+  </div>
+  <p class="vsl-error" id="vsl-error" role="status" hidden>Não foi possível carregar o vídeo. <button id="vsl-retry" type="button">Tentar novamente</button></p>
+  <div class="hero-action"><a class="button primary" href="#plano" data-track="hero_cta">Quero minha planilha + 3 bônus</a><p class="cta-note">Comece por <strong data-price>R$ 10,00</strong> · Sem mensalidade</p></div>
+  <div class="hero-facts"><span><svg aria-hidden="true"><use href="#icon-check"/></svg>Google Planilhas</span><span><svg aria-hidden="true"><use href="#icon-check"/></svg>7 dias de garantia</span></div>
 </section></div>
 
 <section class="inside-section section" id="por-dentro" aria-labelledby="inside-title"><div class="wrap">

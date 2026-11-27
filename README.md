@@ -7,7 +7,7 @@ Landing page de uma planilha de precificação para confeitaria. HTML, CSS e Jav
 ## Estado da oferta — 27/11/2026
 
 - Preço inicial escolhido: **R$ 10,00**, com valor regular de **R$ 97,00** informado pelo proprietário, configurados em `config.js`.
-- Estrutura enxuta: hero com apresentação do produto, benefícios, três bônus com mockups, demonstração interativa, depoimentos (ocultos até receber relatos reais), oferta com quatro entregáveis separados, garantia, dúvidas e rodapé.
+- Abertura sem cabeçalho, logo ou selo de público: chamada centralizada, frase curta, área da VSL horizontal 16:9 e CTA da oferta. Seguem benefícios, três bônus com mockups, demonstração interativa, depoimentos (ocultos até receber relatos reais), oferta, garantia, dúvidas e rodapé.
 - A seção dos pesquisadores e todo o conteúdo de relacionamento foram retirados da página.
 - A demonstração interativa fica abaixo dos bônus. O bloco de situações de uso foi removido. Depoimentos reais serão cadastrados em `testimonials` de `config.js`, nos campos `name`, `text` e `photoUrl` opcional. A seção só aparece quando há relatos preenchidos.
 - Bônus apresentados: vídeo de uso, mensagens/orçamentos para WhatsApp e checklist de encomendas. A produção/entrega final desses materiais precisa estar concluída antes da abertura das vendas.
@@ -26,6 +26,14 @@ npm run build
 ```
 
 Prévia em `http://127.0.0.1:4173`. Build em `dist/`. O build copia apenas os cinco assets referenciados no HTML; mídias antigas ainda no repositório não entram na publicação.
+
+## VSL horizontal
+
+O proprietário vai gravar a planilha por dentro. `videoUrl` continua vazio: a página mostra a capa com aviso de apresentação em breve, sem botão de play fictício.
+
+Para integrar o vídeo, configurar `videoUrl` com MP4/WebM local em `assets/` ou URL HTTPS direta. `videoPosterUrl` define a capa e `videoPreviewUrl` é opcional para uma prévia muda. O build inclui os arquivos locais configurados. Não usar vídeos ou pixel da oferta antiga.
+
+Com uma VSL configurada, o vídeo com som começa somente após o clique; tocar na tela pausa/retoma. Não há controles nativos adicionais. O player acompanha início, 25/50/75% e fim, sem repetir os marcos por retomada. O quadro final aponta para a oferta. Sem arquivo real, a reprodução ainda não foi validada em navegador; os estados do player foram cobertos pelo teste de comportamento em `scripts/check-player.mjs`.
 
 ## Abrir as vendas
 

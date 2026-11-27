@@ -93,6 +93,127 @@
     $("#privacy-contact").textContent = "Contato: " + config.supportEmail;
   }
 
+  // A capa funciona sozinha enquanto a VSL da nova oferta está em produção.
+  const mediaUrl = (value, extensions) => {
+    if (typeof value !== "string" || !value.trim()) return null;
+    try {
+      let url;
+      if (/^assets\/[A-Za-z0-9_./-]+$/.test(value) && !value.split("/").includes("..")) {
+        url = new URL(value, document.baseURI);
+      } else {
+        url = new URL(value);
+        if (url.protocol !== "https:" || url.username || url.password) return null;
+      }
+      return extensions.some(extension => url.pathname.toLowerCase().endsWith("." + extension)) ? url : null;
+    } catch { return null; }
+  };
+  const fullVideo = mediaUrl(config.videoUrl, ["mp4", "webm"]);
+  const previewVideo = mediaUrl(config.videoPreviewUrl, ["mp4", "webm"]);
+  const poster = mediaUrl(config.videoPosterUrl, ["svg", "webp", "png", "jpg", "jpeg"]);
+  if (poster) $("#vsl-poster").src = poster.href;
+  if (fullVideo) {
+    const frame = $("#vsl-container");
+    const video = $("#vsl-video");
+    const cover = $("#vsl-cover");
+    const play = $("#vsl-play");
+    const label = $("#vsl-play-label");
+    const end = $("#vsl-end");
+    const error = $("#vsl-error");
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const milestones = new Set();
+    let started = false, loading = false, tracked = false, inView = true;
+    const emitVideo = name => window.dispatchEvent(new CustomEvent("docenolucro:event", { detail: { name } }));
+    $("#vsl-pending").hidden = true;
+    play.hidden = false;
+    video.controls = false;
+    video.disablePictureInPicture = true;
+    video.disableRemotePlayback = true;
+    const update = () => {
+      const ended = started && video.ended;
+      const playing = started && !video.paused && !video.ended;
+      frame.dataset.state = loading ? "loading" : !started ? "preview" : ended ? "ended" : playing ? "playing" : "paused";
+      play.hidden = ended;
+      end.hidden = !ended;
+      play.disabled = loading;
+      label.textContent = loading ? "Carregando…" : "Assista esse Vídeo";
+      play.setAttribute("aria-label", loading ? "Carregando vídeo" : !started ? "Assistir ao vídeo com som" : playing ? "Pausar vídeo" : "Continuar vídeo");
+    };
+    const showError = () => {
+      loading = false;
+      video.hidden = true;
+      cover.hidden = false;
+      error.hidden = false;
+      update();
+    };
+    const toggle = async () => {
+      if (loading) return;
+      if (started && !video.paused && !video.ended) { video.pause(); return; }
+      error.hidden = true;
+      const mustLoad = !started || video.error;
+      started = true;
+      loading = true;
+      video.muted = false;
+      video.defaultMuted = false;
+      video.loop = false;
+      video.hidden = false;
+      if (mustLoad) { video.src = fullVideo.href; video.load(); }
+      if (video.ended) video.currentTime = 0;
+      update();
+      try {
+        await video.play();
+        loading = false;
+        cover.hidden = true;
+        update();
+      } catch { showError(); }
+    };
+    play.addEventListener("click", toggle);
+    $("#vsl-retry").addEventListener("click", toggle);
+    $("#vsl-replay").addEventListener("click", () => {
+      video.currentTime = 0;
+      toggle();
+    });
+    video.addEventListener("playing", () => {
+      if (!started) return;
+      loading = false;
+      cover.hidden = true;
+      if (!tracked) { tracked = true; emitVideo("vsl_play"); }
+      update();
+    });
+    video.addEventListener("pause", update);
+    video.addEventListener("ended", () => { emitVideo("vsl_complete"); update(); });
+    video.addEventListener("timeupdate", () => {
+      if (!started || video.muted || !Number.isFinite(video.duration) || video.duration <= 0) return;
+      [25, 50, 75].forEach(percent => {
+        if (video.currentTime / video.duration * 100 >= percent && !milestones.has(percent)) {
+          milestones.add(percent); emitVideo("vsl_" + percent);
+        }
+      });
+    });
+    video.addEventListener("error", () => { if (started) showError(); });
+    const updatePreview = () => {
+      if (started || !previewVideo) return;
+      if (document.hidden || !inView || motion.matches) { video.pause(); return; }
+      video.muted = true;
+      video.defaultMuted = true;
+      video.loop = true;
+      video.hidden = false;
+      video.play().then(() => { cover.hidden = true; }).catch(() => { cover.hidden = false; });
+    };
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) video.pause(); else updatePreview();
+    });
+    motion.addEventListener("change", updatePreview);
+    if (previewVideo) {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.loop = true;
+      video.src = previewVideo.href;
+      const observer = new IntersectionObserver(([entry]) => { inView = entry.isIntersecting; updatePreview(); }, { rootMargin: "60px" });
+      observer.observe(frame);
+    }
+    update();
+  }
+
   // Exemplos de custeio da planilha, sem prometer resultado para uma receita real.
   const examples = {
     brigadeiro: { name: "Brigadeiro tradicional", quantity: 100, total: 107.326, unit: 1.5 },

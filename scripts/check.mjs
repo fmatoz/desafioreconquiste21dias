@@ -31,3 +31,7 @@ if (!config.checkoutUrl) {
   assert.equal(config.tracking.metaPixelId, '', 'Pixel da nova oferta ainda não foi definido');
 }
 console.log('Oferta nova: seções na ordem, conteúdo antigo ausente e publicação de apresentação isolada.');
+
+assert(!html.includes('class="site-header'), 'Cabeçalho deve sair da abertura');
+assert(html.includes('id="vsl-container"'), 'Área da VSL horizontal ausente');
+await import('./check-player.mjs');
