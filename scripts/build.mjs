@@ -9,7 +9,7 @@ for (const file of ['index.html', 'styles.css', 'config.js', 'tracking.js', 'app
 }
 // Só publica os materiais usados nesta oferta; mídias da oferta antiga ficam no histórico.
 const html = await readFile(new URL('index.html', root), 'utf8');
-const assets = new Set([...html.matchAll(/(?:src|href)="(assets\/[A-Za-z0-9_./-]+)"/g)].map(match => match[1]));
+const assets = new Set([...html.matchAll(/(?:src|href|srcset)="(assets\/[A-Za-z0-9_./-]+)"/g)].map(match => match[1]));
 const context = { window: {} };
 vm.runInNewContext(await readFile(new URL('config.js', root), 'utf8'), context);
 for (const key of ['videoUrl', 'videoPreviewUrl', 'videoPosterUrl']) {

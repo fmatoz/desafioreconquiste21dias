@@ -6,7 +6,7 @@ const html = await readFile(new URL('index.html', root), 'utf8');
 const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
 assert.equal(ids.length, new Set(ids).size, 'IDs duplicados no HTML');
 for (const match of html.matchAll(/href="#([^"]+)"/g)) assert(ids.includes(match[1]), `Âncora ausente: ${match[1]}`);
-for (const match of html.matchAll(/(?:src|href)="([^"#]+)"/g)) {
+for (const match of html.matchAll(/(?:src|href|srcset)="([^"#]+)"/g)) {
   if (!match[1].startsWith('https://')) await access(new URL(match[1], root));
 }
 assert.equal((html.match(/<h1\b/g) || []).length, 1, 'A página deve ter um título principal');
