@@ -347,3 +347,9 @@ dialog .button{margin-top:24px}
 #por-dentro .capacity-note{margin-top:23px;font-size:.73rem}
 .visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
 @media(max-width:760px){#por-dentro .section-heading{margin-bottom:24px}#por-dentro .section-heading h2{font-size:clamp(1.75rem,6.7vw,2.3rem)}.product-solution{max-width:480px;margin-inline:auto;border-radius:13px}.solution-art{aspect-ratio:4/5}#por-dentro .capacity-note{font-size:.67rem;margin-top:20px}}
+
+/* A capa quadrada reúne o produto principal e os três bônus na oferta. */
+.main-deliverable .offer-product-cover{display:block;width:84px;height:84px;flex-shrink:0;object-fit:cover;border-radius:11px;border:1px solid #e3cad6;box-shadow:0 4px 14px #4c203818}
+.main-deliverable>div{min-width:0;flex:1}
+@media(max-width:760px){.main-deliverable .offer-product-cover{width:70px;height:70px;border-radius:9px}}
+@media(max-width:359px){.main-deliverable .offer-product-cover{width:62px;height:62px}}
