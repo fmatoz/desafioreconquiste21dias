@@ -337,3 +337,16 @@ dialog .button{margin-top:24px}
  .vsl-end .button{min-height:42px;font-size:.72rem;padding:10px 15px}
  .vsl-end>button{min-height:32px;font-size:.65rem}
 }
+
+/* Artes de confeitaria para explicar custos, preço e lucro com menos texto. */
+#por-dentro .benefits-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;max-width:none}
+#por-dentro .benefit-card{display:block;min-width:0;overflow:hidden;border:1px solid #e9d1dd;border-radius:16px;background:#fff;box-shadow:0 10px 28px #65243e08}
+.benefit-art{position:relative;overflow:hidden;background:#efd0d9}
+.benefit-art>img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+.benefit-step{position:absolute;top:13px;left:13px;display:grid;place-items:center;width:31px;height:31px;border:1px solid #ffffffb3;border-radius:50%;background:#fff8f2e8;color:#772e4b;font-size:.66rem;font-weight:700;box-shadow:0 3px 12px #51243815}
+.benefit-copy{padding:22px 24px 24px}
+#por-dentro .benefit-copy h3{font-size:1.25rem;letter-spacing:-.035em;color:var(--wine)}
+#por-dentro .benefit-copy p{margin-top:9px;font-size:.88rem;line-height:1.65;color:var(--muted)}
+#por-dentro .capacity-note{margin-top:26px;font-size:.73rem}
+@media(max-width:900px){#por-dentro .benefits-grid{gap:16px}.benefit-copy{padding:18px}#por-dentro .benefit-copy h3{font-size:1.15rem}#por-dentro .benefit-copy p{font-size:.82rem}}
+@media(max-width:760px){#por-dentro .benefits-grid{grid-template-columns:1fr;max-width:440px;gap:18px;margin-inline:auto}.benefit-copy{padding:19px 21px 22px}#por-dentro .benefit-copy h3{font-size:1.2rem}#por-dentro .benefit-copy p{font-size:.87rem;margin-top:7px}.benefit-step{top:12px;left:12px}#por-dentro .capacity-note{font-size:.67rem;margin-top:24px}}
