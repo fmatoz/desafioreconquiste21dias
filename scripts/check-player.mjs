@@ -20,7 +20,7 @@ function page(videoUrl = '') {
   }
   const config = { price: 10, checkoutUrl: '', testimonials: [], videoUrl, videoPosterUrl: 'assets/doce-planilha.svg' };
   const document = { baseURI: 'https://lp.example/', querySelector: node, querySelectorAll: () => [], addEventListener() {} };
-  const window = { DOCE_NO_LUCRO_CONFIG: config, matchMedia: () => ({ matches: false, addEventListener() {} }), dispatchEvent: event => events.push(event.detail.name) };
+  const window = { DOCE_NO_LUCRO_CONFIG: config, setInterval() {}, matchMedia: () => ({ matches: false, addEventListener() {} }), dispatchEvent: event => events.push(event.detail.name) };
   vm.runInNewContext(source, { window, document, URL, URLSearchParams, Intl, Date, CustomEvent: class { constructor(type, options) { this.detail = options.detail; } } });
   return { node, events };
 }

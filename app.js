@@ -4,6 +4,21 @@
   const money = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
   const $ = (selector) => document.querySelector(selector);
   $("#year").textContent = new Date().getFullYear();
+  const countdown = $("#offer-countdown");
+  if (countdown) {
+    const brasiliaClock = new Intl.DateTimeFormat("en-GB", {
+      timeZone: "America/Sao_Paulo", hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23"
+    });
+    const updateCountdown = () => {
+      const parts = Object.fromEntries(brasiliaClock.formatToParts(new Date()).map(part => [part.type, part.value]));
+      const remaining = 86399 - (Number(parts.hour) * 3600 + Number(parts.minute) * 60 + Number(parts.second));
+      countdown.textContent = [Math.floor(remaining / 3600), Math.floor(remaining % 3600 / 60), remaining % 60]
+        .map(value => String(value).padStart(2, "0")).join(":");
+    };
+    updateCountdown();
+    window.setInterval(updateCountdown, 1000);
+    document.addEventListener("visibilitychange", updateCountdown);
+  }
   if (Number.isFinite(config.price) && config.price > 0) {
     document.querySelectorAll("#price-label, [data-price]").forEach((element) => { element.textContent = money.format(config.price); });
   }

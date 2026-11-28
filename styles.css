@@ -22,6 +22,14 @@ img{display:block;max-width:100%;height:auto}
 .section-heading>p:last-child:not(.eyebrow){color:var(--muted);margin-top:20px}
 .skip-link{position:absolute;left:12px;top:-100px;padding:10px;background:white;z-index:20}
 .skip-link:focus{top:10px}
+.offer-ribbon{color:#fff;background:linear-gradient(105deg,#a32f59,#76213f);border-bottom:1px solid #ffbdd533;padding:9px 18px}
+.offer-ribbon-inner{display:flex;justify-content:center;align-items:center;gap:14px;max-width:1120px;margin:auto}
+.offer-ribbon p{font-size:.83rem;font-weight:700;line-height:1.35}
+.offer-ribbon-separator{color:#f6bacf}
+.offer-ribbon-clock{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.offer-countdown{display:block;min-width:100px;padding:3px 10px;border:1px solid #ffffff38;border-radius:6px;background:#310c2290;text-align:center;font-size:1.08rem;line-height:1.5;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:.06em}
+.offer-ribbon-deadline{font-size:.65rem;color:#ffe0eb;white-space:nowrap}
+@media(max-width:600px){.offer-ribbon{padding:8px 14px}.offer-ribbon-inner{gap:10px}.offer-ribbon p{max-width:180px;font-size:.72rem}.offer-ribbon-separator{display:none}.offer-ribbon-clock{flex-direction:column;gap:1px}.offer-countdown{min-width:94px;padding:1px 8px;font-size:1rem}.offer-ribbon-deadline{font-size:.55rem}}
 .hero-band{color:white;background:radial-gradient(ellipse at 50% 52%,#65344b,#381b2b 65%,#28131f)}
 .site-header{height:92px;display:flex;justify-content:space-between;align-items:center;gap:20px}
 .brand{display:flex;align-items:center;gap:8px;font-family:Georgia,serif;font-size:1.6rem;text-decoration:none;line-height:1;letter-spacing:-.05em;font-weight:700;white-space:nowrap}
