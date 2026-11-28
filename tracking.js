@@ -113,7 +113,7 @@
   const pixelEvent = (event, eventId) => {
     try {
       if (!startPixel()) return;
-      const properties = { content_ids: ["docenolucro-21-dias"], content_type: "product" };
+      const properties = { content_ids: ["doce-no-lucro"], content_type: "product" };
       const options = { eventID: eventId };
       if (event === "page_view") {
         window.fbq("trackSingle", pixelId, "PageView", {}, options);
@@ -199,3 +199,4 @@
   });
   if (consent === true) send("page_view");
 })();
+

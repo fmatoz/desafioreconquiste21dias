@@ -1,6 +1,6 @@
 /* Configure o novo checkout e o pixel desta oferta antes de abrir as vendas. */
 window.DOCE_NO_LUCRO_CONFIG = Object.freeze({
-  checkoutUrl: "",
+  checkoutUrl: "https://pay.wiapy.com/ShAhZYwpBE84",
   price: 10,
   originalPrice: 97,
   supportEmail: "",
@@ -11,9 +11,9 @@ window.DOCE_NO_LUCRO_CONFIG = Object.freeze({
   // Somente relatos reais, com autorização. Campos: name, text, photoUrl (opcional).
   testimonials: [],
   tracking: {
-    enabled: false,
+    enabled: true,
     metaPixelId: "",
-    endpoint: "",
+    endpoint: "https://projetopessoal-n8n.h574he.easypanel.host/webhook/track",
     offerName: "Doce no Lucro — Planilha de Precificação"
   }
 });
