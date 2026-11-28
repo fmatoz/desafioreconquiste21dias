@@ -135,7 +135,7 @@
       play.hidden = ended;
       end.hidden = !ended;
       play.disabled = loading;
-      label.textContent = loading ? "Carregando…" : "Assista esse Vídeo";
+      label.textContent = loading ? "Carregando…" : "Assista esse Vídeo e Veja como Funciona!";
       play.setAttribute("aria-label", loading ? "Carregando vídeo" : !started ? "Assistir ao vídeo com som" : playing ? "Pausar vídeo" : "Continuar vídeo");
     };
     const showError = () => {
@@ -237,3 +237,4 @@
   document.querySelectorAll("[data-example]").forEach((button) => button.addEventListener("click", () => renderExample(button.dataset.example)));
   renderExample("brigadeiro");
 })();
+

@@ -317,7 +317,8 @@ dialog .button{margin-top:24px}
 .vsl-frame:not([data-state="pending"]) .vsl-cover>img{width:100%;height:100%;max-width:none;object-fit:cover}
 .vsl-pending{position:absolute;bottom:15px;left:15px;right:15px;margin:0;font-size:.74rem;color:#705363;line-height:1.4}
 .vsl-frame video{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#160a12}
-.vsl-toggle{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;display:flex;align-items:center;justify-content:center;gap:10px;min-height:66px;max-width:calc(100% - 30px);width:270px;padding:14px 20px;border:1px solid #e6bdcf;border-radius:12px;color:white;background:#4c2038ed;box-shadow:0 6px 25px #1b071946;font-size:1rem;font-weight:700}
+.vsl-toggle{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;display:flex;align-items:center;justify-content:center;gap:10px;min-height:76px;max-width:calc(100% - 30px);width:370px;padding:14px 20px;border:1px solid #e6bdcf;border-radius:12px;color:white;background:#4c2038ed;box-shadow:0 6px 25px #1b071946;font-size:1rem;font-weight:700}
+#vsl-play-label{line-height:1.35;text-wrap:balance}
 .vsl-toggle>svg{width:25px;height:25px;flex-shrink:0}
 .vsl-toggle:hover{background:#6f2d50}
 .vsl-toggle:focus-visible{outline:3px solid white;outline-offset:-6px}
@@ -327,7 +328,7 @@ dialog .button{margin-top:24px}
 .vsl-error{max-width:860px;margin:12px auto 0;color:#fff0f6;font-size:.8rem}
 .vsl-error button{border:0;background:none;color:inherit;text-decoration:underline;text-underline-offset:3px;padding:8px}
 .vsl-end{position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;padding:22px;background:linear-gradient(145deg,#381a2eeb,#21101ef5);color:white}
-.vsl-end>p{font-size:clamp(1rem,2.4vw,1.5rem);font-weight:700}
+.vsl-end>p{max-width:620px;text-align:center;text-wrap:balance;font-size:clamp(1rem,2.4vw,1.5rem);font-weight:700}
 .vsl-end .button{min-height:52px;padding:13px 22px;font-size:.9rem}
 .vsl-end>button{border:0;background:none;color:#f4d5e3;text-decoration:underline;text-underline-offset:4px;font-size:.75rem;min-height:40px}
 .vsl-frame video::-webkit-media-controls{display:none!important}
@@ -339,7 +340,7 @@ dialog .button{margin-top:24px}
  .vsl-frame{border-radius:10px}
  .vsl-cover{padding-bottom:16px}
  .vsl-pending{font-size:.6rem;bottom:9px}
- .vsl-toggle{font-size:.84rem;min-height:52px;width:240px;padding:12px 14px}
+ .vsl-toggle{font-size:.84rem;min-height:62px;width:280px;padding:12px 14px}
  .vsl-toggle>svg{width:21px;height:21px}
  .vsl-end{gap:5px;padding:13px}
  .vsl-end>p{font-size:.94rem}
