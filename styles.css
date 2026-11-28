@@ -249,11 +249,19 @@ dialog .button{margin-top:24px}
 .checkout-trust{display:flex;justify-content:center;gap:22px;margin-top:18px;font-size:.68rem;color:var(--muted)}
 .checkout-trust>span{display:flex;align-items:center;gap:5px}
 .checkout-trust svg{width:16px;height:16px;color:#198653}
-.compact-guarantee{display:flex;gap:26px;align-items:center;max-width:760px}
-.compact-guarantee .guarantee-seal{margin:0;flex-shrink:0}
-.compact-guarantee .eyebrow{font-size:.61rem;margin-bottom:7px}
-.compact-guarantee h2{font-size:1.8rem}
-.compact-guarantee p:last-child{color:var(--muted);font-size:.86rem;margin-top:12px}
+.guarantee-section{padding-block:64px 22px;background:#fff}
+.guarantee-card{display:grid;grid-template-columns:180px minmax(0,1fr);align-items:center;gap:48px;max-width:980px;margin:auto;padding:48px 52px;border:1px solid #e8cbd8;border-radius:24px;background:linear-gradient(120deg,#fff9f5,#fff1f7);box-shadow:0 12px 35px #6b294509}
+.guarantee-badge{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:180px;height:198px;color:var(--wine);padding-bottom:10px}
+.guarantee-badge>svg{position:absolute;inset:0;width:100%;height:100%}
+.guarantee-badge>span{position:relative}
+.guarantee-badge-number{font:700 5rem/.95 Georgia,serif}
+.guarantee-badge-days{font-size:.76rem;letter-spacing:.21em;font-weight:700;margin-top:7px}
+.guarantee-badge-label{font-size:.49rem;letter-spacing:.12em;font-weight:700;margin-top:7px;color:#996078}
+.guarantee-copy .eyebrow{font-size:.61rem;letter-spacing:.12em;margin-bottom:14px}
+.guarantee-copy h2{font-size:clamp(2rem,3.2vw,2.7rem);line-height:1.15;letter-spacing:-.035em}
+.guarantee-copy>p:not(.eyebrow){font-size:.94rem;line-height:1.8;color:var(--muted);margin-top:18px;max-width:590px}
+.guarantee-copy>p:last-child{margin-top:12px}
+.guarantee-copy strong{font-weight:700;color:var(--wine)}
 .faq .section-heading{margin-bottom:20px}
 .faq h2{font-size:2rem}
 .faq-items summary{padding-block:18px}
@@ -289,8 +297,7 @@ dialog .button{margin-top:24px}
  .item-label{font-size:.53rem}.bonus-deliverable>svg{width:18px;height:18px}
  .offer-checkout{padding:23px 18px}.price-block>strong{font-size:3.8rem}.purchase-button{font-size:.91rem;padding:15px 11px}
  .checkout-trust{gap:15px;font-size:.61rem}
- .compact-guarantee{gap:18px;align-items:flex-start}.compact-guarantee .guarantee-seal{width:65px;height:77px;font-size:1.8rem}
- .compact-guarantee h2{font-size:1.6rem}.compact-guarantee p:last-child{font-size:.81rem}
+ .guarantee-section{padding-block:40px 12px}.guarantee-card{grid-template-columns:1fr;gap:20px;padding:27px 23px 30px;border-radius:19px;text-align:center}.guarantee-badge{width:137px;height:151px;justify-self:center;padding-bottom:8px}.guarantee-badge-number{font-size:3.9rem}.guarantee-badge-days{font-size:.61rem;margin-top:5px}.guarantee-badge-label{font-size:.4rem;margin-top:5px}.guarantee-copy .eyebrow{font-size:.53rem;line-height:1.6;max-width:240px;margin:0 auto 12px}.guarantee-copy h2{font-size:clamp(1.7rem,6.8vw,2.15rem)}.guarantee-copy>p:not(.eyebrow){font-size:.84rem;line-height:1.75;margin-top:17px}.guarantee-copy>p:last-child{margin-top:12px}
  .faq h2{font-size:1.8rem}.testimonial-grid{grid-template-columns:1fr}
 }
 @media(max-width:359px){.hero h1{font-size:1.9rem}.hero-badge{font-size:.55rem}.bonus-deliverable>svg{display:none}.checkout-trust{gap:10px;font-size:.58rem}}
@@ -370,5 +377,19 @@ dialog .button{margin-top:24px}
 .support-deliverable>.support-check{width:22px;height:22px;flex-shrink:0;color:#1c9358}
 @media(max-width:760px){.product-support{gap:10px;padding:13px 14px}.support-mark{width:41px;height:41px;border-radius:11px}.support-mark svg{width:26px;height:26px}.support-copy strong{font-size:.84rem}.support-copy>span{font-size:.69rem}.support-included{font-size:.5rem;padding:5px 6px;letter-spacing:.04em}.support-deliverable{gap:10px;padding:11px}.support-deliverable h4{font-size:.84rem}.support-deliverable p{font-size:.7rem}.support-deliverable>.support-check{width:18px;height:18px}}
 @media(max-width:359px){.product-support{gap:8px;padding-inline:10px}.product-support .support-mark{width:35px;height:35px}.support-copy strong{font-size:.76rem}.support-copy>span{font-size:.63rem}.support-included{font-size:.47rem}.support-deliverable>.support-check{display:none}}
+
+/* A garantia abre espaço para um FAQ com o mesmo cuidado visual. */
+.faq.section{padding-block:44px 64px}
+.faq .section-heading{margin-bottom:27px}
+.faq-items{display:grid;gap:11px}
+.faq-items>details{border:1px solid #ead4df;border-radius:12px;background:#fff;overflow:hidden}
+.faq-items>details[open]{background:#fffafb;border-color:#dcb5c7}
+.faq-items summary{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:19px 22px;list-style:none}
+.faq-items summary::marker{content:""}
+.faq-items summary::-webkit-details-marker{display:none}
+.faq-items summary::after{content:"+";display:grid;place-items:center;flex-shrink:0;width:24px;height:24px;border-radius:50%;background:#f6e7ee;color:var(--accent);font-size:1.1rem;font-weight:400;line-height:1}
+.faq-items details[open]>summary::after{content:"−"}
+.faq-items details p{padding:0 64px 21px 22px;line-height:1.8}
+@media(max-width:760px){.faq.section{padding-block:30px 44px}.faq .section-heading{margin-bottom:22px}.faq-items{gap:9px}.faq-items summary{padding:16px;gap:12px;font-size:.87rem}.faq-items details p{padding:0 16px 19px;font-size:.83rem}}
 
 
