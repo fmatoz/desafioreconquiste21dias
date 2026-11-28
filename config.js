@@ -12,9 +12,8 @@ window.DOCE_NO_LUCRO_CONFIG = Object.freeze({
   testimonials: [],
   tracking: {
     enabled: true,
-    metaPixelId: "",
+    metaPixelId: "1889344935817425",
     endpoint: "https://projetopessoal-n8n.h574he.easypanel.host/webhook/track",
     offerName: "Doce no Lucro — Planilha de Precificação"
   }
 });
-
