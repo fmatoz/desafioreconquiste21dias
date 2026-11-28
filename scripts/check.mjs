@@ -24,7 +24,7 @@ console.log(`Checkout: ${config.checkoutUrl ? 'configurado' : 'pendente'} | VSL:
 
 assert(!/1795323998419205|pay\.wiapy\.com\/v9l2cgEla5fk|Gottman|Algoe|Aron|Fredrickson|reconquiste/i.test(html + JSON.stringify(config)), 'Conteúdo da oferta anterior na página nova');
 assert(!ids.includes('referencias'), 'Seção dos pesquisadores deve ser removida');
-const order = ['inicio', 'por-dentro', 'bonus', 'previa', 'depoimentos', 'plano', 'garantia'].map(id => html.indexOf('id="' + id + '"'));
+const order = ['inicio', 'por-dentro', 'bonus', 'depoimentos', 'previa', 'plano', 'garantia'].map(id => html.indexOf('id="' + id + '"'));
 assert(order.every((value, index) => value >= 0 && (!index || value > order[index - 1])), 'Ordem das seções inválida');
 if (!config.checkoutUrl) {
   assert.equal(config.tracking.enabled, false, 'Apresentação sem checkout não deve enviar tracking');
@@ -35,3 +35,4 @@ console.log('Oferta nova: seções na ordem, conteúdo antigo ausente e publica�
 assert(!html.includes('class="site-header'), 'Cabeçalho deve sair da abertura');
 assert(html.includes('id="vsl-container"'), 'Área da VSL horizontal ausente');
 await import('./check-player.mjs');
+

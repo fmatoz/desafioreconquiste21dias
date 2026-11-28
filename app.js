@@ -95,6 +95,12 @@
     })));
   });
   document.querySelectorAll("[data-open-dialog]").forEach((button) => button.addEventListener("click", () => openDialog(button.dataset.openDialog, button)));
+  document.querySelectorAll("[data-testimonial-image]").forEach((button) => button.addEventListener("click", () => {
+    const image = $("#testimonial-full");
+    image.src = button.dataset.testimonialImage;
+    image.alt = button.querySelector("img").alt;
+    openDialog("testimonial-dialog", button);
+  }));
   document.querySelectorAll("[data-close-dialog]").forEach((button) => button.addEventListener("click", () => button.closest("dialog").close()));
   document.querySelectorAll("dialog").forEach((dialog) => {
     dialog.addEventListener("click", (event) => {
