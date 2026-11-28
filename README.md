@@ -29,11 +29,13 @@ Prévia em `http://127.0.0.1:4173`. Build em `dist/`. O build copia apenas os ci
 
 ## VSL horizontal
 
-O proprietário vai gravar a planilha por dentro. `videoUrl` continua vazio: a página mostra a capa com aviso de apresentação em breve, sem botão de play fictício.
+VSL final configurada em `videoUrl`: MP4 H.264/AAC, 1280 × 720, 30 fps, 1min50s e aproximadamente 20,3 MB. A fonte foi a exportação final fornecida pelo proprietário. A conversão prioriza qualidade (CRF 16), mantém resolução, cadência e áudio original, com inicialização otimizada `faststart`.
+
+A abertura da página carrega somente a capa WebP, de aproximadamente 34 KB. O elemento de vídeo permanece sem `src`, com `preload="none"`, até o clique em Play; `videoPreviewUrl` fica vazio. O MP4 é servido como asset estático pela CDN da Vercel, com nome baseado no conteúdo e cache imutável. Uma revisão do vídeo deve usar um novo nome/hash. O peso do vídeo não é transferido no carregamento inicial da LP.
 
 Para integrar o vídeo, configurar `videoUrl` com MP4/WebM local em `assets/` ou URL HTTPS direta. `videoPosterUrl` define a capa e `videoPreviewUrl` é opcional para uma prévia muda. O build inclui os arquivos locais configurados. Não usar vídeos ou pixel da oferta antiga.
 
-Com uma VSL configurada, o vídeo com som começa somente após o clique; tocar na tela pausa/retoma. Não há controles nativos adicionais. O player acompanha início, 25/50/75% e fim, sem repetir os marcos por retomada. O quadro final aponta para a oferta. Sem arquivo real, a reprodução ainda não foi validada em navegador; os estados do player foram cobertos pelo teste de comportamento em `scripts/check-player.mjs`.
+O vídeo com som começa somente após o clique; tocar na tela pausa/retoma. Não há controles nativos adicionais. O player acompanha início, 25/50/75% e fim, sem repetir os marcos por retomada. O quadro final aponta para a oferta. Os testes de comportamento estão em `scripts/check-player.mjs`; a reprodução do arquivo real e a pausa foram conferidas no navegador, inclusive no layout de 390 px. Antes do primeiro clique, foram confirmados `src` ausente e `readyState=0`.
 
 ## Abrir as vendas
 

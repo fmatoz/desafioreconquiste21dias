@@ -5,9 +5,9 @@ window.DOCE_NO_LUCRO_CONFIG = Object.freeze({
   originalPrice: 97,
   supportEmail: "",
   // VSL horizontal: arquivo MP4/WebM local em assets/ ou URL HTTPS direta.
-  videoUrl: "",
+  videoUrl: "assets/doce-no-lucro-vsl-d3f09b240505.mp4",
   videoPreviewUrl: "",
-  videoPosterUrl: "assets/doce-planilha.svg",
+  videoPosterUrl: "assets/doce-no-lucro-vsl-poster-38a2ee64580b.webp",
   // Somente relatos reais, com autorização. Campos: name, text, photoUrl (opcional).
   testimonials: [],
   tracking: {
@@ -17,3 +17,4 @@ window.DOCE_NO_LUCRO_CONFIG = Object.freeze({
     offerName: "Doce no Lucro — Planilha de Precificação"
   }
 });
+
