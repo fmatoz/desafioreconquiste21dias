@@ -95,12 +95,27 @@
     })));
   });
   document.querySelectorAll("[data-open-dialog]").forEach((button) => button.addEventListener("click", () => openDialog(button.dataset.openDialog, button)));
-  document.querySelectorAll("[data-testimonial-image]").forEach((button) => button.addEventListener("click", () => {
-    const image = $("#testimonial-full");
-    image.src = button.dataset.testimonialImage;
-    image.alt = button.querySelector("img").alt;
-    openDialog("testimonial-dialog", button);
-  }));
+  document.querySelectorAll(".testimonial-prints").forEach((carousel) => {
+    const track = carousel.querySelector(".testimonial-track");
+    const group = track?.querySelector(".testimonial-group");
+    if (!group) return;
+    const copy = group.cloneNode(true);
+    copy.classList.add("testimonial-group-copy");
+    copy.setAttribute("aria-hidden", "true");
+    copy.querySelectorAll("button").forEach((button) => { button.tabIndex = -1; });
+    copy.querySelectorAll("img").forEach((image) => { image.loading = "eager"; });
+    track.append(copy);
+    track.classList.add("is-looping");
+    carousel.classList.add("is-looping");
+    const buttons = carousel.querySelectorAll("[data-testimonial-pause]");
+    buttons.forEach((button) => button.addEventListener("click", () => {
+      const paused = carousel.classList.toggle("is-paused");
+      buttons.forEach((control) => {
+        control.setAttribute("aria-pressed", String(paused));
+        control.setAttribute("aria-label", paused ? "Retomar movimento dos depoimentos" : "Pausar movimento dos depoimentos");
+      });
+    }));
+  });
   document.querySelectorAll("[data-close-dialog]").forEach((button) => button.addEventListener("click", () => button.closest("dialog").close()));
   document.querySelectorAll("dialog").forEach((dialog) => {
     dialog.addEventListener("click", (event) => {
